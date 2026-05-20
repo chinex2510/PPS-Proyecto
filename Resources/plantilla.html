@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px; /* aumenté el tamaño base */
+            color: #000;
+        }
+
+        .cabecera {
+            background-color: #dcade9;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .cabecera-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .cabecera-table td {
+                vertical-align: middle;
+                text-align: center;
+            }
+
+        .cabecera-logo {
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .cabecera-logo img {
+                width: 120px; /* o más grande que 80px */
+                height: auto;
+                position: relative;
+                top: -10px; /* mueve la imagen hacia arriba */
+                left: -20px; /* mueve la imagen hacia la izquierda */
+            }
+
+
+        .cabecera-titulo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .datos-profesionales {
+            margin-top: 10px;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px; /* Un poquito más grande que antes */
+        }
+
+            .datos-profesionales td {
+                padding: 4px 8px;
+                vertical-align: top;
+            }
+
+            .datos-profesionales .izquierda {
+                text-align: left;
+                font-weight: bold;
+            }
+            .datos-profesionales .derecha {
+                text-align: right;
+            }
+        
+        .datos {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px; /* Un poco más grande */
+        }
+            .datos td {
+                padding: 6px 8px;
+                vertical-align: top;
+            }
+
+
+        .seccion {
+            margin-top: 10px;
+        }
+
+            .seccion h3 {
+                margin-bottom: 5px;
+                font-size: 17px;
+                color: #000;
+                font-weight: bold;
+            }
+
+            .seccion p {
+                text-align: justify;
+                margin-left: 20px;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <div class="cabecera">
+        <table class="cabecera-table">
+            <tr>
+                <td class="cabecera-logo">
+                    <img src="@logo" alt="Logo" />
+                </td>
+                <td class="cabecera-titulo">
+                    INFORME PSICOPEDAGÓGICO
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table class="datos-profesionales">
+        <tr>
+            <td class="izquierda">Lic. María Elena Quintana</td>
+            <td class="derecha" rowspan="2">Fecha: @fechaemision</td>
+        </tr>
+        <tr>
+            <td class="izquierda">Mat. Prof. 591</td>
+        </tr>
+    </table>
+
+
+    <!-- Datos del concurrente -->
+    <table class="datos">
+        <tr>
+            <td style="font-weight: bold; ">Nombre concurrente:</td>
+            <td>@nombre</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Edad concurrente:</td>
+            <td>@edad</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">DNI concurrente:</td>
+            <td>@dni</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Diagnósticos:</td>
+            <td>@diagnostico</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Escuela / Institución:</td>
+            <td>@institucion</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Nivel / Grado:</td>
+            <td>@grado</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;">Obra Social:</td>
+            <td>@obrasocial</td>
+        </tr>
+    </table>
+
+
+    <!-- Secciones dinámicas -->
+    @areasdinamicas
+
+</body>
+</html>
