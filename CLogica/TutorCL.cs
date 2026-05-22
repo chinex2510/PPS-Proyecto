@@ -53,21 +53,21 @@ namespace ConsultorioPsicopedagogico.CLogica
             };
         }
 
-        // ✅ Guardar o modificar tutor (si esNuevo = true -> guarda, false -> modifica)
+        // Guardar o modificar tutor (si esNuevo = true -> guarda, false -> modifica)
         public void GuardarOModificarTutor(TutorCL tutor, bool esNuevo)
         {
             Tutor_CD datos = new Tutor_CD();
             datos.Guardar_Modificar_Tutor(PasarDatos(tutor), esNuevo);
         }
 
-        // ✅ Eliminar tutor por DNI
+        // Eliminar tutor por DNI
         public void EliminarTutor(TutorCL tutor)
         {
             Tutor_CD datos = new Tutor_CD();
             datos.EliminarTutor(PasarDatos(tutor));
         }
 
-        // ✅ Buscar un tutor por DNI
+        // Buscar un tutor por DNI
         public TutorCL BuscarTutor(int dni)
         {
             Tutor_CD datos = new Tutor_CD();
@@ -75,7 +75,7 @@ namespace ConsultorioPsicopedagogico.CLogica
             return tutorDatos != null ? PasarLogica(tutorDatos) : null;
         }
 
-        // ✅ Mostrar todos los tutores
+        // Mostrar todos los tutores
         public DataTable MostrarTutores()
         {
             Tutor_CD datos = new Tutor_CD();
