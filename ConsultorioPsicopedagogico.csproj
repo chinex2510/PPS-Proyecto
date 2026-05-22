@@ -163,6 +163,12 @@
     <Compile Include="CLogica\InformeCL.cs" />
     <Compile Include="CLogica\TurnoCL.cs" />
     <Compile Include="CLogica\TutorCL.cs" />
+    <Compile Include="CPresentacion\BajaConcurrente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CPresentacion\BajaConcurrente.Designer.cs">
+      <DependentUpon>BajaConcurrente.cs</DependentUpon>
+    </Compile>
     <Compile Include="CPresentacion\Concurrentes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,12 @@
     <Compile Include="CPresentacion\NuevoConcurrente.Designer.cs">
       <DependentUpon>NuevoConcurrente.cs</DependentUpon>
     </Compile>
+    <Compile Include="CPresentacion\NuevoTutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CPresentacion\NuevoTutor.Designer.cs">
+      <DependentUpon>NuevoTutor.cs</DependentUpon>
+    </Compile>
     <Compile Include="CPresentacion\Turnos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +213,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CPresentacion\BajaConcurrente.resx">
+      <DependentUpon>BajaConcurrente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CPresentacion\Concurrentes.resx">
       <DependentUpon>Concurrentes.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CPresentacion\NuevoConcurrente.resx">
       <DependentUpon>NuevoConcurrente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CPresentacion\NuevoTutor.resx">
+      <DependentUpon>NuevoTutor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CPresentacion\Turnos.resx">
       <DependentUpon>Turnos.cs</DependentUpon>
