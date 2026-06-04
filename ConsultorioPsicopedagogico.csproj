@@ -161,6 +161,7 @@
     <Compile Include="CDatos\Tutor_CD.cs" />
     <Compile Include="CLogica\ConcurrentesCL.cs" />
     <Compile Include="CLogica\InformeCL.cs" />
+    <Compile Include="CLogica\LoginCL.cs" />
     <Compile Include="CLogica\TurnoCL.cs" />
     <Compile Include="CLogica\TutorCL.cs" />
     <Compile Include="CPresentacion\BajaConcurrente.cs">
