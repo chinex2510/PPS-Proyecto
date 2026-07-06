@@ -4,15 +4,22 @@
     <meta charset="UTF-8" />
     <style>
         body {
-            font-family: Arial, sans-serif;
-            font-size: 14px; /* aumenté el tamaño base */
-            color: #000;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            color: #333333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .doc-container {
+            padding: 30px;
         }
 
         .cabecera {
-            background-color: #dcade9;
-            padding: 15px;
-            text-align: center;
+            border-bottom: 3px solid #732396;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .cabecera-table {
@@ -20,143 +27,210 @@
             border-collapse: collapse;
         }
 
-            .cabecera-table td {
-                vertical-align: middle;
-                text-align: center;
-            }
-
         .cabecera-logo {
-            width: 80px;
-            height: 80px;
-            overflow: hidden;
-            position: relative;
+            width: 70px;
+            vertical-align: middle;
         }
 
-            .cabecera-logo img {
-                width: 120px; /* o más grande que 80px */
-                height: auto;
-                position: relative;
-                top: -10px; /* mueve la imagen hacia arriba */
-                left: -20px; /* mueve la imagen hacia la izquierda */
-            }
-
+        .cabecera-logo img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+        }
 
         .cabecera-titulo {
-            font-size: 24px;
+            padding-left: 20px;
+            vertical-align: middle;
+            text-align: left;
+        }
+
+        .titulo-principal {
+            font-size: 22px;
             font-weight: bold;
-            color: #000;
+            color: #5a1978;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-titulo {
+            font-size: 11px;
+            color: #666666;
+            margin: 5px 0 0 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .datos-profesionales {
-            margin-top: 10px;
             width: 100%;
             border-collapse: collapse;
-            font-size: 13px; /* Un poquito más grande que antes */
+            font-size: 11px;
+            color: #555555;
+            margin-top: 5px;
         }
 
-            .datos-profesionales td {
-                padding: 4px 8px;
-                vertical-align: top;
-            }
+        .datos-profesionales td {
+            padding: 2px 0;
+        }
 
-            .datos-profesionales .izquierda {
-                text-align: left;
-                font-weight: bold;
-            }
-            .datos-profesionales .derecha {
-                text-align: right;
-            }
-        
+        .prof-nombre {
+            font-weight: bold;
+            color: #732396;
+            font-size: 12px;
+        }
+
+        .datos-paciente-box {
+            background-color: #fcfaff;
+            border: 1px solid #e8e0ee;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        .datos-paciente-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #5a1978;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e8e0ee;
+            padding-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
         .datos {
-            margin-top: 20px;
             width: 100%;
             border-collapse: collapse;
-            font-size: 14px; /* Un poco más grande */
-        }
-            .datos td {
-                padding: 6px 8px;
-                vertical-align: top;
-            }
-
-
-        .seccion {
-            margin-top: 10px;
         }
 
-            .seccion h3 {
-                margin-bottom: 5px;
-                font-size: 17px;
-                color: #000;
-                font-weight: bold;
-            }
+        .datos td {
+            padding: 5px 0;
+            font-size: 12px;
+        }
 
-            .seccion p {
-                text-align: justify;
-                margin-left: 20px;
-            }
+        .label-field {
+            font-weight: bold;
+            color: #555555;
+            width: 25%;
+        }
+
+        .value-field {
+            color: #111111;
+        }
+
+        .seccion-titulo {
+            font-size: 14px;
+            color: #5a1978;
+            font-weight: bold;
+            margin: 25px 0 10px 0;
+            border-left: 4px solid #732396;
+            padding-left: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .seccion-cuerpo {
+            font-size: 13px;
+            text-align: justify;
+            margin-bottom: 20px;
+            color: #222222;
+            padding-left: 14px;
+        }
+
+        .footer-firma {
+            margin-top: 60px;
+            text-align: right;
+            font-size: 11px;
+            color: #666666;
+        }
+
+        .firma-linea {
+            display: inline-block;
+            border-top: 1px solid #999999;
+            width: 200px;
+            text-align: center;
+            padding-top: 5px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Cabecera -->
-    <div class="cabecera">
-        <table class="cabecera-table">
-            <tr>
-                <td class="cabecera-logo">
-                    <img src="@logo" alt="Logo" />
-                </td>
-                <td class="cabecera-titulo">
-                    INFORME PSICOPEDAGÓGICO
-                </td>
-            </tr>
-        </table>
+    <div class="doc-container">
+        <!-- Cabecera -->
+        <div class="cabecera">
+            <table class="cabecera-table">
+                <tr>
+                    <td class="cabecera-logo">
+                        <img src="@logo" alt="Logo" />
+                    </td>
+                    <td class="cabecera-titulo">
+                        <h1 class="titulo-principal">INFORME PSICOPEDAGÓGICO</h1>
+                        <div class="sub-titulo">Evaluación Diagnóstica y Seguimiento</div>
+                    </td>
+                </tr>
+            </table>
+            
+            <table class="datos-profesionales">
+                <tr>
+                    <td>
+                        <span class="prof-nombre">Psp. María Elena Quintana</span><br />
+                        Mat. Prof. 591
+                    </td>
+                    <td style="text-align: right; vertical-align: bottom;">
+                        <strong>Fecha de Emisión:</strong> @fechaemision
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Datos del concurrente -->
+        <div class="datos-paciente-box">
+            <div class="datos-paciente-title">Información del Concurrente</div>
+            <table class="datos">
+                <tr>
+                    <td class="label-field">Nombre completo:</td>
+                    <td class="value-field">@nombre</td>
+                </tr>
+                <tr>
+                    <td class="label-field">Edad:</td>
+                    <td class="value-field">@edad años</td>
+                </tr>
+                <tr>
+                    <td class="label-field">DNI:</td>
+                    <td class="value-field">@dni</td>
+                </tr>
+                <tr>
+                    <td class="label-field">Diagnóstico:</td>
+                    <td class="value-field">@diagnostico</td>
+                </tr>
+                <tr>
+                    <td class="label-field">Escuela / Institución:</td>
+                    <td class="value-field">@institucion</td>
+                </tr>
+                <tr>
+                    <td class="label-field">Nivel / Grado:</td>
+                    <td class="value-field">@grado</td>
+                </tr>
+                <tr>
+                    <td class="label-field">Obra Social:</td>
+                    <td class="value-field">@obrasocial</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Secciones dinámicas -->
+        <div style="margin-top: 10px;">
+            @areasdinamicas
+        </div>
+
+        <!-- Firma -->
+        <div class="footer-firma">
+            <br /><br />
+            <div class="firma-linea">
+                <strong>Psp. María Elena Quintana</strong><br />
+                Mat. Prof. 591
+            </div>
+        </div>
     </div>
-    <table class="datos-profesionales">
-        <tr>
-            <td class="izquierda">Lic. María Elena Quintana</td>
-            <td class="derecha" rowspan="2">Fecha: @fechaemision</td>
-        </tr>
-        <tr>
-            <td class="izquierda">Mat. Prof. 591</td>
-        </tr>
-    </table>
-
-
-    <!-- Datos del concurrente -->
-    <table class="datos">
-        <tr>
-            <td style="font-weight: bold; ">Nombre concurrente:</td>
-            <td>@nombre</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold;">Edad concurrente:</td>
-            <td>@edad</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold;">DNI concurrente:</td>
-            <td>@dni</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold;">Diagnósticos:</td>
-            <td>@diagnostico</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold;">Escuela / Institución:</td>
-            <td>@institucion</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold;">Nivel / Grado:</td>
-            <td>@grado</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold;">Obra Social:</td>
-            <td>@obrasocial</td>
-        </tr>
-    </table>
-
-
-    <!-- Secciones dinámicas -->
-    @areasdinamicas
 
 </body>
 </html>
