@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +27,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private void btn_Salir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void lblmin2_Click(object sender, EventArgs e)
@@ -40,6 +40,25 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             CPresentacion.CrearInformes crearInformes = new CPresentacion.CrearInformes();
             crearInformes.Show();
             this.Hide();
+        }
+
+        private void btn_Turnos_Click(object sender, EventArgs e)
+        {
+            CPresentacion.Turnos turnos = new CPresentacion.Turnos();
+            turnos.Show();
+            this.Hide();
+        }
+
+        private void PanelCard_Paint(object sender, PaintEventArgs e)
+        {
+            Panel panel = sender as Panel;
+            if (panel != null)
+            {
+                using (Pen pen = new Pen(Color.FromArgb(232, 224, 238), 1))
+                {
+                    e.Graphics.DrawRectangle(pen, 0, 0, panel.Width - 1, panel.Height - 1);
+                }
+            }
         }
     }
 }
