@@ -17,14 +17,14 @@ namespace ConsultorioPsicopedagogico
 {
     public partial class Login : Form
     {
+        private LoginCL loginLogica;
+
         public Login()
         {
             InitializeComponent();
             this.ActiveControl = panelControles;
+            this.loginLogica = new LoginCL();
         }
-
-        private const string MatriculaValida = "celeste";
-        private const string ContraseñaValida = "123456";
 
         private void txt_Mat_Enter(object sender, EventArgs e)
         {
