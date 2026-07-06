@@ -1,4 +1,4 @@
-﻿using ConsultorioPsicopedagogico.CLogica;
+using ConsultorioPsicopedagogico.CLogica;
 using FluentValidation;
 using FluentValidation.Results;
 using MySqlX.XDevAPI.Common;
@@ -56,7 +56,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 dtg_Baja.DataSource = tabla;
                 encontrado = 1;
             }
-           
         }
 
         private void btn_baja_Click(object sender, EventArgs e)
@@ -97,66 +96,51 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 {
                     logica.EliminarPorDni(concurrente);
                     txt_DniBusqueda.Clear();
+                    dtg_Baja.DataSource = null;
+                    encontrado = 0;
+                    MessageBox.Show("Paciente eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     txt_DniBusqueda.Clear();
                 }
             }
-            
         }
 
         private void txt_DniBusqueda_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txt_DniBusqueda.Text))
             {
-                
+                dtg_Baja.DataSource = null;
+                encontrado = 0;
             }
         }
+
+        private void btn_volver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void PanelCard_Paint(object sender, PaintEventArgs e)
+        {
+            Panel panel = sender as Panel;
+            if (panel != null)
+            {
+                using (Pen pen = new Pen(Color.FromArgb(232, 224, 238), 1))
+                {
+                    e.Graphics.DrawRectangle(pen, 0, 0, panel.Width - 1, panel.Height - 1);
+                }
+            }
+        }
+
         public class ValidacionPaciente : AbstractValidator<BajaConcurrente>
         {
             public ValidacionPaciente()
             {
                 RuleFor(x => x.txt_DniBusqueda.Text)
                     .NotEmpty().WithMessage("El DNI es obligatorio.")
-                    .Matches(@"^\d{8}$").WithMessage("Ingrese un DNI valido");            
+                    .Matches(@"^\d{7,8}$").WithMessage("Ingrese un DNI válido (entre 7 y 8 dígitos).");            
             }
         }
     }
 }
-
-//private void txt_Num_Recibo_TextChanged(object sender, EventArgs e)
-//{
-//    if (!String.IsNullOrEmpty(txt_Num_Recibo.Text))
-//    {
-
-//        // Verificar si cada carácter es un dígito numérico
-//        foreach (char c in txt_Num_Recibo.Text)
-//        {
-//            if (!Char.IsDigit(c))
-//            {
-//                MessageBox.Show("Por favor, ingrese solo números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//                txt_Num_Recibo.Text = ""; // Limpiar el TextBox si se ingresan caracteres no numéricos
-//                return;
-//            }
-//        }
-
-//        ClsLogicaVentas objVenta = new ClsLogicaVentas();
-//        dgvHistorialVenta.DataSource = objVenta.mostrar_busqueda(Convert.ToInt32(txt_Num_Recibo.Text));
-//    }
-//    else
-//    {
-//        ClsLogicaVentas objVentas = new ClsLogicaVentas();
-//        dgvHistorialVenta.DataSource = objVentas.mostrar_tabla_venta();
-
-//        // Ajustar automáticamente el tamaño de las columnas
-//        dgvHistorialVenta.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
-//        // Alinear los datos al centro
-//        foreach (DataGridViewColumn column in dgvHistorialVenta.Columns)
-//        {
-//            column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-//        }
-//    }
-
-//}
