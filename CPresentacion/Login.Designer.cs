@@ -56,8 +56,13 @@
             this.panelLogo.Controls.Add(this.pictureBox1);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
+<<<<<<< Updated upstream
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(300, 350);
+            this.panelLogo.Size = new System.Drawing.Size(400, 431);
             this.panelLogo.TabIndex = 0;
             // 
             // pictureBox1
@@ -65,8 +70,13 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::ConsultorioPsicopedagogico.Properties.Resources.MAria_ELena_Quintana;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+<<<<<<< Updated upstream
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 350);
+            this.pictureBox1.Size = new System.Drawing.Size(400, 431);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -85,9 +95,14 @@
             this.panelControles.Controls.Add(this.panel2);
             this.panelControles.Controls.Add(this.panel1);
             this.panelControles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControles.Location = new System.Drawing.Point(300, 0);
+            this.panelControles.Location = new System.Drawing.Point(400, 0);
+<<<<<<< Updated upstream
+            this.panelControles.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.panelControles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.panelControles.Name = "panelControles";
-            this.panelControles.Size = new System.Drawing.Size(500, 350);
+            this.panelControles.Size = new System.Drawing.Size(667, 431);
             this.panelControles.TabIndex = 1;
             // 
             // lbl_Minimizar
@@ -95,9 +110,10 @@
             this.lbl_Minimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_Minimizar.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Minimizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
-            this.lbl_Minimizar.Location = new System.Drawing.Point(437, 0);
+            this.lbl_Minimizar.Location = new System.Drawing.Point(583, 0);
+            this.lbl_Minimizar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Minimizar.Name = "lbl_Minimizar";
-            this.lbl_Minimizar.Size = new System.Drawing.Size(30, 30);
+            this.lbl_Minimizar.Size = new System.Drawing.Size(40, 37);
             this.lbl_Minimizar.TabIndex = 9;
             this.lbl_Minimizar.Text = "—";
             this.lbl_Minimizar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -111,10 +127,10 @@
             this.lbl_Cerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_Cerrar.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Cerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
-            this.lbl_Cerrar.Location = new System.Drawing.Point(470, 0);
+            this.lbl_Cerrar.Location = new System.Drawing.Point(627, 0);
             this.lbl_Cerrar.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_Cerrar.Name = "lbl_Cerrar";
-            this.lbl_Cerrar.Size = new System.Drawing.Size(30, 30);
+            this.lbl_Cerrar.Size = new System.Drawing.Size(40, 37);
             this.lbl_Cerrar.TabIndex = 8;
             this.lbl_Cerrar.Text = "X";
             this.lbl_Cerrar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,9 +147,14 @@
             this.btn_Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
-            this.btn_Cancelar.Location = new System.Drawing.Point(323, 235);
+            this.btn_Cancelar.Location = new System.Drawing.Point(431, 289);
+<<<<<<< Updated upstream
+            this.btn_Cancelar.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.btn_Cancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(152, 34);
+            this.btn_Cancelar.Size = new System.Drawing.Size(203, 42);
             this.btn_Cancelar.TabIndex = 7;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = false;
@@ -146,9 +167,14 @@
             this.btn_Ingresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Ingresar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Ingresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
-            this.btn_Ingresar.Location = new System.Drawing.Point(135, 235);
+            this.btn_Ingresar.Location = new System.Drawing.Point(180, 289);
+<<<<<<< Updated upstream
+            this.btn_Ingresar.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.btn_Ingresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.btn_Ingresar.Name = "btn_Ingresar";
-            this.btn_Ingresar.Size = new System.Drawing.Size(152, 33);
+            this.btn_Ingresar.Size = new System.Drawing.Size(203, 41);
             this.btn_Ingresar.TabIndex = 6;
             this.btn_Ingresar.Text = "Ingresar";
             this.btn_Ingresar.UseVisualStyleBackColor = false;
@@ -161,9 +187,10 @@
             this.linkLabel2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
-            this.linkLabel2.Location = new System.Drawing.Point(246, 305);
+            this.linkLabel2.Location = new System.Drawing.Point(328, 375);
+            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(120, 17);
+            this.linkLabel2.Size = new System.Drawing.Size(159, 23);
             this.linkLabel2.TabIndex = 5;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Crear nueva cuenta";
@@ -175,9 +202,10 @@
             this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
-            this.linkLabel1.Location = new System.Drawing.Point(323, 174);
+            this.linkLabel1.Location = new System.Drawing.Point(431, 214);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(157, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(206, 23);
             this.linkLabel1.TabIndex = 4;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "?Olvidaste tu contraseña¿";
@@ -187,9 +215,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
-            this.label2.Location = new System.Drawing.Point(20, 143);
+            this.label2.Location = new System.Drawing.Point(27, 176);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 25);
+            this.label2.Size = new System.Drawing.Size(134, 32);
             this.label2.TabIndex = 3;
             this.label2.Text = "Contraseña";
             // 
@@ -198,9 +227,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
-            this.label1.Location = new System.Drawing.Point(20, 69);
+            this.label1.Location = new System.Drawing.Point(27, 85);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 25);
+            this.label1.Size = new System.Drawing.Size(113, 32);
             this.label1.TabIndex = 2;
             this.label1.Text = "Matricula";
             // 
@@ -208,10 +238,15 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
             this.panel2.Controls.Add(this.txt_Contraseña);
-            this.panel2.Location = new System.Drawing.Point(134, 139);
+            this.panel2.Location = new System.Drawing.Point(179, 171);
+<<<<<<< Updated upstream
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(1);
-            this.panel2.Size = new System.Drawing.Size(343, 30);
+            this.panel2.Size = new System.Drawing.Size(457, 37);
             this.panel2.TabIndex = 1;
             // 
             // txt_Contraseña
@@ -222,9 +257,14 @@
             this.txt_Contraseña.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Contraseña.ForeColor = System.Drawing.Color.Gray;
             this.txt_Contraseña.Location = new System.Drawing.Point(1, 1);
+<<<<<<< Updated upstream
+            this.txt_Contraseña.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.txt_Contraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.txt_Contraseña.Name = "txt_Contraseña";
             this.txt_Contraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_Contraseña.Size = new System.Drawing.Size(341, 26);
+            this.txt_Contraseña.Size = new System.Drawing.Size(455, 32);
             this.txt_Contraseña.TabIndex = 0;
             this.txt_Contraseña.Text = "Ingrese su contraseña";
             this.txt_Contraseña.Enter += new System.EventHandler(this.txt_Contraseña_Enter);
@@ -234,10 +274,15 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
             this.panel1.Controls.Add(this.txt_Mat);
-            this.panel1.Location = new System.Drawing.Point(133, 65);
+            this.panel1.Location = new System.Drawing.Point(177, 80);
+<<<<<<< Updated upstream
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(1);
-            this.panel1.Size = new System.Drawing.Size(343, 30);
+            this.panel1.Size = new System.Drawing.Size(457, 37);
             this.panel1.TabIndex = 0;
             // 
             // txt_Mat
@@ -248,9 +293,14 @@
             this.txt_Mat.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Mat.ForeColor = System.Drawing.Color.Gray;
             this.txt_Mat.Location = new System.Drawing.Point(1, 1);
+<<<<<<< Updated upstream
+            this.txt_Mat.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.txt_Mat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+>>>>>>> Stashed changes
             this.txt_Mat.Name = "txt_Mat";
             this.txt_Mat.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_Mat.Size = new System.Drawing.Size(341, 26);
+            this.txt_Mat.Size = new System.Drawing.Size(455, 32);
             this.txt_Mat.TabIndex = 0;
             this.txt_Mat.Text = "Ingrese su matrícula";
             this.txt_Mat.Enter += new System.EventHandler(this.txt_Mat_Enter);
@@ -259,15 +309,15 @@
             // Login
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(800, 350);
+            this.ClientSize = new System.Drawing.Size(1067, 431);
             this.Controls.Add(this.panelControles);
             this.Controls.Add(this.panelLogo);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Login";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

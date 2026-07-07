@@ -34,27 +34,32 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Planes = new System.Windows.Forms.Button();
             this.btn_Salir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lbl_Minimizar = new System.Windows.Forms.Label();
+<<<<<<< Updated upstream
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelMenuCard = new System.Windows.Forms.Panel();
             this.lbl_LicTitle = new System.Windows.Forms.Label();
             this.lbl_SubTitle = new System.Windows.Forms.Label();
             this.lbl_MenuTitle = new System.Windows.Forms.Label();
+=======
+            this.panelBrand = new System.Windows.Forms.Panel();
+            this.lbl_BrandTitle = new System.Windows.Forms.Label();
+            this.lbl_BrandSub = new System.Windows.Forms.Label();
+>>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
+<<<<<<< Updated upstream
             this.panelLeft.SuspendLayout();
             this.panelMenuCard.SuspendLayout();
+=======
+            this.panelBrand.SuspendLayout();
+>>>>>>> Stashed changes
             // 
             // btnConcurrentes
             // 
             this.btnConcurrentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
             this.btnConcurrentes.Cursor = System.Windows.Forms.Cursors.Hand;
+<<<<<<< Updated upstream
             this.btnConcurrentes.FlatAppearance.BorderSize = 0;
             this.btnConcurrentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConcurrentes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -65,7 +70,19 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btnConcurrentes.Size = new System.Drawing.Size(280, 42);
             this.btnConcurrentes.TabIndex = 1;
             this.btnConcurrentes.Text = "PACIENTES / CONCURRENTES";
+=======
+            this.btnConcurrentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConcurrentes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConcurrentes.ForeColor = System.Drawing.Color.White;
+            this.btnConcurrentes.Location = new System.Drawing.Point(280, 75);
+            this.btnConcurrentes.Margin = new System.Windows.Forms.Padding(2);
+            this.btnConcurrentes.Name = "btnConcurrentes";
+            this.btnConcurrentes.Size = new System.Drawing.Size(360, 45);
+            this.btnConcurrentes.TabIndex = 1;
+            this.btnConcurrentes.Text = "CONCURRENTES / PACIENTES";
+>>>>>>> Stashed changes
             this.btnConcurrentes.UseVisualStyleBackColor = false;
+            this.btnConcurrentes.FlatAppearance.BorderSize = 0;
             this.btnConcurrentes.Click += new System.EventHandler(this.btnConcurrentes_Click);
             // 
             // btn_Turnos
@@ -76,6 +93,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Turnos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Turnos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Turnos.ForeColor = System.Drawing.Color.White;
+<<<<<<< Updated upstream
             this.btn_Turnos.Location = new System.Drawing.Point(65, 192);
             this.btn_Turnos.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Turnos.Name = "btn_Turnos";
@@ -83,6 +101,16 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Turnos.TabIndex = 3;
             this.btn_Turnos.Text = "GESTIÓN DE TURNOS";
             this.btn_Turnos.UseVisualStyleBackColor = false;
+=======
+            this.btn_Turnos.Location = new System.Drawing.Point(280, 185);
+            this.btn_Turnos.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Turnos.Name = "btn_Turnos";
+            this.btn_Turnos.Size = new System.Drawing.Size(360, 45);
+            this.btn_Turnos.TabIndex = 2;
+            this.btn_Turnos.Text = "TURNOS / AGENDA";
+            this.btn_Turnos.UseVisualStyleBackColor = false;
+            this.btn_Turnos.FlatAppearance.BorderSize = 0;
+>>>>>>> Stashed changes
             this.btn_Turnos.Click += new System.EventHandler(this.btn_Turnos_Click);
             // 
             // btn_Planes
@@ -93,13 +121,23 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Planes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Planes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Planes.ForeColor = System.Drawing.Color.White;
+<<<<<<< Updated upstream
             this.btn_Planes.Location = new System.Drawing.Point(65, 132);
             this.btn_Planes.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Planes.Name = "btn_Planes";
             this.btn_Planes.Size = new System.Drawing.Size(280, 42);
             this.btn_Planes.TabIndex = 2;
             this.btn_Planes.Text = "CREAR INFORMES";
+=======
+            this.btn_Planes.Location = new System.Drawing.Point(280, 130);
+            this.btn_Planes.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Planes.Name = "btn_Planes";
+            this.btn_Planes.Size = new System.Drawing.Size(360, 45);
+            this.btn_Planes.TabIndex = 3;
+            this.btn_Planes.Text = "INFORMES / DIAGNÓSTICOS";
+>>>>>>> Stashed changes
             this.btn_Planes.UseVisualStyleBackColor = false;
+            this.btn_Planes.FlatAppearance.BorderSize = 0;
             this.btn_Planes.Click += new System.EventHandler(this.btn_Planes_Click);
             // 
             // btn_Salir
@@ -109,12 +147,19 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Salir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Salir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+<<<<<<< Updated upstream
             this.btn_Salir.Location = new System.Drawing.Point(65, 255);
             this.btn_Salir.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Salir.Name = "btn_Salir";
             this.btn_Salir.Size = new System.Drawing.Size(280, 40);
+=======
+            this.btn_Salir.Location = new System.Drawing.Point(280, 240);
+            this.btn_Salir.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Salir.Name = "btn_Salir";
+            this.btn_Salir.Size = new System.Drawing.Size(360, 45);
+>>>>>>> Stashed changes
             this.btn_Salir.TabIndex = 4;
-            this.btn_Salir.Text = "Salir";
+            this.btn_Salir.Text = "CERRAR SESIÓN";
             this.btn_Salir.UseVisualStyleBackColor = false;
             this.btn_Salir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.btn_Salir.Click += new System.EventHandler(this.btn_Salir_Click);
@@ -123,6 +168,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::ConsultorioPsicopedagogico.Properties.Resources.MAria_ELena_Quintana;
+<<<<<<< Updated upstream
             this.pictureBox1.Location = new System.Drawing.Point(30, 40);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
@@ -164,12 +210,26 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.pictureBox4.TabIndex = 13;
             this.pictureBox4.TabStop = false;
             // 
+=======
+            this.pictureBox1.Location = new System.Drawing.Point(45, 35);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(160, 160);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+>>>>>>> Stashed changes
             // lbl_Minimizar
             // 
             this.lbl_Minimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_Minimizar.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Minimizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
+<<<<<<< Updated upstream
             this.lbl_Minimizar.Location = new System.Drawing.Point(335, 5);
+=======
+            this.lbl_Minimizar.Location = new System.Drawing.Point(635, 5);
+>>>>>>> Stashed changes
             this.lbl_Minimizar.Name = "lbl_Minimizar";
             this.lbl_Minimizar.Size = new System.Drawing.Size(30, 30);
             this.lbl_Minimizar.TabIndex = 14;
@@ -178,6 +238,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_Minimizar.UseCompatibleTextRendering = true;
             this.lbl_Minimizar.Click += new System.EventHandler(this.lblmin2_Click);
             // 
+<<<<<<< Updated upstream
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
@@ -239,27 +300,76 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_MenuTitle.Size = new System.Drawing.Size(176, 25);
             this.lbl_MenuTitle.TabIndex = 0;
             this.lbl_MenuTitle.Text = "MENÚ PRINCIPAL";
+=======
+            // panelBrand
+            // 
+            this.panelBrand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
+            this.panelBrand.Controls.Add(this.lbl_BrandSub);
+            this.panelBrand.Controls.Add(this.lbl_BrandTitle);
+            this.panelBrand.Controls.Add(this.pictureBox1);
+            this.panelBrand.Location = new System.Drawing.Point(0, 0);
+            this.panelBrand.Name = "panelBrand";
+            this.panelBrand.Size = new System.Drawing.Size(250, 320);
+            this.panelBrand.TabIndex = 15;
+            // 
+            // lbl_BrandTitle
+            // 
+            this.lbl_BrandTitle.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_BrandTitle.ForeColor = System.Drawing.Color.White;
+            this.lbl_BrandTitle.Location = new System.Drawing.Point(10, 215);
+            this.lbl_BrandTitle.Name = "lbl_BrandTitle";
+            this.lbl_BrandTitle.Size = new System.Drawing.Size(230, 30);
+            this.lbl_BrandTitle.TabIndex = 1;
+            this.lbl_BrandTitle.Text = "CONSULTORIO";
+            this.lbl_BrandTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_BrandSub
+            // 
+            this.lbl_BrandSub.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_BrandSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(220)))), ((int)(((byte)(245)))));
+            this.lbl_BrandSub.Location = new System.Drawing.Point(10, 245);
+            this.lbl_BrandSub.Name = "lbl_BrandSub";
+            this.lbl_BrandSub.Size = new System.Drawing.Size(230, 25);
+            this.lbl_BrandSub.TabIndex = 2;
+            this.lbl_BrandSub.Text = "Psicopedagógico";
+            this.lbl_BrandSub.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+>>>>>>> Stashed changes
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(240)))), ((int)(((byte)(248)))));
+<<<<<<< Updated upstream
             this.ClientSize = new System.Drawing.Size(670, 360);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelMenuCard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.ClientSize = new System.Drawing.Size(670, 320);
+            this.Controls.Add(this.panelBrand);
+            this.Controls.Add(this.lbl_Minimizar);
+            this.Controls.Add(this.btn_Salir);
+            this.Controls.Add(this.btn_Planes);
+            this.Controls.Add(this.btn_Turnos);
+            this.Controls.Add(this.btnConcurrentes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+>>>>>>> Stashed changes
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+<<<<<<< Updated upstream
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panelLeft.ResumeLayout(false);
             this.panelMenuCard.ResumeLayout(false);
             this.panelMenuCard.PerformLayout();
+=======
+            this.panelBrand.ResumeLayout(false);
+>>>>>>> Stashed changes
             this.ResumeLayout(false);
 
         }
@@ -270,14 +380,17 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.Button btn_Planes;
         private System.Windows.Forms.Button btn_Salir;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label lbl_Minimizar;
+<<<<<<< Updated upstream
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panelMenuCard;
         private System.Windows.Forms.Label lbl_LicTitle;
         private System.Windows.Forms.Label lbl_SubTitle;
         private System.Windows.Forms.Label lbl_MenuTitle;
+=======
+        private System.Windows.Forms.Panel panelBrand;
+        private System.Windows.Forms.Label lbl_BrandTitle;
+        private System.Windows.Forms.Label lbl_BrandSub;
+>>>>>>> Stashed changes
     }
 }

@@ -50,12 +50,14 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_BuscarArea = new System.Windows.Forms.Button();
             this.btn_DescargarPDF = new System.Windows.Forms.Button();
             this.panelLeftCard = new System.Windows.Forms.Panel();
-            this.panelRightCard = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.panelRightCard = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.date_naci = new System.Windows.Forms.DateTimePicker();
+            this.lbl_FechaInforme = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panelLeftCard.SuspendLayout();
@@ -68,20 +70,19 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(95, 20);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(127, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(437, 37);
+            this.label1.Size = new System.Drawing.Size(501, 46);
             this.label1.TabIndex = 0;
             this.label1.Text = "INFORME PSICOPEDAGOGICO";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ConsultorioPsicopedagogico.Properties.Resources.MAria_ELena_Quintana;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 8);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(20, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.Size = new System.Drawing.Size(85, 79);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -94,9 +95,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(940, 80);
+            this.panel1.Size = new System.Drawing.Size(1253, 98);
             this.panel1.TabIndex = 8;
             // 
             // label4
@@ -105,10 +106,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(680, 20);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(907, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(171, 17);
+            this.label4.Size = new System.Drawing.Size(219, 23);
             this.label4.TabIndex = 11;
             this.label4.Text = "Psp. Maria Elena Quintana";
             // 
@@ -118,31 +118,29 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(210)))), ((int)(((byte)(245)))));
-            this.label5.Location = new System.Drawing.Point(680, 42);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(907, 52);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 15);
+            this.label5.Size = new System.Drawing.Size(100, 20);
             this.label5.TabIndex = 12;
             this.label5.Text = "Mat. Prof. 591";
             // 
             // txt_DNI
             // 
             this.txt_DNI.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_DNI.Location = new System.Drawing.Point(150, 52);
-            this.txt_DNI.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_DNI.Name = "txt_DNI";
-            this.txt_DNI.Size = new System.Drawing.Size(160, 25);
-            this.txt_DNI.TabIndex = 13;
+            this.txt_DNI.Location = new System.Drawing.Point(200, 64);
+            this.txt_DNI.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_DNI.MaxLength = 8;
+            this.txt_DNI.Name = "txt_DNI";
+            this.txt_DNI.Size = new System.Drawing.Size(212, 29);
+            this.txt_DNI.TabIndex = 13;
             this.txt_DNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers_KeyPress);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(532, 119);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(709, 146);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.Size = new System.Drawing.Size(52, 16);
             this.label6.TabIndex = 14;
             this.label6.Text = "FECHA";
             this.label6.Visible = false;
@@ -152,10 +150,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.rtb_Informe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtb_Informe.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtb_Informe.ForeColor = System.Drawing.Color.Gray;
-            this.rtb_Informe.Location = new System.Drawing.Point(15, 50);
-            this.rtb_Informe.Margin = new System.Windows.Forms.Padding(2);
+            this.rtb_Informe.Location = new System.Drawing.Point(20, 62);
+            this.rtb_Informe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtb_Informe.Name = "rtb_Informe";
-            this.rtb_Informe.Size = new System.Drawing.Size(420, 400);
+            this.rtb_Informe.Size = new System.Drawing.Size(560, 492);
             this.rtb_Informe.TabIndex = 15;
             this.rtb_Informe.Text = "Ingrese el Informe referente al Area";
             this.rtb_Informe.Enter += new System.EventHandler(this.rtb_Informe_Enter);
@@ -164,92 +162,97 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // btnGuardarPDF_Click
             // 
             this.btnGuardarPDF_Click.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
+            this.btnGuardarPDF_Click.FlatAppearance.BorderSize = 0;
             this.btnGuardarPDF_Click.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarPDF_Click.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarPDF_Click.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarPDF_Click.Location = new System.Drawing.Point(750, 590);
-            this.btnGuardarPDF_Click.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardarPDF_Click.Location = new System.Drawing.Point(1000, 726);
+            this.btnGuardarPDF_Click.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGuardarPDF_Click.Name = "btnGuardarPDF_Click";
-            this.btnGuardarPDF_Click.Size = new System.Drawing.Size(170, 45);
+            this.btnGuardarPDF_Click.Size = new System.Drawing.Size(227, 55);
             this.btnGuardarPDF_Click.TabIndex = 28;
             this.btnGuardarPDF_Click.Text = "GUARDAR";
             this.btnGuardarPDF_Click.UseVisualStyleBackColor = false;
-            this.btnGuardarPDF_Click.FlatAppearance.BorderSize = 0;
             this.btnGuardarPDF_Click.Click += new System.EventHandler(this.btnGuardarPDF_Click_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(580, 590);
+            this.label2.Location = new System.Drawing.Point(773, 726);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 29;
             this.label2.Visible = false;
             // 
             // volver_btn
             // 
             this.volver_btn.BackColor = System.Drawing.Color.White;
+            this.volver_btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.volver_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.volver_btn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.volver_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.volver_btn.Location = new System.Drawing.Point(20, 590);
-            this.volver_btn.Margin = new System.Windows.Forms.Padding(2);
+            this.volver_btn.Location = new System.Drawing.Point(27, 726);
+            this.volver_btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.volver_btn.Name = "volver_btn";
-            this.volver_btn.Size = new System.Drawing.Size(170, 45);
+            this.volver_btn.Size = new System.Drawing.Size(227, 55);
             this.volver_btn.TabIndex = 30;
             this.volver_btn.Text = "Volver";
             this.volver_btn.UseVisualStyleBackColor = false;
-            this.volver_btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.volver_btn.Click += new System.EventHandler(this.volver_btn_Click);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(590, 119);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker1.Location = new System.Drawing.Point(787, 146);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(192, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(255, 22);
             this.dateTimePicker1.TabIndex = 31;
             this.dateTimePicker1.Visible = false;
             // 
             // btn_select_DNI
             // 
             this.btn_select_DNI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
+            this.btn_select_DNI.FlatAppearance.BorderSize = 0;
             this.btn_select_DNI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_select_DNI.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_select_DNI.ForeColor = System.Drawing.Color.White;
-            this.btn_select_DNI.Location = new System.Drawing.Point(320, 50);
+            this.btn_select_DNI.Location = new System.Drawing.Point(427, 62);
+            this.btn_select_DNI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_select_DNI.Name = "btn_select_DNI";
-            this.btn_select_DNI.Size = new System.Drawing.Size(90, 29);
+            this.btn_select_DNI.Size = new System.Drawing.Size(120, 36);
             this.btn_select_DNI.TabIndex = 32;
             this.btn_select_DNI.Text = "Seleccionar";
             this.btn_select_DNI.UseVisualStyleBackColor = false;
-            this.btn_select_DNI.FlatAppearance.BorderSize = 0;
             // 
             // lbl_NombreConcurrente
             // 
             this.lbl_NombreConcurrente.AutoSize = true;
             this.lbl_NombreConcurrente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_NombreConcurrente.Location = new System.Drawing.Point(150, 100);
+            this.lbl_NombreConcurrente.Location = new System.Drawing.Point(200, 123);
+            this.lbl_NombreConcurrente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_NombreConcurrente.Name = "lbl_NombreConcurrente";
-            this.lbl_NombreConcurrente.Size = new System.Drawing.Size(0, 17);
+            this.lbl_NombreConcurrente.Size = new System.Drawing.Size(0, 23);
             this.lbl_NombreConcurrente.TabIndex = 33;
             // 
             // lbl_DNI
             // 
             this.lbl_DNI.AutoSize = true;
             this.lbl_DNI.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_DNI.Location = new System.Drawing.Point(150, 130);
+            this.lbl_DNI.Location = new System.Drawing.Point(37, 316);
+            this.lbl_DNI.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_DNI.Name = "lbl_DNI";
-            this.lbl_DNI.Size = new System.Drawing.Size(0, 17);
+            this.lbl_DNI.Size = new System.Drawing.Size(0, 23);
             this.lbl_DNI.TabIndex = 34;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 130);
+            this.label3.Location = new System.Drawing.Point(20, 160);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 15);
+            this.label3.Size = new System.Drawing.Size(38, 20);
             this.label3.TabIndex = 35;
             this.label3.Text = "DNI:";
             // 
@@ -257,9 +260,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(15, 100);
+            this.label7.Location = new System.Drawing.Point(20, 123);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 15);
+            this.label7.Size = new System.Drawing.Size(67, 20);
             this.label7.TabIndex = 36;
             this.label7.Text = "Nombre:";
             // 
@@ -267,9 +271,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.txt_TituloArea.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_TituloArea.ForeColor = System.Drawing.Color.Gray;
-            this.txt_TituloArea.Location = new System.Drawing.Point(150, 217);
+            this.txt_TituloArea.Location = new System.Drawing.Point(200, 267);
+            this.txt_TituloArea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_TituloArea.Name = "txt_TituloArea";
-            this.txt_TituloArea.Size = new System.Drawing.Size(260, 25);
+            this.txt_TituloArea.Size = new System.Drawing.Size(345, 29);
             this.txt_TituloArea.TabIndex = 37;
             this.txt_TituloArea.Text = "Titulo de Area";
             this.txt_TituloArea.Enter += new System.EventHandler(this.txt_TituloArea_Enter);
@@ -278,51 +283,56 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // btn_agregarArea
             // 
             this.btn_agregarArea.BackColor = System.Drawing.Color.White;
+            this.btn_agregarArea.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
             this.btn_agregarArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_agregarArea.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_agregarArea.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
-            this.btn_agregarArea.Location = new System.Drawing.Point(15, 270);
+            this.btn_agregarArea.Location = new System.Drawing.Point(21, 389);
+            this.btn_agregarArea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_agregarArea.Name = "btn_agregarArea";
-            this.btn_agregarArea.Size = new System.Drawing.Size(190, 38);
+            this.btn_agregarArea.Size = new System.Drawing.Size(253, 47);
             this.btn_agregarArea.TabIndex = 38;
             this.btn_agregarArea.Text = "Agregar y Limpiar";
             this.btn_agregarArea.UseVisualStyleBackColor = false;
-            this.btn_agregarArea.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
             this.btn_agregarArea.Click += new System.EventHandler(this.btn_agregarArea_Click);
             // 
             // btn_BuscarArea
             // 
             this.btn_BuscarArea.BackColor = System.Drawing.Color.White;
+            this.btn_BuscarArea.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
             this.btn_BuscarArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_BuscarArea.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_BuscarArea.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
-            this.btn_BuscarArea.Location = new System.Drawing.Point(220, 270);
+            this.btn_BuscarArea.Location = new System.Drawing.Point(294, 389);
+            this.btn_BuscarArea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_BuscarArea.Name = "btn_BuscarArea";
-            this.btn_BuscarArea.Size = new System.Drawing.Size(190, 38);
+            this.btn_BuscarArea.Size = new System.Drawing.Size(253, 47);
             this.btn_BuscarArea.TabIndex = 39;
             this.btn_BuscarArea.Text = "Buscar Area";
             this.btn_BuscarArea.UseVisualStyleBackColor = false;
-            this.btn_BuscarArea.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
             this.btn_BuscarArea.Click += new System.EventHandler(this.btn_BuscarArea_Click);
             // 
             // btn_DescargarPDF
             // 
             this.btn_DescargarPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
+            this.btn_DescargarPDF.FlatAppearance.BorderSize = 0;
             this.btn_DescargarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_DescargarPDF.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DescargarPDF.ForeColor = System.Drawing.Color.White;
-            this.btn_DescargarPDF.Location = new System.Drawing.Point(15, 340);
+            this.btn_DescargarPDF.Location = new System.Drawing.Point(21, 451);
+            this.btn_DescargarPDF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_DescargarPDF.Name = "btn_DescargarPDF";
-            this.btn_DescargarPDF.Size = new System.Drawing.Size(390, 45);
+            this.btn_DescargarPDF.Size = new System.Drawing.Size(526, 55);
             this.btn_DescargarPDF.TabIndex = 40;
             this.btn_DescargarPDF.Text = "Descargar PDF";
             this.btn_DescargarPDF.UseVisualStyleBackColor = false;
-            this.btn_DescargarPDF.FlatAppearance.BorderSize = 0;
             this.btn_DescargarPDF.Click += new System.EventHandler(this.btn_DescargarPDF_Click);
             // 
             // panelLeftCard
             // 
             this.panelLeftCard.BackColor = System.Drawing.Color.White;
+            this.panelLeftCard.Controls.Add(this.lbl_FechaInforme);
+            this.panelLeftCard.Controls.Add(this.date_naci);
             this.panelLeftCard.Controls.Add(this.label13);
             this.panelLeftCard.Controls.Add(this.label8);
             this.panelLeftCard.Controls.Add(this.txt_DNI);
@@ -337,31 +347,22 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelLeftCard.Controls.Add(this.btn_agregarArea);
             this.panelLeftCard.Controls.Add(this.btn_BuscarArea);
             this.panelLeftCard.Controls.Add(this.btn_DescargarPDF);
-            this.panelLeftCard.Location = new System.Drawing.Point(20, 100);
+            this.panelLeftCard.Location = new System.Drawing.Point(27, 123);
+            this.panelLeftCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelLeftCard.Name = "panelLeftCard";
-            this.panelLeftCard.Size = new System.Drawing.Size(430, 470);
+            this.panelLeftCard.Size = new System.Drawing.Size(573, 578);
             this.panelLeftCard.TabIndex = 41;
             this.panelLeftCard.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCard_Paint);
-            // 
-            // panelRightCard
-            // 
-            this.panelRightCard.BackColor = System.Drawing.Color.White;
-            this.panelRightCard.Controls.Add(this.label11);
-            this.panelRightCard.Controls.Add(this.rtb_Informe);
-            this.panelRightCard.Location = new System.Drawing.Point(470, 100);
-            this.panelRightCard.Name = "panelRightCard";
-            this.panelRightCard.Size = new System.Drawing.Size(450, 470);
-            this.panelRightCard.TabIndex = 42;
-            this.panelRightCard.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCard_Paint);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(25)))), ((int)(((byte)(120)))));
-            this.label13.Location = new System.Drawing.Point(15, 15);
+            this.label13.Location = new System.Drawing.Point(20, 18);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(193, 20);
+            this.label13.Size = new System.Drawing.Size(254, 25);
             this.label13.TabIndex = 0;
             this.label13.Text = "DATOS DEL CONCURRENTE";
             // 
@@ -369,9 +370,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(15, 55);
+            this.label8.Location = new System.Drawing.Point(20, 68);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 15);
+            this.label8.Size = new System.Drawing.Size(112, 20);
             this.label8.TabIndex = 1;
             this.label8.Text = "Buscar por DNI:";
             // 
@@ -380,9 +382,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(25)))), ((int)(((byte)(120)))));
-            this.label9.Location = new System.Drawing.Point(15, 180);
+            this.label9.Location = new System.Drawing.Point(20, 222);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(192, 20);
+            this.label9.Size = new System.Drawing.Size(251, 25);
             this.label9.TabIndex = 2;
             this.label9.Text = "CONFIGURACIÓN DE ÁREA";
             // 
@@ -390,29 +393,65 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(15, 220);
+            this.label10.Location = new System.Drawing.Point(20, 271);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(87, 15);
+            this.label10.Size = new System.Drawing.Size(108, 20);
             this.label10.TabIndex = 3;
             this.label10.Text = "Área / Materia:";
+            // 
+            // panelRightCard
+            // 
+            this.panelRightCard.BackColor = System.Drawing.Color.White;
+            this.panelRightCard.Controls.Add(this.label11);
+            this.panelRightCard.Controls.Add(this.rtb_Informe);
+            this.panelRightCard.Location = new System.Drawing.Point(627, 123);
+            this.panelRightCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelRightCard.Name = "panelRightCard";
+            this.panelRightCard.Size = new System.Drawing.Size(600, 578);
+            this.panelRightCard.TabIndex = 42;
+            this.panelRightCard.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCard_Paint);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(25)))), ((int)(((byte)(120)))));
-            this.label11.Location = new System.Drawing.Point(15, 15);
+            this.label11.Location = new System.Drawing.Point(20, 18);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(170, 20);
+            this.label11.Size = new System.Drawing.Size(238, 25);
             this.label11.TabIndex = 0;
             this.label11.Text = "REDACCIÓN DE INFORME";
             // 
+            // date_naci
+            // 
+            this.date_naci.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.date_naci.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date_naci.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date_naci.Location = new System.Drawing.Point(200, 316);
+            this.date_naci.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.date_naci.Name = "date_naci";
+            this.date_naci.Size = new System.Drawing.Size(138, 29);
+            this.date_naci.TabIndex = 41;
+            // 
+            // lbl_FechaInforme
+            // 
+            this.lbl_FechaInforme.AutoSize = true;
+            this.lbl_FechaInforme.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_FechaInforme.Location = new System.Drawing.Point(21, 325);
+            this.lbl_FechaInforme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_FechaInforme.Name = "lbl_FechaInforme";
+            this.lbl_FechaInforme.Size = new System.Drawing.Size(50, 20);
+            this.lbl_FechaInforme.TabIndex = 42;
+            this.lbl_FechaInforme.Text = "Fecha:";
+            // 
             // CrearInformes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(240)))), ((int)(((byte)(248)))));
-            this.ClientSize = new System.Drawing.Size(940, 660);
+            this.ClientSize = new System.Drawing.Size(1253, 812);
             this.Controls.Add(this.panelLeftCard);
             this.Controls.Add(this.panelRightCard);
             this.Controls.Add(this.volver_btn);
@@ -422,6 +461,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dateTimePicker1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "CrearInformes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -435,6 +475,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelRightCard.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -467,5 +508,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbl_FechaInforme;
+        private System.Windows.Forms.DateTimePicker date_naci;
     }
 }
