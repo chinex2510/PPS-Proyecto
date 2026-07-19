@@ -1,4 +1,4 @@
-﻿namespace ConsultorioPsicopedagogico.CPresentacion
+namespace ConsultorioPsicopedagogico.CPresentacion
 {
     partial class FormNuevoUsuario
     {
@@ -337,11 +337,6 @@
             // 
             this.cmbPreguntaSecreta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPreguntaSecreta.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbPreguntaSecreta.Items.AddRange(new object[] {
-            "¿Primera mascota?",
-            "¿Escuela Primaria?",
-            "¿Comida favorita?",
-            "¿Pelicula favorita?"});
             this.cmbPreguntaSecreta.Location = new System.Drawing.Point(45, 336);
             this.cmbPreguntaSecreta.Name = "cmbPreguntaSecreta";
             this.cmbPreguntaSecreta.Size = new System.Drawing.Size(450, 25);

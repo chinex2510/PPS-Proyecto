@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +24,10 @@ namespace ConsultorioPsicopedagogico
             InitializeComponent();
             this.ActiveControl = panelControles;
             this.loginLogica = new LoginCL();
+
+            // Vincular eventos de LinkLabel para navegación
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
         }
 
         private void txt_Mat_Enter(object sender, EventArgs e)
@@ -50,6 +54,7 @@ namespace ConsultorioPsicopedagogico
             {
                 txt_Contraseña.Text = "Ingrese su contraseña";
                 txt_Contraseña.ForeColor = Color.Gray;
+                txt_Contraseña.UseSystemPasswordChar = false;
             }
         }
 
@@ -59,6 +64,7 @@ namespace ConsultorioPsicopedagogico
             {
                 txt_Contraseña.Text = "";
                 txt_Contraseña.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
+                txt_Contraseña.UseSystemPasswordChar = true;
             }
         }
 
@@ -122,16 +128,44 @@ namespace ConsultorioPsicopedagogico
                 return;
             }
 
-            // Validacion exitosa
-            MessageBox.Show("Login exitoso", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            txt_Mat.Text = "Ingrese su matrícula";
-            txt_Contraseña.Text = "Ingrese su contraseña";
+            // Validacion de formato exitosa. Proceder a validar credenciales contra BD
+            string matricula = txt_Mat.Text.Trim();
+            string contrasena = txt_Contraseña.Text.Trim();
 
+            if (loginLogica.Autenticar(matricula, contrasena))
+            {
+                MessageBox.Show("¡Login exitoso!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                // Redirigir al formulario principal (Menu)
+                ConsultorioPsicopedagogico.CPresentacion.Menu principalMenu = new ConsultorioPsicopedagogico.CPresentacion.Menu();
+                principalMenu.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Matrícula o contraseña incorrecta.", "Fallo de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_Contraseña.Text = "";
+                txt_Contraseña.Focus();
+            }
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormRecuperarContrasena recuperarForm = new FormRecuperarContrasena();
+            recuperarForm.Show();
+            this.Hide();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormNuevoUsuario nuevoForm = new FormNuevoUsuario();
+            nuevoForm.Show();
+            this.Hide();
         }
     }
 } 
