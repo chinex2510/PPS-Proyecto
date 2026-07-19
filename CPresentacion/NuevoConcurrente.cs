@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using ConsultorioPsicopedagogico.CLogica;
+using FluentValidation;
 using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
@@ -26,13 +27,11 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-            //int ValConcurrente = 0, ValEscolaridad = 0, ValTutor = 0;
             var validator = new ConcurrenteValidation();
             ValidationResult results = validator.Validate(this);
 
             if (!results.IsValid)
             {
-                //StringBuilder sb = new StringBuilder();{
                 foreach (var error in results.Errors)
                 {
                     MessageBox.Show(error.ErrorMessage, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -41,20 +40,44 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             }
             else
             {
-                MessageBox.Show("Datos guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txt_anio.Text = "";
-                txt_nom.Text = "";
-                txt_ape.Text = "";
-                txt_domicilio.Text = "";
-                txt_diagnostico.Text = "";
-                txt_tutor.Text = "";
-                txt_colegio.Text = "";
-                txt_dni.Text = "";
-                txt_nivel.Text = "";
-                txt_contTutor.Text = "";
-                txt_obs.Text = "";
+                try
+                {
+                    var concurrente = new ConcurrentesCL
+                    {
+                        Dni_C = int.Parse(txt_dni.Text),
+                        Apellido_C = txt_ape.Text,
+                        Nombre_C = txt_nom.Text,
+                        FechaNac_C = date_naci.Value.ToString("yyyy-MM-dd"),
+                        Diagnostico_C = txt_diagnostico.Text,
+                        Escuela_C = txt_colegio.Text,
+                        AñoEscolar_C = int.Parse(txt_anio.Text),
+                        NivelEscolar_C = txt_nivel.Text,
+                        Domicilio_C = txt_domicilio.Text,
+                        Obrasocial_C = txt_obs.Text,
+                        DniTutor_C = txt_DniTutor.Text
+                    };
 
-                // Código para guardar los datos
+                    concurrente.CargarEnSql(concurrente);
+
+                    MessageBox.Show("Datos guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    txt_anio.Text = "";
+                    txt_nom.Text = "";
+                    txt_ape.Text = "";
+                    txt_domicilio.Text = "";
+                    txt_diagnostico.Text = "";
+                    txt_tutor.Text = "";
+                    txt_colegio.Text = "";
+                    txt_dni.Text = "";
+                    txt_nivel.Text = "";
+                    txt_contTutor.Text = "";
+                    txt_obs.Text = "";
+                    txt_DniTutor.Text = "";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al guardar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -90,9 +113,17 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     .Matches(@"^\d{10}$").WithMessage("El contacto del tutor debe tener exactamente 10 dígitos y solo contener números.");
                 RuleFor(x => x.txt_obs.Text)
                     .NotEmpty().WithMessage("Ingresar no si no cuenta con obra.");
-
-
+                RuleFor(x => x.txt_DniTutor.Text)
+                    .NotEmpty().WithMessage("El DNI del tutor es obligatorio.")
+                    .Matches(@"^\d{8}$").WithMessage("El DNI del tutor debe tener exactamente 8 dígitos.");
             }
+        }
+
+        private void btn_volver_Click(object sender, EventArgs e)
+        {
+            CPresentacion.Concurrentes concurrentes = new CPresentacion.Concurrentes();
+            concurrentes.Show();
+            this.Hide();
         }
     }
 }

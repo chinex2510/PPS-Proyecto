@@ -28,179 +28,279 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnIngresar = new System.Windows.Forms.Button();
-            this.txt_Mat = new System.Windows.Forms.TextBox();
-            this.txt_Contraseña = new System.Windows.Forms.TextBox();
-            this.__________________________ = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblmin = new System.Windows.Forms.Label();
+            this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelControles = new System.Windows.Forms.Panel();
+            this.lbl_Minimizar = new System.Windows.Forms.Label();
+            this.lbl_Cerrar = new System.Windows.Forms.Label();
+            this.btn_Cancelar = new System.Windows.Forms.Button();
+            this.btn_Ingresar = new System.Windows.Forms.Button();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txt_Contraseña = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txt_Mat = new System.Windows.Forms.TextBox();
+            this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelControles.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // panelLogo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Perpetua Titling MT", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Purple;
-            this.label1.Location = new System.Drawing.Point(364, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Matricula";
+            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(162)))), ((int)(((byte)(200)))));
+            this.panelLogo.Controls.Add(this.pictureBox1);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(300, 350);
+            this.panelLogo.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::ConsultorioPsicopedagogico.Properties.Resources.MAria_ELena_Quintana;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(300, 350);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panelControles
+            // 
+            this.panelControles.BackColor = System.Drawing.Color.LavenderBlush;
+            this.panelControles.Controls.Add(this.lbl_Minimizar);
+            this.panelControles.Controls.Add(this.lbl_Cerrar);
+            this.panelControles.Controls.Add(this.btn_Cancelar);
+            this.panelControles.Controls.Add(this.btn_Ingresar);
+            this.panelControles.Controls.Add(this.linkLabel2);
+            this.panelControles.Controls.Add(this.linkLabel1);
+            this.panelControles.Controls.Add(this.label2);
+            this.panelControles.Controls.Add(this.label1);
+            this.panelControles.Controls.Add(this.panel2);
+            this.panelControles.Controls.Add(this.panel1);
+            this.panelControles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControles.Location = new System.Drawing.Point(300, 0);
+            this.panelControles.Name = "panelControles";
+            this.panelControles.Size = new System.Drawing.Size(500, 350);
+            this.panelControles.TabIndex = 1;
+            // 
+            // lbl_Minimizar
+            // 
+            this.lbl_Minimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_Minimizar.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Minimizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.lbl_Minimizar.Location = new System.Drawing.Point(437, 0);
+            this.lbl_Minimizar.Name = "lbl_Minimizar";
+            this.lbl_Minimizar.Size = new System.Drawing.Size(30, 30);
+            this.lbl_Minimizar.TabIndex = 9;
+            this.lbl_Minimizar.Text = "—";
+            this.lbl_Minimizar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_Minimizar.UseCompatibleTextRendering = true;
+            this.lbl_Minimizar.Click += new System.EventHandler(this.lbl_Minimizar_Click);
+            this.lbl_Minimizar.MouseEnter += new System.EventHandler(this.lbl_Minimizar_MouseEnter);
+            this.lbl_Minimizar.MouseLeave += new System.EventHandler(this.lbl_Minimizar_MouseLeave);
+            // 
+            // lbl_Cerrar
+            // 
+            this.lbl_Cerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_Cerrar.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Cerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.lbl_Cerrar.Location = new System.Drawing.Point(470, 0);
+            this.lbl_Cerrar.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_Cerrar.Name = "lbl_Cerrar";
+            this.lbl_Cerrar.Size = new System.Drawing.Size(30, 30);
+            this.lbl_Cerrar.TabIndex = 8;
+            this.lbl_Cerrar.Text = "X";
+            this.lbl_Cerrar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_Cerrar.UseCompatibleTextRendering = true;
+            this.lbl_Cerrar.Click += new System.EventHandler(this.lbl_Cerrar_Click);
+            this.lbl_Cerrar.MouseEnter += new System.EventHandler(this.lbl_Cerrar_MouseEnter);
+            this.lbl_Cerrar.MouseLeave += new System.EventHandler(this.lbl_Cerrar_MouseLeave);
+            // 
+            // btn_Cancelar
+            // 
+            this.btn_Cancelar.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Cancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.btn_Cancelar.FlatAppearance.BorderSize = 2;
+            this.btn_Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.btn_Cancelar.Location = new System.Drawing.Point(323, 235);
+            this.btn_Cancelar.Name = "btn_Cancelar";
+            this.btn_Cancelar.Size = new System.Drawing.Size(152, 34);
+            this.btn_Cancelar.TabIndex = 7;
+            this.btn_Cancelar.Text = "Cancelar";
+            this.btn_Cancelar.UseVisualStyleBackColor = false;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
+            // 
+            // btn_Ingresar
+            // 
+            this.btn_Ingresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(180)))), ((int)(((byte)(222)))));
+            this.btn_Ingresar.FlatAppearance.BorderSize = 0;
+            this.btn_Ingresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Ingresar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Ingresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.btn_Ingresar.Location = new System.Drawing.Point(135, 235);
+            this.btn_Ingresar.Name = "btn_Ingresar";
+            this.btn_Ingresar.Size = new System.Drawing.Size(152, 33);
+            this.btn_Ingresar.TabIndex = 6;
+            this.btn_Ingresar.Text = "Ingresar";
+            this.btn_Ingresar.UseVisualStyleBackColor = false;
+            this.btn_Ingresar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.linkLabel2.Location = new System.Drawing.Point(246, 305);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(120, 17);
+            this.linkLabel2.TabIndex = 5;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Crear nueva cuenta";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.linkLabel1.Location = new System.Drawing.Point(323, 174);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(157, 17);
+            this.linkLabel1.TabIndex = 4;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "?Olvidaste tu contraseña¿";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Perpetua Titling MT", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Purple;
-            this.label2.Location = new System.Drawing.Point(364, 149);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.label2.Location = new System.Drawing.Point(20, 143);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 22);
-            this.label2.TabIndex = 1;
+            this.label2.Size = new System.Drawing.Size(108, 25);
+            this.label2.TabIndex = 3;
             this.label2.Text = "Contraseña";
             // 
-            // btnCancelar
+            // label1
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Thistle;
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Perpetua Titling MT", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.Purple;
-            this.btnCancelar.Location = new System.Drawing.Point(399, 216);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(129, 38);
-            this.btnCancelar.TabIndex = 2;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.label1.Location = new System.Drawing.Point(20, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Matricula";
             // 
-            // btnIngresar
+            // panel2
             // 
-            this.btnIngresar.BackColor = System.Drawing.Color.Thistle;
-            this.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIngresar.Font = new System.Drawing.Font("Perpetua Titling MT", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngresar.ForeColor = System.Drawing.Color.Purple;
-            this.btnIngresar.Location = new System.Drawing.Point(632, 216);
-            this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(129, 38);
-            this.btnIngresar.TabIndex = 3;
-            this.btnIngresar.Text = "Ingresar";
-            this.btnIngresar.UseVisualStyleBackColor = false;
-            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
-            this.btnIngresar.Enter += new System.EventHandler(this.txt_Contraseña_TextChanged);
-            // 
-            // txt_Mat
-            // 
-            this.txt_Mat.BackColor = System.Drawing.Color.LavenderBlush;
-            this.txt_Mat.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_Mat.ForeColor = System.Drawing.Color.Purple;
-            this.txt_Mat.Location = new System.Drawing.Point(526, 51);
-            this.txt_Mat.Name = "txt_Mat";
-            this.txt_Mat.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txt_Mat.Size = new System.Drawing.Size(208, 15);
-            this.txt_Mat.TabIndex = 4;
-            this.txt_Mat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txt_Mat.TextChanged += new System.EventHandler(this.txt_Mat_TextChanged);
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.panel2.Controls.Add(this.txt_Contraseña);
+            this.panel2.Location = new System.Drawing.Point(134, 139);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(1);
+            this.panel2.Size = new System.Drawing.Size(343, 30);
+            this.panel2.TabIndex = 1;
             // 
             // txt_Contraseña
             // 
-            this.txt_Contraseña.BackColor = System.Drawing.Color.LavenderBlush;
+            this.txt_Contraseña.BackColor = System.Drawing.Color.White;
             this.txt_Contraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_Contraseña.ForeColor = System.Drawing.Color.Purple;
-            this.txt_Contraseña.Location = new System.Drawing.Point(520, 149);
+            this.txt_Contraseña.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Contraseña.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Contraseña.ForeColor = System.Drawing.Color.Gray;
+            this.txt_Contraseña.Location = new System.Drawing.Point(1, 1);
             this.txt_Contraseña.Name = "txt_Contraseña";
-            this.txt_Contraseña.Size = new System.Drawing.Size(221, 15);
-            this.txt_Contraseña.TabIndex = 5;
-            this.txt_Contraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txt_Contraseña.TextChanged += new System.EventHandler(this.txt_Contraseña_TextChanged);
+            this.txt_Contraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_Contraseña.Size = new System.Drawing.Size(341, 26);
+            this.txt_Contraseña.TabIndex = 0;
+            this.txt_Contraseña.Text = "Ingrese su contraseña";
+            this.txt_Contraseña.Enter += new System.EventHandler(this.txt_Contraseña_Enter);
+            this.txt_Contraseña.Leave += new System.EventHandler(this.txt_Contraseña_Leave);
             // 
-            // __________________________
+            // panel1
             // 
-            this.__________________________.AutoSize = true;
-            this.__________________________.Location = new System.Drawing.Point(520, 56);
-            this.__________________________.Name = "__________________________";
-            this.__________________________.Size = new System.Drawing.Size(217, 16);
-            this.__________________________.TabIndex = 7;
-            this.__________________________.Text = "______________________________";
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
+            this.panel1.Controls.Add(this.txt_Mat);
+            this.panel1.Location = new System.Drawing.Point(133, 65);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(1);
+            this.panel1.Size = new System.Drawing.Size(343, 30);
+            this.panel1.TabIndex = 0;
             // 
-            // label3
+            // txt_Mat
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(520, 155);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(224, 16);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "_______________________________";
-            // 
-            // lblmin
-            // 
-            this.lblmin.AutoSize = true;
-            this.lblmin.BackColor = System.Drawing.Color.LavenderBlush;
-            this.lblmin.Font = new System.Drawing.Font("Stencil", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblmin.Location = new System.Drawing.Point(810, -4);
-            this.lblmin.Name = "lblmin";
-            this.lblmin.Size = new System.Drawing.Size(30, 33);
-            this.lblmin.TabIndex = 9;
-            this.lblmin.Text = "_";
-            this.lblmin.Click += new System.EventHandler(this.lblmin_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ConsultorioPsicopedagogico.Properties.Resources.MAria_ELena_Quintana;
-            this.pictureBox1.Location = new System.Drawing.Point(12, -4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(291, 330);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.txt_Mat.BackColor = System.Drawing.Color.White;
+            this.txt_Mat.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_Mat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Mat.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Mat.ForeColor = System.Drawing.Color.Gray;
+            this.txt_Mat.Location = new System.Drawing.Point(1, 1);
+            this.txt_Mat.Name = "txt_Mat";
+            this.txt_Mat.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_Mat.Size = new System.Drawing.Size(341, 26);
+            this.txt_Mat.TabIndex = 0;
+            this.txt_Mat.Text = "Ingrese su matrícula";
+            this.txt_Mat.Enter += new System.EventHandler(this.txt_Mat_Enter);
+            this.txt_Mat.Leave += new System.EventHandler(this.txt_Mat_Leave);
             // 
             // Login
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(852, 325);
-            this.Controls.Add(this.lblmin);
-            this.Controls.Add(this.txt_Contraseña);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txt_Mat);
-            this.Controls.Add(this.__________________________);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnIngresar);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(800, 350);
+            this.Controls.Add(this.panelControles);
+            this.Controls.Add(this.panelLogo);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login";
-            this.Opacity = 0.89D;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelControles.ResumeLayout(false);
+            this.panelControles.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnIngresar;
-        private System.Windows.Forms.TextBox txt_Mat;
-        private System.Windows.Forms.TextBox txt_Contraseña;
+        private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label __________________________;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblmin;
+        private System.Windows.Forms.Panel panelControles;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txt_Mat;
+        private System.Windows.Forms.Button btn_Cancelar;
+        private System.Windows.Forms.Button btn_Ingresar;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txt_Contraseña;
+        private System.Windows.Forms.Label lbl_Cerrar;
+        private System.Windows.Forms.Label lbl_Minimizar;
     }
 }
 

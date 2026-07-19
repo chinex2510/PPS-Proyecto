@@ -19,7 +19,7 @@ namespace ConsultorioPsicopedagogico.Properties {
     // a través de una herramienta como ResGen o Visual Studio.
     // Para agregar o quitar un miembro, edite el archivo .ResX y, a continuación, vuelva a ejecutar ResGen
     // con la opción /str o recompile su proyecto de VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -63,9 +63,39 @@ namespace ConsultorioPsicopedagogico.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _8201502992013398889 {
+            get {
+                object obj = ResourceManager.GetObject("8201502992013398889", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _82015029920133988892 {
+            get {
+                object obj = ResourceManager.GetObject("82015029920133988892", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap image {
             get {
                 object obj = ResourceManager.GetObject("image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logoNuevo {
+            get {
+                object obj = ResourceManager.GetObject("logoNuevo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -84,23 +114,27 @@ namespace ConsultorioPsicopedagogico.Properties {
         ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
         ///&lt;html&gt;
         ///&lt;head&gt;
-        ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot; /&gt;
         ///    &lt;style&gt;
         ///        body {
         ///            font-family: Arial, sans-serif;
-        ///            font-size: 12px;
+        ///            font-size: 14px; /* aumenté el tamaño base */
+        ///            color: #000;
         ///        }
+        ///
         ///        .cabecera {
-        ///            display: flex;
-        ///            align-items: center;
-        ///            justify-content: space-between;
-        ///            background-color: #d9a7e0; /* Color igual al fondo del logo */
-        ///            padding: 10px 15px;
+        ///            background-color: #dcade9;
+        ///            padding: 15px;
+        ///            text-align: center;
         ///        }
-        ///        .cabecera img {
-        ///            width: 60px;
-        ///            height: auto;
-        ///        }        /// [resto de la cadena truncado]&quot;;.
+        ///
+        ///        .cabecera-table {
+        ///            width: 100%;
+        ///            border-collapse: collapse;
+        ///        }
+        ///
+        ///            .cabecera-table td {
+        ///   [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string plantilla {
             get {
@@ -114,6 +148,16 @@ namespace ConsultorioPsicopedagogico.Properties {
         internal static System.Drawing.Bitmap Screenshot_9 {
             get {
                 object obj = ResourceManager.GetObject("Screenshot_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UsuarioNuevo {
+            get {
+                object obj = ResourceManager.GetObject("UsuarioNuevo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
