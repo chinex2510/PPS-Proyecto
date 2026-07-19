@@ -9,7 +9,7 @@ namespace ConsultorioPsicopedagogico.CDatos
     internal class Conexion
     {
         internal static string servidor = "127.0.0.1";
-        internal static string bd = "ConsultorioPsicopedagogico";
+        internal static string bd = "PruebaLogin";
         internal static string usuario = "root";
         internal static string password = "123456"; // <--- Actualizar con la contraseña de su base de datos
         internal static string puerto = "3306";
