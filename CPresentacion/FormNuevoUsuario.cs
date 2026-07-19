@@ -52,6 +52,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             CargarPreguntasSeguridad();
 
             EstablecerColoresPlaceholders();
+
+            // Restringir ingreso de letras en campos numéricos
+            txtMatricula.KeyPress += SoloNumeros_KeyPress;
+            txtDni.KeyPress += SoloNumeros_KeyPress;
         }
 
         private void EstablecerColoresPlaceholders()
@@ -360,6 +364,14 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             {
                 MessageBox.Show("Hubo un error al intentar cargar las preguntas de seguridad: " + ex.Message, 
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

@@ -28,6 +28,9 @@ namespace ConsultorioPsicopedagogico
             // Vincular eventos de LinkLabel para navegación
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             linkLabel2.LinkClicked += linkLabel2_LinkClicked;
+
+            // Restringir ingreso de letras en matrícula
+            txt_Mat.KeyPress += SoloNumeros_KeyPress;
         }
 
         private void txt_Mat_Enter(object sender, EventArgs e)
@@ -166,6 +169,14 @@ namespace ConsultorioPsicopedagogico
             FormNuevoUsuario nuevoForm = new FormNuevoUsuario();
             nuevoForm.Show();
             this.Hide();
+        }
+
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 } 

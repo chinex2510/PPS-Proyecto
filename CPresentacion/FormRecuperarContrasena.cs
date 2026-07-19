@@ -28,6 +28,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
             // Vincular evento de matrícula para buscar la pregunta secreta
             txtMatricula.Leave += txtMatricula_Leave;
+
+            // Restringir ingreso de letras en matrícula
+            txtMatricula.KeyPress += SoloNumeros_KeyPress;
         }
 
         private void RedondearControl(Control control, int radio)
@@ -285,6 +288,14 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             }
 
             return null;
+        }
+
+        private static void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
