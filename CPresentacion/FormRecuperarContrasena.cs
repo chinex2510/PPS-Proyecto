@@ -22,15 +22,66 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             btnConfirmar.Paint += (s, e) => RedondearControl(btnConfirmar, 18);
             btnCancelar.Paint += (s, e) => RedondearControl(btnCancelar, 18);
 
-            // Redirecciones y botones
+            // Redirecciones y botones principales
             btnCancelar.Click += btnCancelar_Click;
             btnConfirmar.Click += btnConfirmar_Click;
 
-            // Vincular evento de matrícula para buscar la pregunta secreta
-            txtMatricula.Leave += txtMatricula_Leave;
-
             // Restringir ingreso de letras en matrícula
             txtMatricula.KeyPress += SoloNumeros_KeyPress;
+
+            // --- REDISEÑO DE BÚSQUEDA ---
+            // 1. Reducir el ancho de txtMatricula para dejar espacio al botón buscar
+            txtMatricula.Width = 280;
+
+            // 2. Crear el botón de Buscar dinámicamente
+            Button btnBuscar = new Button();
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Text = "Buscar";
+            btnBuscar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnBuscar.BackColor = Color.FromArgb(55, 45, 85); // Mismo púrpura que btnCancelar
+            btnBuscar.ForeColor = Color.White;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.Location = new Point(325, 41);
+            btnBuscar.Size = new Size(110, 29);
+            btnBuscar.Cursor = Cursors.Hand;
+            btnBuscar.UseVisualStyleBackColor = false;
+
+            // 3. Suscribir evento Click al botón buscar
+            btnBuscar.Click += btnBuscar_Click;
+
+            // 4. Pintar bordes redondeados al botón de buscar
+            btnBuscar.Paint += (s, e) => RedondearControl(btnBuscar, 10);
+
+            // 5. Agregar el botón al panel de campos
+            panelTarjetaCampos.Controls.Add(btnBuscar);
+
+            // 6. Deshabilitar el campo respuesta inicialmente
+            txtRespuesta.Enabled = false;
+
+            // 7. Limpiar campos al cambiar la matrícula (obliga a buscar de nuevo)
+            txtMatricula.TextChanged += (s, e) => {
+                txtPregunta.Text = "";
+                txtRespuesta.Text = "";
+                txtRespuesta.Enabled = false;
+            };
+
+            // 8. Evento Enter en matrícula dispara la búsqueda
+            txtMatricula.KeyDown += (s, e) => {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true; // Evitar sonido bip de Windows
+                    btnBuscar.PerformClick();
+                }
+            };
+
+            // 9. Evento Enter en respuesta dispara la confirmación
+            txtRespuesta.KeyDown += (s, e) => {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true;
+                    btnConfirmar.PerformClick();
+                }
+            };
         }
 
         private void RedondearControl(Control control, int radio)
@@ -57,18 +108,19 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.Close();
         }
 
-        private void txtMatricula_Leave(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
             CargarPreguntaUsuario();
         }
 
-        private void CargarPreguntaUsuario()
+        private bool CargarPreguntaUsuario()
         {
             string matricula = txtMatricula.Text.Trim();
             if (string.IsNullOrEmpty(matricula))
             {
-                txtPregunta.Text = "";
-                return;
+                MessageBox.Show("Debe ingresar su matrícula.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMatricula.Focus();
+                return false;
             }
 
             try
@@ -80,16 +132,27 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 {
                     txtPregunta.Text = pregunta;
                     txtPregunta.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
+                    txtRespuesta.Enabled = true;
+                    txtRespuesta.Focus();
+                    return true;
                 }
                 else
                 {
-                    txtPregunta.Text = "Matrícula no encontrada o sin pregunta registrada";
-                    txtPregunta.ForeColor = Color.Red;
+                    MessageBox.Show("Matrícula no encontrada o sin pregunta registrada.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPregunta.Text = "";
+                    txtRespuesta.Text = "";
+                    txtRespuesta.Enabled = false;
+                    txtMatricula.Focus();
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Hubo un error al intentar cargar la pregunta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPregunta.Text = "";
+                txtRespuesta.Text = "";
+                txtRespuesta.Enabled = false;
+                return false;
             }
         }
 
@@ -105,9 +168,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtPregunta.Text) || txtPregunta.Text == "Matrícula no encontrada o sin pregunta registrada")
+            if (!txtRespuesta.Enabled)
             {
-                MessageBox.Show("Debe cargar una matrícula válida.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe realizar la búsqueda de su matrícula primero.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMatricula.Focus();
                 return;
             }
@@ -126,12 +189,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
                 if (respuestaValida)
                 {
-                    // Mostrar diálogo para ingresar la nueva contraseña
                     string nuevaContra = CustomPasswordDialog.ShowDialog("Ingrese la nueva contraseña:", "Restablecer Contraseña");
 
                     if (!string.IsNullOrEmpty(nuevaContra))
                     {
-                        // Actualizar la contraseña en la BD
                         bool exito = logica.ActualizarContrasena(matricula, nuevaContra);
                         if (exito)
                         {
@@ -154,6 +215,14 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error al procesar la solicitud: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }
@@ -288,14 +357,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             }
 
             return null;
-        }
-
-        private static void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
         }
     }
 }
