@@ -48,6 +48,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             turnos.Show();
             this.Hide();
         }
+
+
         private void PanelCard_Paint(object sender, PaintEventArgs e)
         {
             Panel panel = sender as Panel;
@@ -59,5 +61,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 }
             }
         }
+
     }
 }

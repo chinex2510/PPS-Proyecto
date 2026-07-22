@@ -230,6 +230,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.Close();
         }
 
+
         private void dtg_turnos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -258,6 +259,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 }
             }
         }
+
+
         private void OnlyNumbers_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
