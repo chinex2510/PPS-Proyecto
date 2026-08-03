@@ -24,16 +24,16 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_Cerrar = new System.Windows.Forms.Label();
             this.lblCrearUsuario = new System.Windows.Forms.Label();
             this.panelContenedorCampos = new System.Windows.Forms.Panel();
-            this.lblMatricula = new System.Windows.Forms.Label();
-            this.txtMatricula = new System.Windows.Forms.TextBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.lblDni = new System.Windows.Forms.Label();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombreApellido = new System.Windows.Forms.TextBox();
             this.lblMail = new System.Windows.Forms.Label();
             this.txtMail = new System.Windows.Forms.TextBox();
-            this.lblEspecialidad = new System.Windows.Forms.Label();
-            this.txtEspecialidad = new System.Windows.Forms.TextBox();
+            this.lblRol = new System.Windows.Forms.Label();
+            this.cmbRol = new System.Windows.Forms.ComboBox();
             this.lblContrasena = new System.Windows.Forms.Label();
             this.txtContrasena = new System.Windows.Forms.TextBox();
             this.lblConfirmar = new System.Windows.Forms.Label();
@@ -165,16 +165,16 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // panelContenedorCampos
             // 
             this.panelContenedorCampos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(205)))), ((int)(((byte)(130)))));
-            this.panelContenedorCampos.Controls.Add(this.lblMatricula);
-            this.panelContenedorCampos.Controls.Add(this.txtMatricula);
+            this.panelContenedorCampos.Controls.Add(this.lblUsuario);
+            this.panelContenedorCampos.Controls.Add(this.txtUsuario);
             this.panelContenedorCampos.Controls.Add(this.lblDni);
             this.panelContenedorCampos.Controls.Add(this.txtDni);
             this.panelContenedorCampos.Controls.Add(this.lblNombre);
             this.panelContenedorCampos.Controls.Add(this.txtNombreApellido);
             this.panelContenedorCampos.Controls.Add(this.lblMail);
             this.panelContenedorCampos.Controls.Add(this.txtMail);
-            this.panelContenedorCampos.Controls.Add(this.lblEspecialidad);
-            this.panelContenedorCampos.Controls.Add(this.txtEspecialidad);
+            this.panelContenedorCampos.Controls.Add(this.lblRol);
+            this.panelContenedorCampos.Controls.Add(this.cmbRol);
             this.panelContenedorCampos.Controls.Add(this.lblContrasena);
             this.panelContenedorCampos.Controls.Add(this.txtContrasena);
             this.panelContenedorCampos.Controls.Add(this.lblConfirmar);
@@ -190,24 +190,24 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelContenedorCampos.Size = new System.Drawing.Size(550, 490);
             this.panelContenedorCampos.TabIndex = 1;
             // 
-            // lblMatricula
+            // lblUsuario
             // 
-            this.lblMatricula.AutoSize = true;
-            this.lblMatricula.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMatricula.Location = new System.Drawing.Point(42, 16);
-            this.lblMatricula.Name = "lblMatricula";
-            this.lblMatricula.Size = new System.Drawing.Size(66, 17);
-            this.lblMatricula.TabIndex = 0;
-            this.lblMatricula.Text = "Matrícula";
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Location = new System.Drawing.Point(42, 16);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(54, 17);
+            this.lblUsuario.TabIndex = 0;
+            this.lblUsuario.Text = "Usuario";
             // 
-            // txtMatricula
+            // txtUsuario
             // 
-            this.txtMatricula.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatricula.Location = new System.Drawing.Point(45, 35);
-            this.txtMatricula.Name = "txtMatricula";
-            this.txtMatricula.Size = new System.Drawing.Size(450, 25);
-            this.txtMatricula.TabIndex = 1;
-            this.txtMatricula.Text = "Ingrese su matrícula";
+            this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.Location = new System.Drawing.Point(45, 35);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(450, 25);
+            this.txtUsuario.TabIndex = 1;
+            this.txtUsuario.Text = "Ingrese su usuario";
             // 
             // lblDni
             // 
@@ -266,24 +266,24 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.txtMail.TabIndex = 7;
             this.txtMail.Text = "Ingrese su correo electrónico";
             // 
-            // lblEspecialidad
+            // lblRol
             // 
-            this.lblEspecialidad.AutoSize = true;
-            this.lblEspecialidad.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEspecialidad.Location = new System.Drawing.Point(42, 187);
-            this.lblEspecialidad.Name = "lblEspecialidad";
-            this.lblEspecialidad.Size = new System.Drawing.Size(84, 17);
-            this.lblEspecialidad.TabIndex = 8;
-            this.lblEspecialidad.Text = "Especialidad";
+            this.lblRol.AutoSize = true;
+            this.lblRol.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRol.Location = new System.Drawing.Point(42, 187);
+            this.lblRol.Name = "lblRol";
+            this.lblRol.Size = new System.Drawing.Size(28, 17);
+            this.lblRol.TabIndex = 8;
+            this.lblRol.Text = "Rol";
             // 
-            // txtEspecialidad
+            // cmbRol
             // 
-            this.txtEspecialidad.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEspecialidad.Location = new System.Drawing.Point(45, 207);
-            this.txtEspecialidad.Name = "txtEspecialidad";
-            this.txtEspecialidad.Size = new System.Drawing.Size(450, 25);
-            this.txtEspecialidad.TabIndex = 9;
-            this.txtEspecialidad.Text = "Ingrese su especialidad profesional";
+            this.cmbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRol.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRol.Location = new System.Drawing.Point(45, 207);
+            this.cmbRol.Name = "cmbRol";
+            this.cmbRol.Size = new System.Drawing.Size(450, 25);
+            this.cmbRol.TabIndex = 9;
             // 
             // lblContrasena
             // 
@@ -483,22 +483,22 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         public System.Windows.Forms.Panel panelDerecho;
         public System.Windows.Forms.Label lblCrearUsuario;
         public System.Windows.Forms.Panel panelContenedorCampos;
-        public System.Windows.Forms.TextBox txtMatricula;
+        public System.Windows.Forms.TextBox txtUsuario;
         public System.Windows.Forms.TextBox txtDni;
         public System.Windows.Forms.TextBox txtNombreApellido;
         public System.Windows.Forms.TextBox txtMail;
-        public System.Windows.Forms.TextBox txtEspecialidad;
+        public System.Windows.Forms.ComboBox cmbRol;
         public System.Windows.Forms.TextBox txtContrasena;
         public System.Windows.Forms.TextBox txtConfirmarContrasena;
         public System.Windows.Forms.ComboBox cmbPreguntaSecreta;
         public System.Windows.Forms.TextBox txtRespuesta;
         public System.Windows.Forms.Button btnCrearUsuario;
         public System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Label lblMatricula;
+        private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblDni;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblMail;
-        private System.Windows.Forms.Label lblEspecialidad;
+        private System.Windows.Forms.Label lblRol;
         private System.Windows.Forms.Label lblContrasena;
         private System.Windows.Forms.Label lblConfirmar;
         private System.Windows.Forms.Label lblPregunta;

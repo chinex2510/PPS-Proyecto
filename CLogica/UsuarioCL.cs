@@ -12,14 +12,14 @@ namespace ConsultorioPsicopedagogico.CLogica
     public class UsuarioCL
     {
         public int Dni { get; set; }
-        public string Matricula { get; set; }
+        public string Usuario { get; set; }
         public string NombreApellido { get; set; }
         public string Email { get; set; }
-        public string Especialidad { get; set; }
         public string Contrasena { get; set; }
         public string ConfirmarContrasena { get; set; }
         public int PreguntaId { get; set; }
         public string Respuesta { get; set; }
+        public string Rol { get; set; }
 
         /// <summary>
         /// Obtiene todas las preguntas de seguridad desde la capa de datos.
@@ -31,7 +31,7 @@ namespace ConsultorioPsicopedagogico.CLogica
         }
 
         /// <summary>
-        /// Registra un nuevo usuario en la base de datos tras verificar que el DNI y la matrícula no estén ya registrados.
+        /// Registra un nuevo usuario en la base de datos tras verificar que el DNI y el usuario no estén ya registrados.
         /// </summary>
         public bool Registrar(UsuarioCL usuario)
         {
@@ -42,21 +42,21 @@ namespace ConsultorioPsicopedagogico.CLogica
                 throw new InvalidOperationException("El DNI ingresado ya está registrado.");
             }
 
-            if (datos.ExisteMatricula(usuario.Matricula))
+            if (datos.ExisteUsuario(usuario.Usuario))
             {
-                throw new InvalidOperationException("La matrícula ingresada ya está registrada.");
+                throw new InvalidOperationException("El usuario ingresado ya está registrado.");
             }
 
             Usuario_CD nuevo = new Usuario_CD
             {
                 Dni = usuario.Dni,
-                Matricula = usuario.Matricula,
+                Usuario = usuario.Usuario,
                 NombreApellido = usuario.NombreApellido,
                 Email = usuario.Email,
-                Especialidad = usuario.Especialidad,
                 Contrasena = usuario.Contrasena,
                 PreguntaId = usuario.PreguntaId,
-                Respuesta = usuario.Respuesta
+                Respuesta = usuario.Respuesta,
+                Rol = usuario.Rol
             };
 
             datos.RegistrarUsuario(nuevo);
@@ -64,30 +64,30 @@ namespace ConsultorioPsicopedagogico.CLogica
         }
 
         /// <summary>
-        /// Obtiene la pregunta de seguridad asociada a la matrícula de un usuario.
+        /// Obtiene la pregunta de seguridad asociada al nombre de usuario.
         /// </summary>
-        public string ObtenerPreguntaPorMatricula(string matricula)
+        public string ObtenerPreguntaPorUsuario(string usuario)
         {
             Usuario_CD datos = new Usuario_CD();
-            return datos.ObtenerPreguntaPorMatricula(matricula);
+            return datos.ObtenerPreguntaPorUsuario(usuario);
         }
 
         /// <summary>
         /// Valida si la respuesta a la pregunta de seguridad ingresada es correcta.
         /// </summary>
-        public bool ValidarRespuestaSeguridad(string matricula, string respuesta)
+        public bool ValidarRespuestaSeguridad(string usuario, string respuesta)
         {
             Usuario_CD datos = new Usuario_CD();
-            return datos.ValidarRespuestaSeguridad(matricula, respuesta);
+            return datos.ValidarRespuestaSeguridad(usuario, respuesta);
         }
 
         /// <summary>
-        /// Actualiza la contraseña en la base de datos para la matrícula provista.
+        /// Actualiza la contraseña en la base de datos para el usuario provisto.
         /// </summary>
-        public bool ActualizarContrasena(string matricula, string nuevaContrasena)
+        public bool ActualizarContrasena(string usuario, string nuevaContrasena)
         {
             Usuario_CD datos = new Usuario_CD();
-            return datos.ActualizarContrasena(matricula, nuevaContrasena);
+            return datos.ActualizarContrasena(usuario, nuevaContrasena);
         }
     }
 
@@ -95,11 +95,11 @@ namespace ConsultorioPsicopedagogico.CLogica
     {
         public UsuarioValidation()
         {
-            // Matrícula
-            RuleFor(u => u.Matricula)
-                .NotEmpty().WithMessage("La matrícula es requerida.")
-                .Must(m => m != "Ingrese su matrícula").WithMessage("Debe ingresar una matrícula válida.")
-                .Matches(@"^\d{5}$").WithMessage("La matrícula debe ser un número de exactamente 5 dígitos.");
+            // Usuario
+            RuleFor(u => u.Usuario)
+                .NotEmpty().WithMessage("El usuario es requerido.")
+                .Must(m => m != "Ingrese su usuario").WithMessage("Debe ingresar un usuario válido.")
+                .MaximumLength(50).WithMessage("El usuario no puede superar los 50 caracteres.");
 
             // DNI
             RuleFor(u => u.Dni.ToString())
@@ -119,12 +119,6 @@ namespace ConsultorioPsicopedagogico.CLogica
                 .Must(e => e != "Ingrese su correo electrónico").WithMessage("Debe ingresar un correo válido.")
                 .EmailAddress().WithMessage("El formato del correo electrónico no es válido.")
                 .MaximumLength(150).WithMessage("El correo no puede superar los 150 caracteres.");
-
-            // Especialidad
-            RuleFor(u => u.Especialidad)
-                .NotEmpty().WithMessage("La especialidad es requerida.")
-                .Must(e => e != "Ingrese su especialidad profesional").WithMessage("Debe ingresar una especialidad válida.")
-                .MaximumLength(100).WithMessage("La especialidad no puede superar los 100 caracteres.");
 
             // Contraseña
             RuleFor(u => u.Contrasena)
@@ -146,6 +140,11 @@ namespace ConsultorioPsicopedagogico.CLogica
             RuleFor(u => u.Respuesta)
                 .NotEmpty().WithMessage("La respuesta a la pregunta secreta es requerida.")
                 .Must(r => r != "Ingrese la respuesta").WithMessage("Debe ingresar una respuesta de seguridad válida.");
+
+            // Rol
+            RuleFor(u => u.Rol)
+                .NotEmpty().WithMessage("El rol es requerido.")
+                .Must(r => r == "Medico/a" || r == "Secretaria/o").WithMessage("El rol seleccionado no es válido.");
         }
     }
 }

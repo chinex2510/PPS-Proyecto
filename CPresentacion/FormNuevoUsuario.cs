@@ -24,8 +24,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             btnCancelar.Click += btnCancelar_Click;
 
             // Vincular eventos de placeholders para TextBox
-            txtMatricula.Enter += txtMatricula_Enter;
-            txtMatricula.Leave += txtMatricula_Leave;
+            txtUsuario.Enter += txtUsuario_Enter;
+            txtUsuario.Leave += txtUsuario_Leave;
 
             txtDni.Enter += txtDni_Enter;
             txtDni.Leave += txtDni_Leave;
@@ -35,9 +35,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
             txtMail.Enter += txtMail_Enter;
             txtMail.Leave += txtMail_Leave;
-
-            txtEspecialidad.Enter += txtEspecialidad_Enter;
-            txtEspecialidad.Leave += txtEspecialidad_Leave;
 
             txtContrasena.Enter += txtContrasena_Enter;
             txtContrasena.Leave += txtContrasena_Leave;
@@ -51,20 +48,29 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // Cargar preguntas de seguridad dinámicamente
             CargarPreguntasSeguridad();
 
+            // Cargar roles por defecto
+            CargarRoles();
+
             EstablecerColoresPlaceholders();
 
-            // Restringir ingreso de letras en campos numéricos
-            txtMatricula.KeyPress += SoloNumeros_KeyPress;
+            // Restringir ingreso de letras en campos numéricos (DNI)
             txtDni.KeyPress += SoloNumeros_KeyPress;
+        }
+
+        private void CargarRoles()
+        {
+            cmbRol.Items.Clear();
+            cmbRol.Items.Add("Medico/a");
+            cmbRol.Items.Add("Secretaria/o");
+            cmbRol.SelectedIndex = 0;
         }
 
         private void EstablecerColoresPlaceholders()
         {
-            txtMatricula.ForeColor = Color.Gray;
+            txtUsuario.ForeColor = Color.Gray;
             txtDni.ForeColor = Color.Gray;
             txtNombreApellido.ForeColor = Color.Gray;
             txtMail.ForeColor = Color.Gray;
-            txtEspecialidad.ForeColor = Color.Gray;
             
             txtContrasena.ForeColor = Color.Gray;
             txtContrasena.UseSystemPasswordChar = false;
@@ -75,22 +81,22 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             txtRespuesta.ForeColor = Color.Gray;
         }
 
-        // --- EVENTOS PLACEHOLDER MATRICULA ---
-        private void txtMatricula_Enter(object sender, EventArgs e)
+        // --- EVENTOS PLACEHOLDER USUARIO ---
+        private void txtUsuario_Enter(object sender, EventArgs e)
         {
-            if (txtMatricula.Text == "Ingrese su matrícula")
+            if (txtUsuario.Text == "Ingrese su usuario")
             {
-                txtMatricula.Text = "";
-                txtMatricula.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
+                txtUsuario.Text = "";
+                txtUsuario.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
             }
         }
 
-        private void txtMatricula_Leave(object sender, EventArgs e)
+        private void txtUsuario_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtMatricula.Text))
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
             {
-                txtMatricula.Text = "Ingrese su matrícula";
-                txtMatricula.ForeColor = Color.Gray;
+                txtUsuario.Text = "Ingrese su usuario";
+                txtUsuario.ForeColor = Color.Gray;
             }
         }
 
@@ -148,25 +154,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             {
                 txtMail.Text = "Ingrese su correo electrónico";
                 txtMail.ForeColor = Color.Gray;
-            }
-        }
-
-        // --- EVENTOS PLACEHOLDER ESPECIALIDAD ---
-        private void txtEspecialidad_Enter(object sender, EventArgs e)
-        {
-            if (txtEspecialidad.Text == "Ingrese su especialidad profesional")
-            {
-                txtEspecialidad.Text = "";
-                txtEspecialidad.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
-            }
-        }
-
-        private void txtEspecialidad_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtEspecialidad.Text))
-            {
-                txtEspecialidad.Text = "Ingrese su especialidad profesional";
-                txtEspecialidad.ForeColor = Color.Gray;
             }
         }
 
@@ -281,10 +268,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // Instanciar modelo de lógica
             UsuarioCL usuario = new UsuarioCL
             {
-                Matricula = txtMatricula.Text.Trim(),
+                Usuario = txtUsuario.Text.Trim(),
                 NombreApellido = txtNombreApellido.Text.Trim(),
                 Email = txtMail.Text.Trim(),
-                Especialidad = txtEspecialidad.Text.Trim(),
+                Rol = cmbRol.SelectedItem != null ? cmbRol.SelectedItem.ToString() : "",
                 Contrasena = txtContrasena.Text.Trim(),
                 ConfirmarContrasena = txtConfirmarContrasena.Text.Trim(),
                 PreguntaId = cmbPreguntaSecreta.SelectedValue != null ? Convert.ToInt32(cmbPreguntaSecreta.SelectedValue) : 0,
@@ -323,7 +310,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             }
             catch (InvalidOperationException ex)
             {
-                // Manejar error de duplicidad de DNI o matrícula de manera amigable
+                // Manejar error de duplicidad de DNI o usuario de manera amigable
                 MessageBox.Show(ex.Message, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)

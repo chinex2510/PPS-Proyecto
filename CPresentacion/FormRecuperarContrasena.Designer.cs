@@ -1,4 +1,4 @@
-﻿namespace ConsultorioPsicopedagogico.CPresentacion
+namespace ConsultorioPsicopedagogico.CPresentacion
 {
     partial class FormRecuperarContrasena
     {
@@ -23,8 +23,8 @@
             this.panelDerecho = new System.Windows.Forms.Panel();
             this.lblTituloPrincipal = new System.Windows.Forms.Label();
             this.panelTarjetaCampos = new System.Windows.Forms.Panel();
-            this.lblMatricula = new System.Windows.Forms.Label();
-            this.txtMatricula = new System.Windows.Forms.TextBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.lblPregunta = new System.Windows.Forms.Label();
             this.txtPregunta = new System.Windows.Forms.TextBox();
             this.lblRespuesta = new System.Windows.Forms.Label();
@@ -120,8 +120,8 @@
             // panelTarjetaCampos
             // 
             this.panelTarjetaCampos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(205)))), ((int)(((byte)(130)))));
-            this.panelTarjetaCampos.Controls.Add(this.lblMatricula);
-            this.panelTarjetaCampos.Controls.Add(this.txtMatricula);
+            this.panelTarjetaCampos.Controls.Add(this.lblUsuario);
+            this.panelTarjetaCampos.Controls.Add(this.txtUsuario);
             this.panelTarjetaCampos.Controls.Add(this.lblPregunta);
             this.panelTarjetaCampos.Controls.Add(this.txtPregunta);
             this.panelTarjetaCampos.Controls.Add(this.lblRespuesta);
@@ -133,23 +133,23 @@
             this.panelTarjetaCampos.Size = new System.Drawing.Size(470, 365);
             this.panelTarjetaCampos.TabIndex = 1;
             // 
-            // lblMatricula
+            // lblUsuario
             // 
-            this.lblMatricula.AutoSize = true;
-            this.lblMatricula.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblMatricula.Location = new System.Drawing.Point(35, 20);
-            this.lblMatricula.Name = "lblMatricula";
-            this.lblMatricula.Size = new System.Drawing.Size(72, 19);
-            this.lblMatricula.TabIndex = 0;
-            this.lblMatricula.Text = "Matrícula";
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblUsuario.Location = new System.Drawing.Point(35, 20);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(59, 19);
+            this.lblUsuario.TabIndex = 0;
+            this.lblUsuario.Text = "Usuario";
             // 
-            // txtMatricula
+            // txtUsuario
             // 
-            this.txtMatricula.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtMatricula.Location = new System.Drawing.Point(35, 42);
-            this.txtMatricula.Name = "txtMatricula";
-            this.txtMatricula.Size = new System.Drawing.Size(400, 27);
-            this.txtMatricula.TabIndex = 1;
+            this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtUsuario.Location = new System.Drawing.Point(35, 42);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(400, 27);
+            this.txtUsuario.TabIndex = 1;
             // 
             // lblPregunta
             // 
@@ -253,8 +253,8 @@
         public System.Windows.Forms.Panel panelDerecho;
         private System.Windows.Forms.Label lblTituloPrincipal;
         public System.Windows.Forms.Panel panelTarjetaCampos;
-        private System.Windows.Forms.Label lblMatricula;
-        public System.Windows.Forms.TextBox txtMatricula;
+        private System.Windows.Forms.Label lblUsuario;
+        public System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label lblPregunta;
         public System.Windows.Forms.TextBox txtPregunta;
         private System.Windows.Forms.Label lblRespuesta;
