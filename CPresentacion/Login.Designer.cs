@@ -56,11 +56,7 @@
             this.panelLogo.Controls.Add(this.pictureBox1);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
-<<<<<<< Updated upstream
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(4);
-=======
             this.panelLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
->>>>>>> Stashed changes
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(400, 431);
             this.panelLogo.TabIndex = 0;
@@ -70,11 +66,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::ConsultorioPsicopedagogico.Properties.Resources.MAria_ELena_Quintana;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-<<<<<<< Updated upstream
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-=======
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
->>>>>>> Stashed changes
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(400, 431);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -96,11 +88,7 @@
             this.panelControles.Controls.Add(this.panel1);
             this.panelControles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControles.Location = new System.Drawing.Point(400, 0);
-<<<<<<< Updated upstream
-            this.panelControles.Margin = new System.Windows.Forms.Padding(4);
-=======
             this.panelControles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
->>>>>>> Stashed changes
             this.panelControles.Name = "panelControles";
             this.panelControles.Size = new System.Drawing.Size(667, 431);
             this.panelControles.TabIndex = 1;
@@ -148,11 +136,7 @@
             this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
             this.btn_Cancelar.Location = new System.Drawing.Point(431, 289);
-<<<<<<< Updated upstream
-            this.btn_Cancelar.Margin = new System.Windows.Forms.Padding(4);
-=======
             this.btn_Cancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
->>>>>>> Stashed changes
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(203, 42);
             this.btn_Cancelar.TabIndex = 7;
@@ -168,11 +152,7 @@
             this.btn_Ingresar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Ingresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
             this.btn_Ingresar.Location = new System.Drawing.Point(180, 289);
-<<<<<<< Updated upstream
-            this.btn_Ingresar.Margin = new System.Windows.Forms.Padding(4);
-=======
             this.btn_Ingresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
->>>>>>> Stashed changes
             this.btn_Ingresar.Name = "btn_Ingresar";
             this.btn_Ingresar.Size = new System.Drawing.Size(203, 41);
             this.btn_Ingresar.TabIndex = 6;
@@ -239,11 +219,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
             this.panel2.Controls.Add(this.txt_Contraseña);
             this.panel2.Location = new System.Drawing.Point(179, 171);
-<<<<<<< Updated upstream
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
-=======
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
->>>>>>> Stashed changes
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(1);
             this.panel2.Size = new System.Drawing.Size(457, 37);
@@ -257,11 +233,7 @@
             this.txt_Contraseña.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Contraseña.ForeColor = System.Drawing.Color.Gray;
             this.txt_Contraseña.Location = new System.Drawing.Point(1, 1);
-<<<<<<< Updated upstream
-            this.txt_Contraseña.Margin = new System.Windows.Forms.Padding(4);
-=======
             this.txt_Contraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
->>>>>>> Stashed changes
             this.txt_Contraseña.Name = "txt_Contraseña";
             this.txt_Contraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_Contraseña.Size = new System.Drawing.Size(455, 32);
@@ -275,11 +247,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
             this.panel1.Controls.Add(this.txt_Mat);
             this.panel1.Location = new System.Drawing.Point(177, 80);
-<<<<<<< Updated upstream
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-=======
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
->>>>>>> Stashed changes
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(1);
             this.panel1.Size = new System.Drawing.Size(457, 37);
@@ -293,11 +261,7 @@
             this.txt_Mat.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Mat.ForeColor = System.Drawing.Color.Gray;
             this.txt_Mat.Location = new System.Drawing.Point(1, 1);
-<<<<<<< Updated upstream
-            this.txt_Mat.Margin = new System.Windows.Forms.Padding(4);
-=======
             this.txt_Mat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
->>>>>>> Stashed changes
             this.txt_Mat.Name = "txt_Mat";
             this.txt_Mat.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_Mat.Size = new System.Drawing.Size(455, 32);
