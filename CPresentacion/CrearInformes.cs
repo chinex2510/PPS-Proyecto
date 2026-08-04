@@ -198,7 +198,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 html = html.Replace("@diagnostico", informe.Concurrente_D.Diagnostico_D);
                 html = html.Replace("@institucion", informe.Concurrente_D.Escuela_D);
                 html = html.Replace("@grado", $"{informe.Concurrente_D.NivelEscolar_D} / {informe.Concurrente_D.AñoEscolar_D}");
-                html = html.Replace("@obrasocial", informe.Concurrente_D.Obrasocial_D);
+                html = html.Replace("@obrasocial", informe.Tutor_D.Obrasocial_D);
 
                 // Logo base64 desde Resources
                 if (Properties.Resources.MAria_ELena_Quintana != null)
