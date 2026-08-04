@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,12 +30,12 @@ namespace ConsultorioPsicopedagogico.CDatos
                     conexion.Open();
 
                     string query = esNuevo
-                        ? @"INSERT INTO Turnos (DNI_Concurrente, FechaTurno, HoraTurno)
+                        ? @"INSERT INTO Turnos (dniConcurrente, fecha, hora)
                    VALUES (@Dni, @Fecha, @Hora)"
                         : @"UPDATE Turnos SET 
-                        FechaTurno = @Fecha,
-                        HoraTurno = @Hora
-                   WHERE DNI_Concurrente = @Dni";
+                        fecha = @Fecha,
+                        hora = @Hora
+                   WHERE dniConcurrente = @Dni";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
@@ -64,7 +64,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                 {
                     conexion.Open();
 
-                    string query = "DELETE FROM Turnos WHERE DNI_Concurrente = @Dni";
+                    string query = "DELETE FROM Turnos WHERE dniConcurrente = @Dni";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
