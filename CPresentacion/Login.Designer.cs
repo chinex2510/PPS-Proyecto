@@ -245,7 +245,7 @@ namespace ConsultorioPsicopedagogico
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
-            this.panel1.Controls.Add(this.txt_Mat);
+            this.panel1.Controls.Add(this.txt_Usuario);
             this.panel1.Location = new System.Drawing.Point(177, 80);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
@@ -253,22 +253,22 @@ namespace ConsultorioPsicopedagogico
             this.panel1.Size = new System.Drawing.Size(457, 37);
             this.panel1.TabIndex = 0;
             // 
-            // txt_Mat
+            // txt_Usuario
             // 
-            this.txt_Mat.BackColor = System.Drawing.Color.White;
-            this.txt_Mat.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_Mat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Mat.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Mat.ForeColor = System.Drawing.Color.Gray;
-            this.txt_Mat.Location = new System.Drawing.Point(1, 1);
-            this.txt_Mat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_Mat.Name = "txt_Mat";
-            this.txt_Mat.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_Mat.Size = new System.Drawing.Size(455, 32);
-            this.txt_Mat.TabIndex = 0;
-            this.txt_Mat.Text = "Ingrese su matrícula";
-            this.txt_Mat.Enter += new System.EventHandler(this.txt_Mat_Enter);
-            this.txt_Mat.Leave += new System.EventHandler(this.txt_Mat_Leave);
+            this.txt_Usuario.BackColor = System.Drawing.Color.White;
+            this.txt_Usuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_Usuario.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Usuario.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Usuario.ForeColor = System.Drawing.Color.Gray;
+            this.txt_Usuario.Location = new System.Drawing.Point(1, 1);
+            this.txt_Usuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_Usuario.Name = "txt_Usuario";
+            this.txt_Usuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_Usuario.Size = new System.Drawing.Size(455, 32);
+            this.txt_Usuario.TabIndex = 0;
+            this.txt_Usuario.Text = "Ingrese su usuario";
+            this.txt_Usuario.Enter += new System.EventHandler(this.txt_Usuario_Enter);
+            this.txt_Usuario.Leave += new System.EventHandler(this.txt_Usuario_Leave);
             // 
             // Login
             // 
