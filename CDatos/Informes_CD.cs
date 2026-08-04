@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,12 +38,15 @@ namespace ConsultorioPsicopedagogico.CDatos
                     connection.Open();
 
                     string query = @"
-                        SELECT i.ID_Informe, i.Fecha_Informe,
-                               c.*, t.*
-                        FROM Informes i
-                        JOIN Concurrentes c ON i.DNI_C = c.DNI_C
-                        LEFT JOIN Tutor t ON c.DNI_Tutor = t.DNI_Tutor
-                        WHERE i.ID_Informe = @ID";
+                        SELECT i.idInforme AS ID_Informe, i.fechaInforme AS Fecha_Informe,
+                                c.dniConcurrente AS DNI_C, c.apellido AS Apellido, c.nombre AS Nombre, c.fechaNacimiento AS FechaNac, c.diagnostico AS Diagnostico, c.escuela AS Escuela, c.anioEscolar AS AñoEscolar, c.nivelEscolar AS NivelEscolar, c.domicilio AS Domicilio,
+                                t.dniTutor AS DNI_Tutor, t.apellido AS ApellidoTutor, t.nombre AS NombreTutor, t.telefono AS Telefono, t.email AS Email, t.obraSocial AS Obrasocial,
+                               p.relacion AS Parentesco
+                        FROM Informe i
+                        JOIN Concurrente c ON i.dniConcurrente = c.dniConcurrente
+                        LEFT JOIN Parentesco p ON c.dniConcurrente = p.dniConcurrente
+                        LEFT JOIN Tutor t ON p.dniTutor = t.dniTutor
+                        WHERE i.idInforme = @ID";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
@@ -67,18 +70,18 @@ namespace ConsultorioPsicopedagogico.CDatos
                                 Escuela_D = reader["Escuela"].ToString(),
                                 AñoEscolar_D = Convert.ToInt32(reader["AñoEscolar"]),
                                 NivelEscolar_D = reader["NivelEscolar"].ToString(),
-                                Domicilio_D = reader["Domicilio"].ToString(),
-                                Obrasocial_D = reader["Obrasocial"].ToString()
+                                Domicilio_D = reader["Domicilio"].ToString()
                             };
 
                             tutor_D = new Tutor_CD
                             {
-                                DniTutor_D = reader.GetInt32("DNI_Tutor"),
-                                ApellidoTutor_D = reader["Apellido"].ToString(),
-                                NombreTutor_D = reader["Nombre"].ToString(),
+                                DniTutor_D = reader.IsDBNull(reader.GetOrdinal("DNI_Tutor")) ? 0 : reader.GetInt32("DNI_Tutor"),
+                                ApellidoTutor_D = reader["ApellidoTutor"].ToString(),
+                                NombreTutor_D = reader["NombreTutor"].ToString(),
                                 ParentezcoTutor_D = reader["Parentesco"].ToString(),
                                 TelefonoTutor_D = reader["Telefono"].ToString(),
-                                EmailTutor_D = reader["Email"].ToString()
+                                EmailTutor_D = reader["Email"].ToString(),
+                                Obrasocial_D = reader["Obrasocial"].ToString()
                             };
                         }
                     }
@@ -100,10 +103,10 @@ namespace ConsultorioPsicopedagogico.CDatos
             var lista = new List<InformeArea_CD>();
 
             string query = @"
-                SELECT ia.Texto_Area, a.ID_Area, a.Nombre_Area
+                SELECT ia.descripcionArea AS Texto_Area, a.idArea AS ID_Area, a.nombreArea AS Nombre_Area
                 FROM Informe_Area ia
-                JOIN Areas a ON ia.ID_Area = a.ID_Area
-                WHERE ia.ID_Informe = @ID";
+                JOIN Area a ON ia.idArea = a.idArea
+                WHERE ia.idInforme = @ID";
 
             using (MySqlCommand cmd = new MySqlCommand(query, connection))
             {
