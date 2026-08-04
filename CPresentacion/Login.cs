@@ -28,26 +28,23 @@ namespace ConsultorioPsicopedagogico
             // Vincular eventos de LinkLabel para navegación
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             linkLabel2.LinkClicked += linkLabel2_LinkClicked;
-
-            // Restringir ingreso de letras en matrícula
-            txt_Mat.KeyPress += SoloNumeros_KeyPress;
         }
 
-        private void txt_Mat_Enter(object sender, EventArgs e)
+        private void txt_Usuario_Enter(object sender, EventArgs e)
         {
-            if (txt_Mat.Text == "Ingrese su matrícula")
+            if (txt_Usuario.Text == "Ingrese su usuario")
             {
-                txt_Mat.Text = "";
-                txt_Mat.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
+                txt_Usuario.Text = "";
+                txt_Usuario.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
             }
         }
 
-        private void txt_Mat_Leave(object sender, EventArgs e)
+        private void txt_Usuario_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txt_Mat.Text))
+            if (string.IsNullOrWhiteSpace(txt_Usuario.Text))
             {
-                txt_Mat.Text = "Ingrese su matrícula";
-                txt_Mat.ForeColor = Color.Gray;
+                txt_Usuario.Text = "Ingrese su usuario";
+                txt_Usuario.ForeColor = Color.Gray;
             }
         }
 
@@ -108,7 +105,7 @@ namespace ConsultorioPsicopedagogico
             // Armar arreglo de campos para validación
             string[] camposLogin = new string[]
             {
-                txt_Mat.Text.Trim(),
+                txt_Usuario.Text.Trim(),
                 txt_Contraseña.Text.Trim()
             };
 
@@ -132,10 +129,10 @@ namespace ConsultorioPsicopedagogico
             }
 
             // Validacion de formato exitosa. Proceder a validar credenciales contra BD
-            string matricula = txt_Mat.Text.Trim();
+            string usuario = txt_Usuario.Text.Trim();
             string contrasena = txt_Contraseña.Text.Trim();
 
-            if (loginLogica.Autenticar(matricula, contrasena))
+            if (loginLogica.Autenticar(usuario, contrasena))
             {
                 MessageBox.Show("¡Login exitoso!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
@@ -146,7 +143,7 @@ namespace ConsultorioPsicopedagogico
             }
             else
             {
-                MessageBox.Show("Matrícula o contraseña incorrecta.", "Fallo de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario o contraseña incorrecta.", "Fallo de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_Contraseña.Text = "";
                 txt_Contraseña.Focus();
             }
@@ -169,14 +166,6 @@ namespace ConsultorioPsicopedagogico
             FormNuevoUsuario nuevoForm = new FormNuevoUsuario();
             nuevoForm.Show();
             this.Hide();
-        }
-
-        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
         }
     }
 } 

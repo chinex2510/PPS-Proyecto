@@ -1,4 +1,4 @@
-﻿namespace ConsultorioPsicopedagogico
+namespace ConsultorioPsicopedagogico
 {
     partial class Login
     {
@@ -42,7 +42,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txt_Contraseña = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txt_Mat = new System.Windows.Forms.TextBox();
+            this.txt_Usuario = new System.Windows.Forms.TextBox();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelControles.SuspendLayout();
@@ -212,7 +212,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 32);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Matricula";
+            this.label1.Text = "Usuario";
             // 
             // panel2
             // 
@@ -304,7 +304,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panelControles;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txt_Mat;
+        private System.Windows.Forms.TextBox txt_Usuario;
         private System.Windows.Forms.Button btn_Cancelar;
         private System.Windows.Forms.Button btn_Ingresar;
         private System.Windows.Forms.LinkLabel linkLabel2;

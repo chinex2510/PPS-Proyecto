@@ -26,12 +26,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             btnCancelar.Click += btnCancelar_Click;
             btnConfirmar.Click += btnConfirmar_Click;
 
-            // Restringir ingreso de letras en matrícula
-            txtMatricula.KeyPress += SoloNumeros_KeyPress;
-
             // --- REDISEÑO DE BÚSQUEDA ---
-            // 1. Reducir el ancho de txtMatricula para dejar espacio al botón buscar
-            txtMatricula.Width = 280;
+            // 1. Reducir el ancho de txtUsuario para dejar espacio al botón buscar
+            txtUsuario.Width = 280;
 
             // 2. Crear el botón de Buscar dinámicamente
             Button btnBuscar = new Button();
@@ -58,15 +55,15 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 6. Deshabilitar el campo respuesta inicialmente
             txtRespuesta.Enabled = false;
 
-            // 7. Limpiar campos al cambiar la matrícula (obliga a buscar de nuevo)
-            txtMatricula.TextChanged += (s, e) => {
+            // 7. Limpiar campos al cambiar el usuario (obliga a buscar de nuevo)
+            txtUsuario.TextChanged += (s, e) => {
                 txtPregunta.Text = "";
                 txtRespuesta.Text = "";
                 txtRespuesta.Enabled = false;
             };
 
-            // 8. Evento Enter en matrícula dispara la búsqueda
-            txtMatricula.KeyDown += (s, e) => {
+            // 8. Evento Enter en usuario dispara la búsqueda
+            txtUsuario.KeyDown += (s, e) => {
                 if (e.KeyCode == Keys.Enter)
                 {
                     e.SuppressKeyPress = true; // Evitar sonido bip de Windows
@@ -115,18 +112,18 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private bool CargarPreguntaUsuario()
         {
-            string matricula = txtMatricula.Text.Trim();
-            if (string.IsNullOrEmpty(matricula))
+            string usuario = txtUsuario.Text.Trim();
+            if (string.IsNullOrEmpty(usuario))
             {
-                MessageBox.Show("Debe ingresar su matrícula.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMatricula.Focus();
+                MessageBox.Show("Debe ingresar su usuario.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsuario.Focus();
                 return false;
             }
 
             try
             {
                 UsuarioCL logica = new UsuarioCL();
-                string pregunta = logica.ObtenerPreguntaPorMatricula(matricula);
+                string pregunta = logica.ObtenerPreguntaPorUsuario(usuario);
 
                 if (!string.IsNullOrEmpty(pregunta))
                 {
@@ -138,11 +135,11 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 }
                 else
                 {
-                    MessageBox.Show("Matrícula no encontrada o sin pregunta registrada.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Usuario no encontrado o sin pregunta registrada.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtPregunta.Text = "";
                     txtRespuesta.Text = "";
                     txtRespuesta.Enabled = false;
-                    txtMatricula.Focus();
+                    txtUsuario.Focus();
                     return false;
                 }
             }
@@ -158,20 +155,20 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            string matricula = txtMatricula.Text.Trim();
+            string usuario = txtUsuario.Text.Trim();
             string respuesta = txtRespuesta.Text.Trim();
 
-            if (string.IsNullOrEmpty(matricula))
+            if (string.IsNullOrEmpty(usuario))
             {
-                MessageBox.Show("Debe ingresar su matrícula.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMatricula.Focus();
+                MessageBox.Show("Debe ingresar su usuario.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsuario.Focus();
                 return;
             }
 
             if (!txtRespuesta.Enabled)
             {
-                MessageBox.Show("Debe realizar la búsqueda de su matrícula primero.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMatricula.Focus();
+                MessageBox.Show("Debe realizar la búsqueda de su usuario primero.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsuario.Focus();
                 return;
             }
 
@@ -185,7 +182,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             try
             {
                 UsuarioCL logica = new UsuarioCL();
-                bool respuestaValida = logica.ValidarRespuestaSeguridad(matricula, respuesta);
+                bool respuestaValida = logica.ValidarRespuestaSeguridad(usuario, respuesta);
 
                 if (respuestaValida)
                 {
@@ -193,7 +190,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
                     if (!string.IsNullOrEmpty(nuevaContra))
                     {
-                        bool exito = logica.ActualizarContrasena(matricula, nuevaContra);
+                        bool exito = logica.ActualizarContrasena(usuario, nuevaContra);
                         if (exito)
                         {
                             MessageBox.Show("Contraseña reestablecida correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -215,14 +212,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             catch (Exception ex)
             {
                 MessageBox.Show("Ocurrió un error al procesar la solicitud: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
             }
         }
     }
@@ -249,114 +238,101 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 Top = 15, 
                 Text = promptText, 
                 Width = 340, 
-                Font = new Font("Segoe UI", 10, FontStyle.Bold), 
-                ForeColor = ColorTranslator.FromHtml("#3A0F3A") 
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                ForeColor = Color.FromArgb(58, 15, 58)
             };
 
-            TextBox txtPassword = new TextBox() 
+            TextBox textBox = new TextBox() 
             { 
                 Left = 30, 
-                Top = 40, 
+                Top = 45, 
                 Width = 340, 
-                UseSystemPasswordChar = true, 
-                Font = new Font("Segoe UI", 10) 
+                UseSystemPasswordChar = true,
+                Font = new Font("Segoe UI", 11F)
             };
 
-            Label textLabel2 = new Label() 
-            { 
-                Left = 30, 
-                Top = 75, 
-                Text = "Confirme la nueva contraseña:", 
-                Width = 340, 
-                Font = new Font("Segoe UI", 10, FontStyle.Bold), 
-                ForeColor = ColorTranslator.FromHtml("#3A0F3A") 
+            Label confirmLabel = new Label()
+            {
+                Left = 30,
+                Top = 85,
+                Text = "Confirme la nueva contraseña:",
+                Width = 340,
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                ForeColor = Color.FromArgb(58, 15, 58)
             };
 
-            TextBox txtConfirmPassword = new TextBox() 
-            { 
-                Left = 30, 
-                Top = 100, 
-                Width = 340, 
-                UseSystemPasswordChar = true, 
-                Font = new Font("Segoe UI", 10) 
+            TextBox confirmTextBox = new TextBox()
+            {
+                Left = 30,
+                Top = 115,
+                Width = 340,
+                UseSystemPasswordChar = true,
+                Font = new Font("Segoe UI", 11F)
             };
 
             Button confirmation = new Button() 
             { 
-                Text = "Guardar", 
-                Left = 220, 
-                Width = 150, 
-                Top = 145, 
-                Height = 35, 
-                FlatStyle = FlatStyle.Flat, 
-                BackColor = Color.FromArgb(75, 165, 100), 
-                ForeColor = Color.White, 
-                Font = new Font("Segoe UI", 9.75F, FontStyle.Bold) 
+                Text = "Aceptar", 
+                Left = 140, 
+                Width = 120, 
+                Top = 155, 
+                Height = 30,
+                DialogResult = DialogResult.OK,
+                BackColor = Color.FromArgb(75, 165, 100),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Segoe UI", 9.5F, FontStyle.Bold),
+                Cursor = Cursors.Hand
             };
 
-            Button cancel = new Button() 
-            { 
-                Text = "Cancelar", 
-                Left = 30, 
-                Width = 150, 
-                Top = 145, 
-                Height = 35, 
-                FlatStyle = FlatStyle.Flat, 
-                ForeColor = ColorTranslator.FromHtml("#3A0F3A"), 
-                BackColor = Color.White,
-                Font = new Font("Segoe UI", 9.75F, FontStyle.Bold) 
+            confirmation.Paint += (s, e) => {
+                GraphicsPath forma = new GraphicsPath();
+                forma.StartFigure();
+                forma.AddArc(new Rectangle(0, 0, 10, 10), 180, 90);
+                forma.AddArc(new Rectangle(confirmation.Width - 10, 0, 10, 10), 270, 90);
+                forma.AddArc(new Rectangle(confirmation.Width - 10, confirmation.Height - 10, 10, 10), 0, 90);
+                forma.AddArc(new Rectangle(0, confirmation.Height - 10, 10, 10), 90, 90);
+                forma.CloseFigure();
+                confirmation.Region = new Region(forma);
             };
 
-            confirmation.FlatAppearance.BorderSize = 0;
-            cancel.FlatAppearance.BorderColor = ColorTranslator.FromHtml("#3A0F3A");
+            prompt.Controls.Add(textBox);
+            prompt.Controls.Add(confirmTextBox);
+            prompt.Controls.Add(textLabel);
+            prompt.Controls.Add(confirmLabel);
+            prompt.Controls.Add(confirmation);
+            prompt.AcceptButton = confirmation;
 
             confirmation.Click += (sender, e) => {
-                string pass = txtPassword.Text.Trim();
-                string confirm = txtConfirmPassword.Text.Trim();
+                string p1 = textBox.Text.Trim();
+                string p2 = confirmTextBox.Text.Trim();
 
-                if (string.IsNullOrEmpty(pass))
+                if (string.IsNullOrEmpty(p1))
                 {
                     MessageBox.Show("La contraseña no puede estar vacía.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    prompt.DialogResult = DialogResult.None;
+                    textBox.Focus();
                     return;
                 }
 
-                if (pass.Length < 6)
+                if (p1.Length < 6)
                 {
                     MessageBox.Show("La contraseña debe tener al menos 6 caracteres.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    prompt.DialogResult = DialogResult.None;
+                    textBox.Focus();
                     return;
                 }
 
-                if (pass != confirm)
+                if (p1 != p2)
                 {
                     MessageBox.Show("Las contraseñas no coinciden.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    prompt.DialogResult = DialogResult.None;
+                    confirmTextBox.Focus();
                     return;
                 }
-
-                prompt.DialogResult = DialogResult.OK;
-                prompt.Close();
             };
 
-            cancel.Click += (sender, e) => {
-                prompt.DialogResult = DialogResult.Cancel;
-                prompt.Close();
-            };
-
-            prompt.Controls.Add(textLabel);
-            prompt.Controls.Add(txtPassword);
-            prompt.Controls.Add(textLabel2);
-            prompt.Controls.Add(txtConfirmPassword);
-            prompt.Controls.Add(confirmation);
-            prompt.Controls.Add(cancel);
-            
-            prompt.AcceptButton = confirmation;
-            prompt.CancelButton = cancel;
-
-            if (prompt.ShowDialog() == DialogResult.OK)
-            {
-                return txtPassword.Text.Trim();
-            }
-
-            return null;
+            return prompt.ShowDialog() == DialogResult.OK ? textBox.Text.Trim() : "";
         }
     }
 }

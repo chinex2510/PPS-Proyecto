@@ -12,27 +12,27 @@ namespace ConsultorioPsicopedagogico.CDatos
     internal class Usuario_CD
     {
         private int dni;
-        private string matricula;
+        private string usuario;
         private string nombreApellido;
         private string email;
-        private string especialidad;
         private string contrasena;
         private int preguntaId;
         private string respuesta;
+        private string rol;
 
         public int Dni { get => dni; set => dni = value; }
-        public string Matricula { get => matricula; set => matricula = value; }
+        public string Usuario { get => usuario; set => usuario = value; }
         public string NombreApellido { get => nombreApellido; set => nombreApellido = value; }
         public string Email { get => email; set => email = value; }
-        public string Especialidad { get => especialidad; set => especialidad = value; }
         public string Contrasena { get => contrasena; set => contrasena = value; }
         public int PreguntaId { get => preguntaId; set => preguntaId = value; }
         public string Respuesta { get => respuesta; set => respuesta = value; }
+        public string Rol { get => rol; set => rol = value; }
 
         /// <summary>
-        /// Verifica si existe un usuario con la matrícula y contraseña provistas en la base de datos.
+        /// Verifica si existe un usuario con el nombre de usuario y contraseña provistas en la base de datos.
         /// </summary>
-        public bool VerificarUsuario(string matricula, string contrasena)
+        public bool VerificarUsuario(string usuario, string contrasena)
         {
             bool esValido = false;
             try
@@ -40,11 +40,11 @@ namespace ConsultorioPsicopedagogico.CDatos
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     conexion.Open();
-                    string query = "SELECT COUNT(*) FROM Usuario WHERE Matricula = @Matricula AND Contrasena = @Contrasena";
+                    string query = "SELECT COUNT(*) FROM Usuario WHERE BINARY Usuario = @Usuario AND BINARY Contrasena = @Contrasena";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
-                        comando.Parameters.AddWithValue("@Matricula", matricula);
+                        comando.Parameters.AddWithValue("@Usuario", usuario);
                         comando.Parameters.AddWithValue("@Contrasena", contrasena);
 
                         int count = Convert.ToInt32(comando.ExecuteScalar());
@@ -71,20 +71,20 @@ namespace ConsultorioPsicopedagogico.CDatos
                 {
                     conexion.Open();
                     string query = @"INSERT INTO Usuario 
-                            (DNI, Matricula, NombreApellido, Email, Especialidad, Contrasena, PreguntaID, Respuesta)
+                            (DNI, Usuario, NombreApellido, Email, Contrasena, PreguntaID, Respuesta, Rol)
                             VALUES 
-                            (@Dni, @Matricula, @NombreApellido, @Email, @Especialidad, @Contrasena, @PreguntaId, @Respuesta)";
+                            (@Dni, @Usuario, @NombreApellido, @Email, @Contrasena, @PreguntaId, @Respuesta, @Rol)";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
                         comando.Parameters.AddWithValue("@Dni", usuarioNuevo.Dni);
-                        comando.Parameters.AddWithValue("@Matricula", usuarioNuevo.Matricula);
+                        comando.Parameters.AddWithValue("@Usuario", usuarioNuevo.Usuario);
                         comando.Parameters.AddWithValue("@NombreApellido", usuarioNuevo.NombreApellido);
                         comando.Parameters.AddWithValue("@Email", usuarioNuevo.Email);
-                        comando.Parameters.AddWithValue("@Especialidad", usuarioNuevo.Especialidad);
                         comando.Parameters.AddWithValue("@Contrasena", usuarioNuevo.Contrasena);
                         comando.Parameters.AddWithValue("@PreguntaId", usuarioNuevo.PreguntaId);
                         comando.Parameters.AddWithValue("@Respuesta", usuarioNuevo.Respuesta);
+                        comando.Parameters.AddWithValue("@Rol", usuarioNuevo.Rol);
 
                         comando.ExecuteNonQuery();
                     }
@@ -127,9 +127,9 @@ namespace ConsultorioPsicopedagogico.CDatos
         }
 
         /// <summary>
-        /// Verifica si una matrícula ya existe en la base de datos.
+        /// Verifica si un nombre de usuario ya existe en la base de datos.
         /// </summary>
-        public bool ExisteMatricula(string matricula)
+        public bool ExisteUsuario(string usuario)
         {
             bool existe = false;
             try
@@ -137,10 +137,10 @@ namespace ConsultorioPsicopedagogico.CDatos
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     conexion.Open();
-                    string query = "SELECT COUNT(*) FROM Usuario WHERE Matricula = @Matricula";
+                    string query = "SELECT COUNT(*) FROM Usuario WHERE Usuario = @Usuario";
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
-                        comando.Parameters.AddWithValue("@Matricula", matricula);
+                        comando.Parameters.AddWithValue("@Usuario", usuario);
                         int count = Convert.ToInt32(comando.ExecuteScalar());
                         existe = count > 0;
                     }
@@ -148,7 +148,7 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error al verificar si existe la matrícula: " + ex.Message, 
+                MessageBox.Show("Hubo un error al verificar si existe el usuario: " + ex.Message, 
                                 "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return existe;
@@ -181,9 +181,9 @@ namespace ConsultorioPsicopedagogico.CDatos
         }
 
         /// <summary>
-        /// Obtiene el texto de la pregunta de seguridad configurada para la matrícula de un usuario.
+        /// Obtiene el texto de la pregunta de seguridad configurada para el usuario dado.
         /// </summary>
-        public string ObtenerPreguntaPorMatricula(string matricula)
+        public string ObtenerPreguntaPorUsuario(string usuario)
         {
             string preguntaText = "";
             try
@@ -194,10 +194,10 @@ namespace ConsultorioPsicopedagogico.CDatos
                     string query = @"SELECT ps.PreguntaTexto 
                                     FROM Usuario u 
                                     INNER JOIN PreguntaSeguridad ps ON u.PreguntaID = ps.PreguntaID 
-                                    WHERE u.Matricula = @Matricula";
+                                    WHERE BINARY u.Usuario = @Usuario";
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
-                        comando.Parameters.AddWithValue("@Matricula", matricula);
+                        comando.Parameters.AddWithValue("@Usuario", usuario);
                         object result = comando.ExecuteScalar();
                         if (result != null)
                         {
@@ -217,7 +217,7 @@ namespace ConsultorioPsicopedagogico.CDatos
         /// <summary>
         /// Valida si la respuesta a la pregunta de seguridad coincide con la almacenada.
         /// </summary>
-        public bool ValidarRespuestaSeguridad(string matricula, string respuesta)
+        public bool ValidarRespuestaSeguridad(string usuario, string respuesta)
         {
             bool esCorrecta = false;
             try
@@ -225,10 +225,10 @@ namespace ConsultorioPsicopedagogico.CDatos
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     conexion.Open();
-                    string query = "SELECT COUNT(*) FROM Usuario WHERE Matricula = @Matricula AND LOWER(Respuesta) = LOWER(@Respuesta)";
+                    string query = "SELECT COUNT(*) FROM Usuario WHERE BINARY Usuario = @Usuario AND LOWER(Respuesta) = LOWER(@Respuesta)";
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
-                        comando.Parameters.AddWithValue("@Matricula", matricula);
+                        comando.Parameters.AddWithValue("@Usuario", usuario);
                         comando.Parameters.AddWithValue("@Respuesta", respuesta.Trim());
                         esCorrecta = Convert.ToInt32(comando.ExecuteScalar()) > 0;
                     }
@@ -243,9 +243,9 @@ namespace ConsultorioPsicopedagogico.CDatos
         }
 
         /// <summary>
-        /// Actualiza la contraseña en la base de datos para la matrícula dada.
+        /// Actualiza la contraseña en la base de datos para el usuario dado.
         /// </summary>
-        public bool ActualizarContrasena(string matricula, string nuevaContrasena)
+        public bool ActualizarContrasena(string usuario, string nuevaContrasena)
         {
             bool exito = false;
             try
@@ -253,11 +253,11 @@ namespace ConsultorioPsicopedagogico.CDatos
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     conexion.Open();
-                    string query = "UPDATE Usuario SET Contrasena = @Contrasena WHERE Matricula = @Matricula";
+                    string query = "UPDATE Usuario SET Contrasena = @Contrasena WHERE BINARY Usuario = @Usuario";
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
                         comando.Parameters.AddWithValue("@Contrasena", nuevaContrasena);
-                        comando.Parameters.AddWithValue("@Matricula", matricula);
+                        comando.Parameters.AddWithValue("@Usuario", usuario);
                         int rows = comando.ExecuteNonQuery();
                         exito = rows > 0;
                     }
