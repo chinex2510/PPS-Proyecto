@@ -92,13 +92,13 @@ CREATE TABLE IF NOT EXISTS PreguntaSeguridad (
 -- 2. Modificación de la tabla Usuario para que haga referencia al ID de la pregunta
 CREATE TABLE IF NOT EXISTS Usuario (
     DNI INT PRIMARY KEY,
-    Matricula VARCHAR(50) UNIQUE NOT NULL,
+    Usuario VARCHAR(50) UNIQUE NOT NULL,
     NombreApellido VARCHAR(150) NOT NULL,
     Email VARCHAR(150) NOT NULL,
-    Especialidad VARCHAR(100),
     Contrasena VARCHAR(255) NOT NULL,
     PreguntaID INT NOT NULL,
     Respuesta VARCHAR(255) NOT NULL,
+    Rol VARCHAR(50) NOT NULL,
     FOREIGN KEY (PreguntaID) REFERENCES PreguntaSeguridad(PreguntaID)
 );
 
@@ -112,7 +112,7 @@ VALUES
 ON DUPLICATE KEY UPDATE PreguntaTexto=VALUES(PreguntaTexto);
 
 -- 4. Insertar el usuario de prueba por defecto si no existe (con pregunta ID 1)
-INSERT INTO Usuario (DNI, Matricula, NombreApellido, Email, Especialidad, Contrasena, PreguntaID, Respuesta)
-SELECT 12345678, 'celeste', 'Celeste Rodriguez', 'celeste@example.com', 'Psicopedagoga', '123456', 1, 'Fido'
+INSERT INTO Usuario (DNI, Usuario, NombreApellido, Email, Contrasena, PreguntaID, Respuesta, Rol)
+SELECT 12345678, 'celeste', 'Celeste Rodriguez', 'celeste@example.com', '123456', 1, 'Fido', 'Medico/a'
 FROM dual
-WHERE NOT EXISTS (SELECT 1 FROM Usuario WHERE Matricula = 'celeste');
+WHERE NOT EXISTS (SELECT 1 FROM Usuario WHERE Usuario = 'celeste');
