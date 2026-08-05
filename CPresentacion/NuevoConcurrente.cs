@@ -18,6 +18,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private bool tutorVerificado = false;
         private System.Windows.Forms.ToolTip toolTipHelp;
         private bool formCargado = false;
+        private int? _dniOriginal = null;
 
         public NuevoConcurrente()
         {
@@ -28,6 +29,49 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 formCargado = true;
                 txt_DniTutor.Focus();
             };
+        }
+
+        public NuevoConcurrente(int dni) : this()
+        {
+            _dniOriginal = dni;
+            CargarDatos(dni);
+        }
+
+        private void CargarDatos(int dni)
+        {
+            var verificador = new CLogica.ConcurrentesCL();
+            var concurrente = verificador.SeleccionarPorDni(dni);
+            if (concurrente != null && concurrente.Dni_C != 0)
+            {
+                txt_dni.Text = concurrente.Dni_C.ToString();
+                txt_ape.Text = concurrente.Apellido_C;
+                txt_nom.Text = concurrente.Nombre_C;
+                if (DateTime.TryParse(concurrente.FechaNac_C, out DateTime result)) {
+                    date_naci.Value = result;
+                }
+                txt_diagnostico.Text = concurrente.Diagnostico_C;
+                txt_colegio.Text = concurrente.Escuela_C;
+                txt_anio.Text = concurrente.AñoEscolar_C.ToString();
+                txt_nivel.Text = concurrente.NivelEscolar_C;
+                txt_domicilio.Text = concurrente.Domicilio_C;
+                txt_DniTutor.Text = concurrente.DniTutor_C;
+                cmb_Parentesco.Text = concurrente.Parentezco_C;
+                
+                try
+                {
+                    int dniTutor = int.Parse(concurrente.DniTutor_C);
+                    var tutorLogic = new CLogica.TutorCL();
+                    var tutor = tutorLogic.BuscarTutor(dniTutor);
+                    if (tutor != null)
+                    {
+                        txt_tutor.Text = tutor.NombreTutor_C + " " + tutor.ApellidoTutor_C;
+                        txt_contTutor.Text = tutor.TelefonoTutor_C;
+                        tutorVerificado = true;
+                        SetFieldsEnabled(true);
+                    }
+                }
+                catch { }
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -62,6 +106,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     var concurrente = new ConcurrentesCL
                     {
                         Dni_C = int.Parse(txt_dni.Text),
+                        OriginalDni_C = _dniOriginal ?? 0,
                         Apellido_C = txt_ape.Text,
                         Nombre_C = txt_nom.Text,
                         FechaNac_C = date_naci.Value.ToString("yyyy-MM-dd"),
@@ -70,14 +115,33 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                         AñoEscolar_C = int.Parse(txt_anio.Text),
                         NivelEscolar_C = txt_nivel.Text,
                         Domicilio_C = txt_domicilio.Text,
-                        Obrasocial_C = txt_obs.Text,
-                        DniTutor_C = txt_DniTutor.Text
+                        DniTutor_C = txt_DniTutor.Text,
+                        Parentezco_C = cmb_Parentesco.Text
                     };
 
-                    concurrente.CargarEnSql(concurrente);
+                    bool isEdit = _dniOriginal.HasValue;
 
-                    MessageBox.Show("Datos guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (isEdit)
+                    {
+                        concurrente.ModificarDatos(concurrente);
+                        MessageBox.Show("Datos modificados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        var verificador = new ConcurrentesCL();
+                        var concurrenteExistente = verificador.SeleccionarPorDni(concurrente.Dni_C);
 
+                        if (concurrenteExistente != null && concurrenteExistente.Dni_C != 0)
+                        {
+                            MessageBox.Show("Ya existe un paciente con este DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        concurrente.CargarEnSql(concurrente);
+                        MessageBox.Show("Datos guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    
+                    this.Hide();
                     txt_anio.Text = "";
                     txt_nom.Text = "";
                     txt_ape.Text = "";
@@ -88,8 +152,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     txt_dni.Text = "";
                     txt_nivel.Text = "";
                     txt_contTutor.Text = "";
-                    txt_obs.Text = "";
                     txt_DniTutor.Text = "";
+                    cmb_Parentesco.SelectedIndex = -1;
 
                     SetFieldsEnabled(false);
                 }
@@ -130,19 +194,23 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 RuleFor(x => x.txt_contTutor.Text)
                     .NotEmpty().WithMessage("El contacto del tutor es obligatorio.")
                     .Matches(@"^\d{10}$").WithMessage("El contacto del tutor debe tener exactamente 10 dígitos y solo contener números.");
-                RuleFor(x => x.txt_obs.Text)
-                    .NotEmpty().WithMessage("Ingresar no si no cuenta con obra.");
                 RuleFor(x => x.txt_DniTutor.Text)
                     .NotEmpty().WithMessage("El DNI del tutor es obligatorio.")
                     .Matches(@"^\d{7,8}$").WithMessage("El DNI del tutor debe tener entre 7 y 8 dígitos.");
+                RuleFor(x => x.cmb_Parentesco.Text)
+                    .NotEmpty().WithMessage("El parentesco es obligatorio.");
             }
+        }
+
+        private void btn_NuevoTutor_Click(object sender, EventArgs e)
+        {
+            NuevoTutor nuevoTutorForm = new NuevoTutor();
+            nuevoTutorForm.ShowDialog();
         }
 
         private void btn_volver_Click(object sender, EventArgs e)
         {
-            CPresentacion.Concurrentes concurrentes = new CPresentacion.Concurrentes();
-            concurrentes.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void Panel_Paint(object sender, PaintEventArgs e)
@@ -198,8 +266,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             txt_nivel.ReadOnly = !enabled;
             txt_nivel.BackColor = backColor;
 
-            txt_obs.ReadOnly = !enabled;
-            txt_obs.BackColor = backColor;
+            cmb_Parentesco.Enabled = enabled;
+            cmb_Parentesco.BackColor = backColor;
 
             date_naci.Enabled = enabled;
         }
@@ -250,7 +318,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     SetFieldsEnabled(false);
                     txt_tutor.Text = "";
                     txt_contTutor.Text = "";
-                    txt_obs.Text = "";
                     MessageBox.Show("El tutor no existe en el sistema. Debe registrar al tutor primero.", "Tutor No Encontrado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

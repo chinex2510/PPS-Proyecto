@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,31 +12,32 @@ namespace ConsultorioPsicopedagogico.CDatos
     internal class Concurrentes_CD
     {
         private int dni_D;
+        private int originalDni_D;
         private string apellido_D;
         private string nombre_D;
         private string fechaNac_D;
         private string diagnostico_D;
         private string escuela_D;
-        private int añoEscolar_D;
+        private int anioEscolar_D;
         private string nivelEscolar_D;
         private string domicilio_D;
-        private string obrasocial_D;
         private string dniTutor_D;
         private string contactoTutor_D;
-        
+        private string parentezco_D;
 
         public int Dni_D { get => dni_D; set => dni_D = value; }
+        public int OriginalDni_D { get => originalDni_D; set => originalDni_D = value; }
         public string Apellido_D { get => apellido_D; set => apellido_D = value; }
         public string Nombre_D { get => nombre_D; set => nombre_D = value; }
         public string FechaNac_D { get => fechaNac_D; set => fechaNac_D = value; }
         public string Diagnostico_D { get => diagnostico_D; set => diagnostico_D = value; }
         public string Escuela_D { get => escuela_D; set => escuela_D = value; }
-        public int AñoEscolar_D { get => añoEscolar_D; set => añoEscolar_D = value; }
+        public int AñoEscolar_D { get => anioEscolar_D; set => anioEscolar_D = value; }
         public string NivelEscolar_D { get => nivelEscolar_D; set => nivelEscolar_D = value; }
         public string Domicilio_D { get => domicilio_D; set => domicilio_D = value; }
-        public string Obrasocial_D { get => obrasocial_D; set => obrasocial_D = value; }
         public string DniTutor_D { get => dniTutor_D; set => dniTutor_D = value; }
-        
+        public string ContactoTutor_D { get => contactoTutor_D; set => contactoTutor_D = value; }
+        public string Parentezco_D { get => parentezco_D; set => parentezco_D = value; }
 
         public void CargarEnSql(Concurrentes_CD concurrenteN)
         {
@@ -46,12 +47,14 @@ namespace ConsultorioPsicopedagogico.CDatos
                 {
                     conexion.Open();
 
-                    string query = @"INSERT INTO Concurrentes 
-                            (DNI_C, Apellido, Nombre, FechaNac, Diagnostico, Escuela, AñoEscolar, NivelEscolar, Domicilio, Obrasocial, DNI_Tutor, Activo)
+                    string queryConcurrente = @"INSERT INTO Concurrente 
+                            (dniConcurrente, apellido, nombre, fechaNacimiento, diagnostico, escuela, anioEscolar, nivelEscolar, domicilio)
                             VALUES 
-                            (@Dni, @Apellido, @Nombre, @FechaNac, @Diagnostico, @Escuela, @AñoEscolar, @NivelEscolar, @Domicilio, @Obrasocial, @DniTutor, @Activo)";
+                            (@Dni, @Apellido, @Nombre, @FechaNac, @Diagnostico, @Escuela, @AñoEscolar, @NivelEscolar, @Domicilio)";
 
-                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    string queryParentesco = @"INSERT INTO Parentesco (idConcurrente, idTutor, relacion) SELECT c.idConcurrente, t.idTutor, @Parentezco FROM Concurrente c, Tutor t WHERE c.dniConcurrente = @Dni AND t.dniTutor = @DniTutor";
+
+                    using (MySqlCommand comando = new MySqlCommand(queryConcurrente, conexion))
                     {
                         comando.Parameters.AddWithValue("@Dni", concurrenteN.Dni_D);
                         comando.Parameters.AddWithValue("@Apellido", concurrenteN.Apellido_D);
@@ -62,11 +65,19 @@ namespace ConsultorioPsicopedagogico.CDatos
                         comando.Parameters.AddWithValue("@AñoEscolar", concurrenteN.AñoEscolar_D);
                         comando.Parameters.AddWithValue("@NivelEscolar", concurrenteN.NivelEscolar_D);
                         comando.Parameters.AddWithValue("@Domicilio", concurrenteN.Domicilio_D);
-                        comando.Parameters.AddWithValue("@Obrasocial", concurrenteN.Obrasocial_D);
-                        comando.Parameters.AddWithValue("@DniTutor", concurrenteN.DniTutor_D);
-                        comando.Parameters.AddWithValue("@Activo", 1); 
 
                         comando.ExecuteNonQuery();
+                    }
+
+                    if (!string.IsNullOrEmpty(concurrenteN.DniTutor_D))
+                    {
+                        using (MySqlCommand comando = new MySqlCommand(queryParentesco, conexion))
+                        {
+                            comando.Parameters.AddWithValue("@Dni", concurrenteN.Dni_D);
+                            comando.Parameters.AddWithValue("@DniTutor", concurrenteN.DniTutor_D);
+                            comando.Parameters.AddWithValue("@Parentezco", concurrenteN.Parentezco_D);
+                            comando.ExecuteNonQuery();
+                        }
                     }
 
                     MessageBox.Show("Se ha registrado exitosamente el nuevo concurrente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -78,8 +89,6 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
         }
 
-
-        // Método que retorna una DataTable con todos los concurrentes
         public DataTable TablaNuevoConcurrente()
         {
             try
@@ -89,20 +98,22 @@ namespace ConsultorioPsicopedagogico.CDatos
 
                 string cadena = @"
                 SELECT 
-                    c.DNI_C AS 'DNI_C',
-                    CONCAT(c.Apellido, ' ', c.Nombre) AS 'ApellidoNombre',
-                    c.FechaNac AS 'FechaNac',
-                    c.Diagnostico AS 'Diagnostico',
-                    c.Escuela AS 'Escuela',
-                    c.AñoEscolar AS 'AnioEscolar',
-                    c.NivelEscolar AS 'NivelEscolar',
-                    c.Domicilio AS 'Domicilio',
-                    CONCAT(t.Apellido,' ', t.Nombre) AS 'Tutor', -- <--- Aquí traes el nombre del tutor
-                    t.DNI_Tutor AS 'DNI_Tutor', -- <--- Aquí traes el DNI del tutor
-                    t.Telefono AS 'ContactoTutor',   -- <--- Aquí traes el contacto del tutor
-                    c.Obrasocial AS 'ObraSocial'
-                FROM Concurrentes c
-                LEFT JOIN tutor t ON c.DNI_Tutor = t.DNI_Tutor WHERE c.Activo = 1"; 
+                    c.dniConcurrente AS 'DNI_C',
+                    CONCAT(c.apellido, ' ', c.nombre) AS 'ApellidoNombre',
+                    c.fechaNacimiento AS 'FechaNac',
+                    c.diagnostico AS 'Diagnostico',
+                    c.escuela AS 'Escuela',
+                    c.anioEscolar AS 'AnioEscolar',
+                    c.nivelEscolar AS 'NivelEscolar',
+                    c.domicilio AS 'Domicilio',
+                    p.relacion AS 'Parentesco',
+                    CONCAT(t.apellido,' ', t.nombre) AS 'Tutor', 
+                    t.dniTutor AS 'DNI_Tutor',
+                    t.telefono AS 'ContactoTutor',
+                    t.obraSocial AS 'ObraSocial'
+                FROM Concurrente c
+                LEFT JOIN Parentesco p ON c.idConcurrente = p.idConcurrente
+                LEFT JOIN Tutor t ON p.idTutor = t.idTutor WHERE c.activo = TRUE"; 
                 MySqlCommand comando = new MySqlCommand(cadena, conexion);
                 MySqlDataReader leerFilas = comando.ExecuteReader();
                 DataTable tablaSQL = new DataTable();
@@ -118,7 +129,6 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
         }
 
-        // Método para seleccionar un concurrente por DNI y retornar un objeto Concurrentes_CD
         public Concurrentes_CD SelectorNuevoConcurrente(int dni)
         {
             try
@@ -128,23 +138,24 @@ namespace ConsultorioPsicopedagogico.CDatos
                 {
                     string cadena = @"
                 SELECT 
-                    c.DNI_C,
-                    c.Apellido,
-                    c.Nombre,
-                    c.FechaNac,
-                    c.Diagnostico,
-                    c.Escuela,
-                    c.AñoEscolar,
-                    c.NivelEscolar,
-                    c.Domicilio,
-                    c.DNI_Tutor,
-                    c.Obrasocial,
-                    CONCAT(t.Apellido, ' ', t.Nombre) AS 'TutorCompleto',
-                    t.DNI_Tutor AS DNI_Tutor,
-                    t.Telefono AS ContactoTutor
-                FROM Concurrentes c
-                LEFT JOIN tutor t ON c.DNI_Tutor = t.DNI_Tutor
-                WHERE c.DNI_C = @dni";
+                    c.dniConcurrente AS 'DNI_C',
+                    c.apellido AS 'Apellido',
+                    c.nombre AS 'Nombre',
+                    c.fechaNacimiento AS 'FechaNac',
+                    c.diagnostico AS 'Diagnostico',
+                    c.escuela AS 'Escuela',
+                    c.anioEscolar AS 'AñoEscolar',
+                    c.nivelEscolar AS 'NivelEscolar',
+                    c.domicilio AS 'Domicilio',
+                    p.relacion AS 'Parentesco',
+                    t.obraSocial AS 'Obrasocial',
+                    CONCAT(t.apellido, ' ', t.nombre) AS 'TutorCompleto',
+                    t.dniTutor AS 'DNI_Tutor',
+                    t.telefono AS 'ContactoTutor'
+                FROM Concurrente c
+                LEFT JOIN Parentesco p ON c.idConcurrente = p.idConcurrente
+                LEFT JOIN Tutor t ON p.idTutor = t.idTutor
+                WHERE c.dniConcurrente = @dni";
                     conexion.Open();
 
                     using (MySqlCommand comando = new MySqlCommand(cadena, conexion))
@@ -163,9 +174,13 @@ namespace ConsultorioPsicopedagogico.CDatos
                                 concurrenteSeleccionado.AñoEscolar_D = Convert.ToInt32(registro["AñoEscolar"]);
                                 concurrenteSeleccionado.NivelEscolar_D = registro["NivelEscolar"].ToString();
                                 concurrenteSeleccionado.Domicilio_D = registro["Domicilio"].ToString();
-                                concurrenteSeleccionado.Obrasocial_D = registro["Obrasocial"].ToString();
-                                concurrenteSeleccionado.DniTutor_D = registro["DNI_Tutor"].ToString();
-                                concurrenteSeleccionado.contactoTutor_D = registro["ContactoTutor"].ToString();
+
+                                if (registro["DNI_Tutor"] != DBNull.Value)
+                                    concurrenteSeleccionado.DniTutor_D = registro["DNI_Tutor"].ToString();
+                                if (registro["Parentesco"] != DBNull.Value)
+                                    concurrenteSeleccionado.Parentezco_D = registro["Parentesco"].ToString();
+                                if (registro["ContactoTutor"] != DBNull.Value)
+                                    concurrenteSeleccionado.contactoTutor_D = registro["ContactoTutor"].ToString();
                             }
                         }
                     }
@@ -179,7 +194,6 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
         }
 
-        // Método para modificar los datos de un concurrente existente
         public void ModificarDatos(Concurrentes_CD concurrente)
         {
             try
@@ -188,22 +202,25 @@ namespace ConsultorioPsicopedagogico.CDatos
                 {
                     conexion.Open();
 
-                    string query = @"UPDATE Concurrentes SET 
-                            Apellido = @Apellido,
-                            Nombre = @Nombre,
-                            FechaNac = @FechaNac,
-                            Diagnostico = @Diagnostico,
-                            Escuela = @Escuela,
-                            AñoEscolar = @AñoEscolar,
-                            NivelEscolar = @NivelEscolar,
-                            Domicilio = @Domicilio,
-                            Obrasocial = @Obrasocial
-                            DNI_Tutor = @DniTutor
-                         WHERE DNI_C = @Dni";
+                    string query = @"UPDATE Concurrente SET 
+                            dniConcurrente = @Dni,
+                            apellido = @Apellido,
+                            nombre = @Nombre,
+                            fechaNacimiento = @FechaNac,
+                            diagnostico = @Diagnostico,
+                            escuela = @Escuela,
+                            anioEscolar = @AñoEscolar,
+                            nivelEscolar = @NivelEscolar,
+                            domicilio = @Domicilio
+                         WHERE dniConcurrente = @OriginalDni";
+
+                    string queryParentescoUpdate = @"UPDATE Parentesco p JOIN Concurrente c ON p.idConcurrente = c.idConcurrente SET p.idTutor = (SELECT idTutor FROM Tutor WHERE dniTutor = @DniTutor), p.relacion = @Parentezco WHERE c.dniConcurrente = @Dni";
+                    string queryParentescoInsert = @"INSERT INTO Parentesco (idConcurrente, idTutor, relacion) SELECT c.idConcurrente, t.idTutor, @Parentezco FROM Concurrente c, Tutor t WHERE c.dniConcurrente = @Dni AND t.dniTutor = @DniTutor AND NOT EXISTS (SELECT 1 FROM Parentesco px JOIN Concurrente cx ON px.idConcurrente = cx.idConcurrente WHERE cx.dniConcurrente = @Dni)";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
                         comando.Parameters.AddWithValue("@Dni", concurrente.Dni_D);
+                        comando.Parameters.AddWithValue("@OriginalDni", concurrente.OriginalDni_D != 0 ? concurrente.OriginalDni_D : concurrente.Dni_D);
                         comando.Parameters.AddWithValue("@Apellido", concurrente.Apellido_D);
                         comando.Parameters.AddWithValue("@Nombre", concurrente.Nombre_D);
                         comando.Parameters.AddWithValue("@FechaNac", concurrente.FechaNac_D);
@@ -212,23 +229,36 @@ namespace ConsultorioPsicopedagogico.CDatos
                         comando.Parameters.AddWithValue("@AñoEscolar", concurrente.AñoEscolar_D);
                         comando.Parameters.AddWithValue("@NivelEscolar", concurrente.NivelEscolar_D);
                         comando.Parameters.AddWithValue("@Domicilio", concurrente.Domicilio_D);
-                        comando.Parameters.AddWithValue("@Obrasocial", concurrente.Obrasocial_D);
-                        comando.Parameters.AddWithValue("@DniTutor", concurrente.DniTutor_D);
 
                         comando.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Registro modificado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (!string.IsNullOrEmpty(concurrente.DniTutor_D))
+                    {
+                        using (MySqlCommand comando = new MySqlCommand(queryParentescoUpdate, conexion))
+                        {
+                            comando.Parameters.AddWithValue("@Dni", concurrente.Dni_D);
+                            comando.Parameters.AddWithValue("@DniTutor", concurrente.DniTutor_D);
+                            comando.Parameters.AddWithValue("@Parentezco", concurrente.Parentezco_D);
+                            comando.ExecuteNonQuery();
+                        }
+                        
+                        using (MySqlCommand comando = new MySqlCommand(queryParentescoInsert, conexion))
+                        {
+                            comando.Parameters.AddWithValue("@Dni", concurrente.Dni_D);
+                            comando.Parameters.AddWithValue("@DniTutor", concurrente.DniTutor_D);
+                            comando.Parameters.AddWithValue("@Parentezco", concurrente.Parentezco_D);
+                            comando.ExecuteNonQuery();
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Hubo un error al modificar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        // Método para eliminar un concurrente por DNI
         public void EliminarNuevoConcurrente(Concurrentes_CD concurrente)
         {
             try
@@ -237,7 +267,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                 conexion.Open();
 
                 int dni = concurrente.Dni_D;
-                string cadena = $"UPDATE Concurrentes SET Activo = 0 WHERE DNI_C = {dni}";
+                string cadena = $"UPDATE Concurrente SET activo = FALSE WHERE dniConcurrente = {dni}";
                 MySqlCommand comando = new MySqlCommand(cadena, conexion);
                 comando.ExecuteNonQuery();
                 conexion.Close();
@@ -250,6 +280,62 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
         }
 
+        public void ReactivarNuevoConcurrente(Concurrentes_CD concurrente)
+        {
+            try
+            {
+                MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString);
+                conexion.Open();
+
+                int dni = concurrente.Dni_D;
+                string cadena = $"UPDATE Concurrente SET activo = TRUE WHERE dniConcurrente = {dni}";
+                MySqlCommand comando = new MySqlCommand(cadena, conexion);
+                comando.ExecuteNonQuery();
+                conexion.Close();
+
+                MessageBox.Show("Concurrente reactivado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error en el intento de conexión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public DataTable TablaBajaConcurrente()
+        {
+            try
+            {
+                MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString);
+                conexion.Open();
+
+                string cadena = @"
+                SELECT 
+                    c.dniConcurrente AS 'DNI_C',
+                    CONCAT(c.apellido, ' ', c.nombre) AS 'ApellidoNombre',
+                    c.fechaNacimiento AS 'FechaNac',
+                    p.relacion AS 'Parentesco',
+                    CONCAT(t.apellido,' ', t.nombre) AS 'Tutor', 
+                    t.dniTutor AS 'DNI_Tutor', 
+                    t.telefono AS 'ContactoTutor',  
+                    t.obraSocial AS 'ObraSocial'
+                FROM Concurrente c
+                LEFT JOIN Parentesco p ON c.idConcurrente = p.idConcurrente
+                LEFT JOIN Tutor t ON p.idTutor = t.idTutor WHERE c.activo = FALSE";
+                MySqlCommand comando = new MySqlCommand(cadena, conexion);
+                MySqlDataReader leerFilas = comando.ExecuteReader();
+                DataTable tablaSQL = new DataTable();
+                tablaSQL.Load(leerFilas);
+                conexion.Close();
+
+                return tablaSQL;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error en el intento de conexión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public DataTable BusquedaBaja(int dni)
         {
             try
@@ -257,18 +343,21 @@ namespace ConsultorioPsicopedagogico.CDatos
                 MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString);
                 conexion.Open();
 
-                string cadena = $@"
+                string cadena = @"
                 SELECT 
-                    c.DNI_C AS 'DNI_C',
-                    CONCAT(c.Apellido, ' ', c.Nombre) AS 'ApellidoNombre',
-                    c.FechaNac AS 'FechaNac',                   
-                    CONCAT(t.Apellido,' ', t.Nombre) AS 'Tutor', 
-                    t.DNI_Tutor AS 'DNI_Tutor', 
-                    t.Telefono AS 'ContactoTutor',  
-                    c.Obrasocial AS 'ObraSocial'
-                FROM Concurrentes c
-                LEFT JOIN tutor t ON c.DNI_Tutor = t.DNI_Tutor WHERE c.DNI_C = {dni} AND c.Activo = 1";
+                    c.dniConcurrente AS 'DNI_C',
+                    CONCAT(c.apellido, ' ', c.nombre) AS 'ApellidoNombre',
+                    c.fechaNacimiento AS 'FechaNac',
+                    p.relacion AS 'Parentesco',
+                    CONCAT(t.apellido,' ', t.nombre) AS 'Tutor', 
+                    t.dniTutor AS 'DNI_Tutor', 
+                    t.telefono AS 'ContactoTutor',  
+                    t.obraSocial AS 'ObraSocial'
+                FROM Concurrente c
+                LEFT JOIN Parentesco p ON c.idConcurrente = p.idConcurrente
+                LEFT JOIN Tutor t ON p.idTutor = t.idTutor WHERE c.dniConcurrente = @dni AND c.activo = FALSE";
                 MySqlCommand comando = new MySqlCommand(cadena, conexion);
+                comando.Parameters.AddWithValue("@dni", dni);
                 MySqlDataReader leerFilas = comando.ExecuteReader();
                 DataTable tablaSQL = new DataTable();
                 tablaSQL.Load(leerFilas);
@@ -283,31 +372,33 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
         }
 
-        // Método que retorna una DataTable con la búsqueda de concurrente por DNI
-        public DataTable BusquedaNuevoConcurrente(int dni)
+        public DataTable BusquedaNuevoConcurrente(string dni)
         {
             try
             {
                 MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString);
                 conexion.Open();
 
-                string cadena = $@"
+                string cadena = @"
                 SELECT 
-                    c.DNI_C AS 'DNI_C',
-                    CONCAT(c.Apellido, ' ', c.Nombre) AS 'ApellidoNombre',
-                    c.FechaNac AS 'FechaNac',
-                    c.Diagnostico AS 'Diagnostico',
-                    c.Escuela AS 'Escuela',
-                    c.AñoEscolar AS 'AnioEscolar',
-                    c.NivelEscolar AS 'NivelEscolar',
-                    c.Domicilio AS 'Domicilio',
-                    CONCAT(t.Apellido,' ', t.Nombre) AS 'Tutor', -- <--- Aquí traes el nombre del tutor
-                    t.DNI_Tutor AS 'DNI_Tutor', -- <--- Aquí traes el DNI del tutor
-                    t.Telefono AS 'ContactoTutor',   -- <--- Aquí traes el contacto del tutor
-                    c.Obrasocial AS 'ObraSocial'
-                FROM Concurrentes c
-                LEFT JOIN tutor t ON c.DNI_Tutor = t.DNI_Tutor WHERE c.DNI_C = {dni}";
+                    c.dniConcurrente AS 'DNI_C',
+                    CONCAT(c.apellido, ' ', c.nombre) AS 'ApellidoNombre',
+                    c.fechaNacimiento AS 'FechaNac',
+                    c.diagnostico AS 'Diagnostico',
+                    c.escuela AS 'Escuela',
+                    c.anioEscolar AS 'AnioEscolar',
+                    c.nivelEscolar AS 'NivelEscolar',
+                    c.domicilio AS 'Domicilio',
+                    p.relacion AS 'Parentesco',
+                    CONCAT(t.apellido,' ', t.nombre) AS 'Tutor',
+                    t.dniTutor AS 'DNI_Tutor',
+                    t.telefono AS 'ContactoTutor',
+                    t.obraSocial AS 'ObraSocial'
+                FROM Concurrente c
+                LEFT JOIN Parentesco p ON c.idConcurrente = p.idConcurrente
+                LEFT JOIN Tutor t ON p.idTutor = t.idTutor WHERE (CAST(c.dniConcurrente AS CHAR) LIKE @DniBusqueda OR CAST(t.dniTutor AS CHAR) LIKE @DniBusqueda) AND c.activo = TRUE";
                 MySqlCommand comando = new MySqlCommand(cadena, conexion);
+                comando.Parameters.AddWithValue("@DniBusqueda", dni + "%");
                 MySqlDataReader leerFilas = comando.ExecuteReader();
                 DataTable tablaSQL = new DataTable();
                 tablaSQL.Load(leerFilas);
@@ -321,64 +412,5 @@ namespace ConsultorioPsicopedagogico.CDatos
                 return null;
             }
         }
-
-        // Método que retorna una DataTable con la búsqueda de concurrentes por DNI, Apellido, Nombre o Escuela
-        // como se usa: BusquedaNuevoConcurrente(12345678);BusquedaNuevoConcurrente("Gómez")
-
-        //public DataTable BusquedaNuevoConcurrente(int? dni = null, string apellido = null, string nombre = null, string escuela = null)
-        //{
-        //    try
-        //    {
-        //        using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
-        //        {
-        //            conexion.Open();
-
-        //            // Base de la consulta
-        //            string consulta = "SELECT * FROM Concurrentes WHERE 1=1";
-
-        //            // Lista de parámetros
-        //            List<MySqlParameter> parametros = new List<MySqlParameter>();
-
-        //            if (dni.HasValue)
-        //            {
-        //                consulta += " AND DNI_C = @dni";
-        //                parametros.Add(new MySqlParameter("@dni", dni.Value));
-        //            }
-        //            if (!string.IsNullOrEmpty(apellido))
-        //            {
-        //                consulta += " AND Apellido LIKE @apellido";
-        //                parametros.Add(new MySqlParameter("@apellido", $"%{apellido}%"));
-        //            }
-        //            if (!string.IsNullOrEmpty(nombre))
-        //            {
-        //                consulta += " AND Nombre LIKE @nombre";
-        //                parametros.Add(new MySqlParameter("@nombre", $"%{nombre}%"));
-        //            }
-        //            if (!string.IsNullOrEmpty(escuela))
-        //            {
-        //                consulta += " AND Escuela LIKE @escuela";
-        //                parametros.Add(new MySqlParameter("@escuela", $"%{escuela}%"));
-        //            }
-
-        //            MySqlCommand comando = new MySqlCommand(consulta, conexion);
-        //            comando.Parameters.AddRange(parametros.ToArray());
-
-        //            MySqlDataReader leerFilas = comando.ExecuteReader();
-        //            DataTable tablaSQL = new DataTable();
-        //            tablaSQL.Load(leerFilas);
-
-        //            return tablaSQL;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Hubo un error en el intento de conexión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return null;
-        //    }
-        //}
-
-        
-        
-
     }
 }

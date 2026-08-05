@@ -8,7 +8,8 @@ USE ConsultorioPsicopedagogico;
 
 -- 1. Tabla Concurrente (Tabla principal)
 CREATE TABLE Concurrente (
-    dniConcurrente VARCHAR(20) PRIMARY KEY,
+    idConcurrente INT AUTO_INCREMENT PRIMARY KEY,
+    dniConcurrente VARCHAR(20) UNIQUE NOT NULL,
     apellido VARCHAR(100) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     fechaNacimiento DATE,
@@ -17,56 +18,73 @@ CREATE TABLE Concurrente (
     anioEscolar VARCHAR(50),
     nivelEscolar VARCHAR(50),
     domicilio VARCHAR(200),
-    activo BOOLEAN DEFAULT TRUE 
+    activo BOOLEAN DEFAULT TRUE -- <-- CAMPO PARA BAJA LÓGICA
 );
 
 -- 2. Tabla Tutor (Tabla principal)
 CREATE TABLE Tutor (
-    dniTutor VARCHAR(20) PRIMARY KEY,
+    idTutor INT AUTO_INCREMENT PRIMARY KEY,
+    dniTutor VARCHAR(20) UNIQUE NOT NULL,
     apellido VARCHAR(100) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
     telefono VARCHAR(50),
     email VARCHAR(100),
     obraSocial VARCHAR(100),
-    activo BOOLEAN DEFAULT TRUE 
+    activo BOOLEAN DEFAULT TRUE -- <-- CAMPO PARA BAJA LÓGICA
 );
 
 -- 3. Tabla Área (Tabla principal)
 CREATE TABLE Area (
-    idArea INT PRIMARY KEY,
+    idArea INT AUTO_INCREMENT PRIMARY KEY,
     nombreArea VARCHAR(100) NOT NULL,
-    activo BOOLEAN DEFAULT TRUE
+    activo BOOLEAN DEFAULT TRUE -- <-- CAMPO PARA BAJA LÓGICA
 );
 
 -- 4. Tabla Parentesco (Relaciona Concurrente y Tutor)
 CREATE TABLE Parentesco (
-    dniConcurrente VARCHAR(20),
-    dniTutor VARCHAR(20),
+    idConcurrente INT,
+    idTutor INT,
     relacion VARCHAR(50),
-    PRIMARY KEY (dniConcurrente, dniTutor),
-    FOREIGN KEY (dniConcurrente) REFERENCES Concurrente(dniConcurrente) 
+    PRIMARY KEY (idConcurrente, idTutor),
+    FOREIGN KEY (idConcurrente) REFERENCES Concurrente(idConcurrente) 
         ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (dniTutor) REFERENCES Tutor(dniTutor) 
+    FOREIGN KEY (idTutor) REFERENCES Tutor(idTutor) 
         ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- 5. Tabla Turnos (Depende de Concurrente)
+-- 5. Tabla Turnos (Depende de Concurrente y Usuario)
 CREATE TABLE Turnos (
-    idTurno INT PRIMARY KEY,
-    dniConcurrente VARCHAR(20),
-    fecha DATE,
-    hora TIME,
+    idTurno INT AUTO_INCREMENT PRIMARY KEY,
+    idConcurrente INT NOT NULL,  -- Relación con el nuevo ID del paciente
+    nombrePaciente VARCHAR(150) NOT NULL, 
+    dniUsuario INT NOT NULL,     -- Relación con el Especialista (Usuario)
+    fecha DATE NOT NULL,
+    hora TIME NOT NULL,
+    estado VARCHAR(20) DEFAULT 'Confirmado',
     activo BOOLEAN DEFAULT TRUE, 
-    FOREIGN KEY (dniConcurrente) REFERENCES Concurrente(dniConcurrente) 
-        ON DELETE CASCADE ON UPDATE CASCADE
+    
+    CONSTRAINT FK_Turnos_Concurrente
+        FOREIGN KEY (idConcurrente) 
+        REFERENCES Concurrente(idConcurrente)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+        
+    CONSTRAINT FK_Turnos_Usuario 
+        FOREIGN KEY (dniUsuario) 
+        REFERENCES Usuario(DNI) 
+        ON DELETE CASCADE ON UPDATE CASCADE,
+
+    -- Evita que un especialista tenga dos turnos a la misma hora en la misma fecha
+    CONSTRAINT UQ_Turno_EspecialistaFechaHora UNIQUE (dniUsuario, fecha, hora),
+    -- Evita que un paciente tenga dos turnos a la misma hora en la misma fecha (Actualizado al nuevo ID)
+    CONSTRAINT UQ_Turno_PacienteFechaHora UNIQUE (idConcurrente, fecha, hora)
 );
 
 -- 6. Tabla Informe (Depende de Concurrente)
 CREATE TABLE Informe (
-    idInforme INT PRIMARY KEY,
-    dniConcurrente VARCHAR(20),
+    idInforme INT AUTO_INCREMENT PRIMARY KEY,
+    idConcurrente INT NOT NULL,
     fechaInforme DATE,
-    FOREIGN KEY (dniConcurrente) REFERENCES Concurrente(dniConcurrente) 
+    FOREIGN KEY (idConcurrente) REFERENCES Concurrente(idConcurrente) 
         ON DELETE CASCADE ON UPDATE CASCADE
 );
 

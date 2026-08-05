@@ -40,7 +40,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -55,7 +54,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.txt_nivel = new System.Windows.Forms.TextBox();
             this.txt_tutor = new System.Windows.Forms.TextBox();
             this.txt_contTutor = new System.Windows.Forms.TextBox();
-            this.txt_obs = new System.Windows.Forms.TextBox();
+            this.cmb_Parentesco = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.btn_volver = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -192,15 +192,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.label11.TabIndex = 6;
             this.label11.Text = "Contacto del Tutor";
             // 
-            // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(20, 182);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(86, 20);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "Obra Social";
             // 
             // label13
             // 
@@ -348,16 +340,35 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.txt_contTutor.Size = new System.Drawing.Size(332, 29);
             this.txt_contTutor.TabIndex = 7;
             // 
-            // txt_obs
+            // label12
             // 
-            this.txt_obs.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_obs.Location = new System.Drawing.Point(162, 178);
-            this.txt_obs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_obs.Name = "txt_obs";
-            this.txt_obs.ReadOnly = true;
-            this.txt_obs.Size = new System.Drawing.Size(332, 29);
-            this.txt_obs.TabIndex = 9;
-            this.txt_obs.Enter += new System.EventHandler(this.DisabledField_Enter);
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(20, 181);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(133, 20);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Parentesco:";
+            // 
+            // cmb_Parentesco
+            // 
+            this.cmb_Parentesco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_Parentesco.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmb_Parentesco.FormattingEnabled = true;
+            this.cmb_Parentesco.Items.AddRange(new object[] {
+            "Madre",
+            "Padre",
+            "Hermano",
+            "Tio/a",
+            "Abuelo/a",
+            "Progenitor afín",
+            "Acompañante Terapéutico"});
+            this.cmb_Parentesco.Location = new System.Drawing.Point(162, 178);
+            this.cmb_Parentesco.Name = "cmb_Parentesco";
+            this.cmb_Parentesco.Size = new System.Drawing.Size(332, 29);
+            this.cmb_Parentesco.TabIndex = 9;
+            // 
+            // 
             // 
             // btn_volver
             // 
@@ -562,7 +573,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelTutor.Controls.Add(this.label11);
             this.panelTutor.Controls.Add(this.txt_contTutor);
             this.panelTutor.Controls.Add(this.label12);
-            this.panelTutor.Controls.Add(this.txt_obs);
+            this.panelTutor.Controls.Add(this.cmb_Parentesco);
             this.panelTutor.Location = new System.Drawing.Point(627, 117);
             this.panelTutor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelTutor.Name = "panelTutor";
@@ -583,6 +594,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_NuevoTutor.TabIndex = 4;
             this.btn_NuevoTutor.Text = "Nuevo Tutor";
             this.btn_NuevoTutor.UseVisualStyleBackColor = false;
+            this.btn_NuevoTutor.Click += new System.EventHandler(this.btn_NuevoTutor_Click);
             // 
             // NuevoConcurrente
             // 
@@ -631,7 +643,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
@@ -646,7 +657,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.TextBox txt_nivel;
         private System.Windows.Forms.TextBox txt_tutor;
         private System.Windows.Forms.TextBox txt_contTutor;
-        private System.Windows.Forms.TextBox txt_obs;
+        public System.Windows.Forms.ComboBox cmb_Parentesco;
+        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btn_volver;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;

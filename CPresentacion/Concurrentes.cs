@@ -42,13 +42,15 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private void btn_agregar_Click(object sender, EventArgs e)
         {
             CPresentacion.NuevoConcurrente nuevoConcurrente = new CPresentacion.NuevoConcurrente();
-            nuevoConcurrente.Show();
             this.Hide();
+            nuevoConcurrente.ShowDialog();
+            this.Show();
+            CargarConcurrentes();
         }
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txt_DniBusqueda.Text) || !int.TryParse(txt_DniBusqueda.Text, out int dni))
+            if (string.IsNullOrWhiteSpace(txt_DniBusqueda.Text))
             {
                 MessageBox.Show("Por favor, ingrese un DNI válido para buscar.");
                 return;
@@ -57,7 +59,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             try
             {
                 var logica = new ConcurrentesCL();
-                var tabla = logica.BuscarConcurrentePorDni(dni);
+                var tabla = logica.BuscarConcurrentePorDni(txt_DniBusqueda.Text.Trim());
                 if (tabla == null || tabla.Rows.Count == 0)
                 {
                     MessageBox.Show("No se encontraron resultados.");
@@ -76,10 +78,46 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             if (string.IsNullOrWhiteSpace(txt_DniBusqueda.Text))
             {
                 CargarConcurrentes();
+                return;
+            }
+
+            try
+            {
+                var logica = new ConcurrentesCL();
+                var tabla = logica.BuscarConcurrentePorDni(txt_DniBusqueda.Text.Trim());
+                if (tabla != null)
+                {
+                    dtg_concurrentes.DataSource = tabla;
+                }
+            }
+            catch (Exception)
+            {
+                // Silenciar errores durante la búsqueda en tiempo real
             }
         }
 
         private void btn_eliminar_Click(object sender, EventArgs e)
+        {
+            if (dtg_concurrentes.SelectedRows.Count > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("¿Está seguro de que desea eliminar este concurrente?", "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    int dni = Convert.ToInt32(dtg_concurrentes.SelectedRows[0].Cells[0].Value);
+                    var concurrente = new CLogica.ConcurrentesCL();
+                    concurrente.Dni_C = dni;
+                    concurrente.EliminarPorDni(concurrente);
+                    MessageBox.Show("Concurrente eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarConcurrentes();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un concurrente de la lista para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btn_inactivos_Click(object sender, EventArgs e)
         {
             var baja = new BajaConcurrente();
             baja.ShowDialog();
@@ -88,8 +126,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private void btn_volver_Click(object sender, EventArgs e)
         {
-            CPresentacion.Menu menu = new CPresentacion.Menu();
-            menu.Show();
             this.Close();
         }
 
@@ -97,11 +133,12 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         {
             if (dtg_concurrentes.SelectedRows.Count > 0)
             {
-                // Si hay una fila seleccionada, podríamos cargar los datos en NuevoConcurrente.
-                // Como NuevoConcurrente no recibe parámetros y se autogestiona, simplemente lo abrimos.
-                CPresentacion.NuevoConcurrente editForm = new CPresentacion.NuevoConcurrente();
-                editForm.Show();
+                int dni = Convert.ToInt32(dtg_concurrentes.SelectedRows[0].Cells[0].Value);
+                CPresentacion.NuevoConcurrente editForm = new CPresentacion.NuevoConcurrente(dni);
                 this.Hide();
+                editForm.ShowDialog();
+                this.Show();
+                CargarConcurrentes();
             }
             else
             {
