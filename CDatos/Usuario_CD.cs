@@ -270,5 +270,31 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
             return exito;
         }
+
+        /// <summary>
+        /// Obtiene todos los especialistas (usuarios con su respectivo rol) de la base de datos.
+        /// </summary>
+        public DataTable ObtenerEspecialistas()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
+                {
+                    conexion.Open();
+                    string query = "SELECT DNI, NombreApellido, Rol FROM Usuario WHERE Rol = 'Medico/a' ORDER BY NombreApellido ASC";
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error al obtener los especialistas: " + ex.Message, 
+                                "Error de base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dt;
+        }
     }
 }

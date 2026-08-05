@@ -89,6 +89,15 @@ namespace ConsultorioPsicopedagogico.CLogica
             Usuario_CD datos = new Usuario_CD();
             return datos.ActualizarContrasena(usuario, nuevaContrasena);
         }
+
+        /// <summary>
+        /// Obtiene todos los especialistas desde la capa de datos.
+        /// </summary>
+        public DataTable ObtenerEspecialistas()
+        {
+            Usuario_CD datos = new Usuario_CD();
+            return datos.ObtenerEspecialistas();
+        }
     }
 
     public class UsuarioValidation : AbstractValidator<UsuarioCL>
