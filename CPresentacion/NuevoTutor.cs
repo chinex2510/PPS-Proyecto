@@ -76,9 +76,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     DniTutor_C = int.Parse(txt_DniTutor.Text),
                     ApellidoTutor_C = txt_ApellidoTutor.Text,
                     NombreTutor_C = txt_NombreTutor.Text,
-                    ParentezcoTutor_C = txt_Parentesco.Text,
                     TelefonoTutor_C = txt_Telefono.Text,
-                    EmailTutor_C = txt_Email.Text
+                    EmailTutor_C = txt_Email.Text,
+                    Obrasocial_C = txt_ObraSocial.Text
                 };
 
                 tutor.GuardarOModificarTutor(tutor, true);
@@ -112,9 +112,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     DniTutor_C = int.Parse(txt_DniTutor.Text),
                     ApellidoTutor_C = txt_ApellidoTutor.Text,
                     NombreTutor_C = txt_NombreTutor.Text,
-                    ParentezcoTutor_C = txt_Parentesco.Text,
                     TelefonoTutor_C = txt_Telefono.Text,
-                    EmailTutor_C = txt_Email.Text
+                    EmailTutor_C = txt_Email.Text,
+                    Obrasocial_C = txt_ObraSocial.Text
                 };
 
                 tutor.GuardarOModificarTutor(tutor, false);
@@ -153,6 +153,55 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             }
         }
 
+        private void btn_BuscarTutor_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_DniTutor.Text) || txt_DniTutor.Text.Length < 7)
+            {
+                MessageBox.Show("Por favor, ingrese un DNI válido para buscar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                int dni = int.Parse(txt_DniTutor.Text);
+                TutorCL tutorLogic = new TutorCL();
+                TutorCL tutor = tutorLogic.BuscarTutor(dni);
+
+                if (tutor != null)
+                {
+                    txt_ApellidoTutor.Text = tutor.ApellidoTutor_C;
+                    txt_NombreTutor.Text = tutor.NombreTutor_C;
+                    txt_Telefono.Text = tutor.TelefonoTutor_C;
+                    txt_Email.Text = tutor.EmailTutor_C;
+                    txt_ObraSocial.Text = tutor.Obrasocial_C;
+                    MessageBox.Show("Tutor encontrado y datos cargados.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró ningún tutor con ese DNI.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txt_ApellidoTutor.Text = "";
+                    txt_NombreTutor.Text = "";
+                    txt_Telefono.Text = "";
+                    txt_Email.Text = "";
+                    txt_ObraSocial.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar el tutor: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_Limpiar_Click(object sender, EventArgs e)
+        {
+            txt_DniTutor.Text = "";
+            txt_ApellidoTutor.Text = "";
+            txt_NombreTutor.Text = "";
+            txt_Telefono.Text = "";
+            txt_Email.Text = "";
+            txt_ObraSocial.Text = "";
+        }
+
         public class TutorValidation : AbstractValidator<NuevoTutor>
         {
             public TutorValidation()
@@ -169,8 +218,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     .NotEmpty().WithMessage("El nombre es obligatorio.")
                     .Matches(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$").WithMessage("El nombre solo debe contener letras.");
 
-                RuleFor(x => x.txt_Parentesco.Text)
-                    .NotEmpty().WithMessage("El parentesco es obligatorio.");
 
                 RuleFor(x => x.txt_Telefono.Text)
                     .NotEmpty().WithMessage("El teléfono es obligatorio.")
@@ -179,6 +226,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 RuleFor(x => x.txt_Email.Text)
                     .NotEmpty().WithMessage("El email es obligatorio.")
                     .EmailAddress().WithMessage("Debe ingresar un formato de email válido.");
+
+                RuleFor(x => x.txt_ObraSocial.Text)
+                    .NotEmpty().WithMessage("Ingresar no si no cuenta con obra social.");
             }
         }
     }

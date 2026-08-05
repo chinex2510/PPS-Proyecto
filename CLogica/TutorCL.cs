@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,16 +15,16 @@ namespace ConsultorioPsicopedagogico.CLogica
         private int dniTutor_C;
         private string apellidoTutor_C;
         private string nombreTutor_C;
-        private string parentezcoTutor_C;
         private string telefonoTutor_C;
         private string emailTutor_C;
+        private string obrasocial_C;
 
         public int DniTutor_C { get => dniTutor_C; set => dniTutor_C = value; }
         public string ApellidoTutor_C { get => apellidoTutor_C; set => apellidoTutor_C = value; }
         public string NombreTutor_C { get => nombreTutor_C; set => nombreTutor_C = value; }
-        public string ParentezcoTutor_C { get => parentezcoTutor_C; set => parentezcoTutor_C = value; }
         public string TelefonoTutor_C { get => telefonoTutor_C; set => telefonoTutor_C = value; }
         public string EmailTutor_C { get => emailTutor_C; set => emailTutor_C = value; }
+        public string Obrasocial_C { get => obrasocial_C; set => obrasocial_C = value; }
 
         private Tutor_CD PasarDatos(TutorCL t)
         {
@@ -33,9 +33,9 @@ namespace ConsultorioPsicopedagogico.CLogica
                 DniTutor_D = t.DniTutor_C,
                 ApellidoTutor_D = t.ApellidoTutor_C,
                 NombreTutor_D = t.NombreTutor_C,
-                ParentezcoTutor_D = t.ParentezcoTutor_C,
                 TelefonoTutor_D = t.TelefonoTutor_C,
-                EmailTutor_D = t.EmailTutor_C
+                EmailTutor_D = t.EmailTutor_C,
+                Obrasocial_D = t.Obrasocial_C
             };
         }
 
@@ -47,9 +47,9 @@ namespace ConsultorioPsicopedagogico.CLogica
                 DniTutor_C = t.DniTutor_D,
                 ApellidoTutor_C = t.ApellidoTutor_D,
                 NombreTutor_C = t.NombreTutor_D,
-                ParentezcoTutor_C = t.ParentezcoTutor_D,
                 TelefonoTutor_C = t.TelefonoTutor_D,
-                EmailTutor_C = t.EmailTutor_D
+                EmailTutor_C = t.EmailTutor_D,
+                Obrasocial_C = t.Obrasocial_D
             };
         }
 
@@ -76,6 +76,18 @@ namespace ConsultorioPsicopedagogico.CLogica
         }
 
         // Mostrar todos los tutores
+        public DataTable TablaBajaTutores()
+        {
+            Tutor_CD datos = new Tutor_CD();
+            return datos.TablaBajaTutores();
+        }
+
+        public void ReactivarTutor(TutorCL tutor)
+        {
+            Tutor_CD datos = new Tutor_CD();
+            datos.ReactivarTutor(PasarDatos(tutor));
+        }
+
         public DataTable MostrarTutores()
         {
             Tutor_CD datos = new Tutor_CD();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +14,7 @@ namespace ConsultorioPsicopedagogico.CLogica
     {
 
         private int dni_C;
+        private int originalDni_C;
         private string apellido_C;
         private string nombre_C;
         private string fechaNac_C;
@@ -22,10 +23,11 @@ namespace ConsultorioPsicopedagogico.CLogica
         private int añoEscolar_C;
         private string nivelEscolar_C;
         private string domicilio_C;
-        private string obrasocial_C;
+        private string parentezco_C;
         private string dniTutor_C;
 
         public int Dni_C { get => dni_C; set => dni_C = value; }
+        public int OriginalDni_C { get => originalDni_C; set => originalDni_C = value; }
         public string Apellido_C { get => apellido_C; set => apellido_C = value; }
         public string Nombre_C { get => nombre_C; set => nombre_C = value; }
         public string FechaNac_C { get => fechaNac_C; set => fechaNac_C = value; }
@@ -34,7 +36,7 @@ namespace ConsultorioPsicopedagogico.CLogica
         public int AñoEscolar_C { get => añoEscolar_C; set => añoEscolar_C = value; }
         public string NivelEscolar_C { get => nivelEscolar_C; set => nivelEscolar_C = value; }
         public string Domicilio_C { get => domicilio_C; set => domicilio_C = value; }
-        public string Obrasocial_C { get => obrasocial_C; set => obrasocial_C = value; }
+        public string Parentezco_C { get => parentezco_C; set => parentezco_C = value; }
         public string DniTutor_C { get => dniTutor_C; set => dniTutor_C = value; }
 
         private Concurrentes_CD PasarDatos(ConcurrentesCL c)
@@ -42,6 +44,7 @@ namespace ConsultorioPsicopedagogico.CLogica
             return new Concurrentes_CD
             {
                 Dni_D = c.Dni_C,
+                OriginalDni_D = c.OriginalDni_C,
                 Apellido_D = c.Apellido_C,
                 Nombre_D = c.Nombre_C,
                 FechaNac_D = c.FechaNac_C,
@@ -50,7 +53,7 @@ namespace ConsultorioPsicopedagogico.CLogica
                 AñoEscolar_D = c.AñoEscolar_C,
                 NivelEscolar_D = c.NivelEscolar_C,
                 Domicilio_D = c.Domicilio_C,
-                Obrasocial_D = c.Obrasocial_C,
+                Parentezco_D = c.Parentezco_C,
                 DniTutor_D = c.DniTutor_C
             };
         }
@@ -68,7 +71,7 @@ namespace ConsultorioPsicopedagogico.CLogica
                 AñoEscolar_C = c.AñoEscolar_D,
                 NivelEscolar_C = c.NivelEscolar_D,
                 Domicilio_C = c.Domicilio_D,
-                Obrasocial_C = c.Obrasocial_D,
+                Parentezco_C = c.Parentezco_D,
                 DniTutor_C = c.DniTutor_D
             };
         }
@@ -106,16 +109,29 @@ namespace ConsultorioPsicopedagogico.CLogica
             datos.EliminarNuevoConcurrente(PasarDatos(concurrente));
         }
 
+        public DataTable TablaBajaConcurrente()
+        {
+            Concurrentes_CD datos = new Concurrentes_CD();
+            return datos.TablaBajaConcurrente();
+        }
+
+        public void ReactivarPorDni(ConcurrentesCL concurrente)
+        {
+            Concurrentes_CD datos = new Concurrentes_CD();
+            datos.ReactivarNuevoConcurrente(PasarDatos(concurrente));
+        }
+
         public DataTable BusquedaBaja(int dni)
         {
             Concurrentes_CD datos = new Concurrentes_CD();
             return datos.BusquedaBaja(dni);
         }
 
-        public DataTable BuscarConcurrentePorDni(int dni)
+        public DataTable BuscarConcurrentePorDni(string dni)
         {
             Concurrentes_CD datos = new Concurrentes_CD();
             return datos.BusquedaNuevoConcurrente(dni);
         }
     }
 }
+

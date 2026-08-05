@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +19,7 @@ namespace ConsultorioPsicopedagogico.CDatos
         private string parentezcoTutor_D;
         private string telefonoTutor_D;
         private string emailTutor_D;
+        private string obrasocial_D;
 
         public int DniTutor_D { get => dniTutor_D; set => dniTutor_D = value; }
         public string ApellidoTutor_D { get => apellidoTutor_D; set => apellidoTutor_D = value; }
@@ -26,6 +27,7 @@ namespace ConsultorioPsicopedagogico.CDatos
         public string ParentezcoTutor_D { get => parentezcoTutor_D; set => parentezcoTutor_D = value; }
         public string TelefonoTutor_D { get => telefonoTutor_D; set => telefonoTutor_D = value; }
         public string EmailTutor_D { get => emailTutor_D; set => emailTutor_D = value; }
+        public string Obrasocial_D { get => obrasocial_D; set => obrasocial_D = value; }
 
         public void Guardar_Modificar_Tutor(Tutor_CD tutor, bool esNuevo)
         {
@@ -36,24 +38,24 @@ namespace ConsultorioPsicopedagogico.CDatos
                     conexion.Open();
 
                     string query = esNuevo
-                        ? @"INSERT INTO Tutores (DNI_Tutor, Apellido, Nombre, Parentezco, Telefono, Email)
-                   VALUES (@Dni, @Apellido, @Nombre, @Parentezco, @Telefono, @Email)"
-                        : @"UPDATE Tutores SET 
-                        Apellido = @Apellido,
-                        Nombre = @Nombre,
-                        Parentezco = @Parentezco,
-                        Telefono = @Telefono,
-                        Email = @Email
-                   WHERE DNI_Tutor = @Dni";
+                        ? @"INSERT INTO Tutor (dniTutor, apellido, nombre, telefono, email, obraSocial)
+                   VALUES (@Dni, @Apellido, @Nombre, @Telefono, @Email, @ObraSocial)"
+                        : @"UPDATE Tutor SET 
+                      apellido = @Apellido, 
+                      nombre = @Nombre, 
+                      telefono = @Telefono, 
+                      email = @Email,
+                      obraSocial = @ObraSocial
+                   WHERE dniTutor = @Dni";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
                         comando.Parameters.AddWithValue("@Dni", tutor.DniTutor_D);
                         comando.Parameters.AddWithValue("@Apellido", tutor.ApellidoTutor_D);
                         comando.Parameters.AddWithValue("@Nombre", tutor.NombreTutor_D);
-                        comando.Parameters.AddWithValue("@Parentezco", tutor.ParentezcoTutor_D);
                         comando.Parameters.AddWithValue("@Telefono", tutor.TelefonoTutor_D);
                         comando.Parameters.AddWithValue("@Email", tutor.EmailTutor_D);
+                        comando.Parameters.AddWithValue("@ObraSocial", tutor.Obrasocial_D);
 
                         comando.ExecuteNonQuery();
                     }
@@ -76,7 +78,13 @@ namespace ConsultorioPsicopedagogico.CDatos
                 {
                     conexion.Open();
 
-                    string query = "DELETE FROM Tutores WHERE DNI_Tutor = @Dni";
+                    string query = @"
+                        UPDATE Tutor SET activo = FALSE WHERE dniTutor = @Dni;
+                        UPDATE Concurrente c 
+                        JOIN Parentesco p ON c.idConcurrente = p.idConcurrente 
+                        JOIN Tutor t ON p.idTutor = t.idTutor 
+                        SET c.activo = FALSE 
+                        WHERE t.dniTutor = @Dni;";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
@@ -102,7 +110,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     conexion.Open();
-                    string query = "SELECT * FROM Tutores WHERE DNI_Tutor = @Dni";
+                    string query = "SELECT * FROM Tutor WHERE dniTutor = @Dni AND activo = TRUE";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
@@ -114,12 +122,13 @@ namespace ConsultorioPsicopedagogico.CDatos
                             {
                                 tutor = new Tutor_CD
                                 {
-                                    DniTutor_D = Convert.ToInt32(reader["DNI_Tutor"]),
-                                    ApellidoTutor_D = reader["Apellido"].ToString(),
-                                    NombreTutor_D = reader["Nombre"].ToString(),
-                                    ParentezcoTutor_D = reader["Parentezco"].ToString(),
-                                    TelefonoTutor_D = reader["Telefono"].ToString(),
-                                    EmailTutor_D = reader["Email"].ToString()
+                                    DniTutor_D = Convert.ToInt32(reader["dniTutor"]),
+                                    ApellidoTutor_D = reader["apellido"].ToString(),
+                                    NombreTutor_D = reader["nombre"].ToString(),
+                                    ParentezcoTutor_D = "", // ya no está en la tabla Tutor
+                                    TelefonoTutor_D = reader["telefono"].ToString(),
+                                    EmailTutor_D = reader["email"].ToString(),
+                                    Obrasocial_D = reader["obraSocial"].ToString()
                                 };
                             }
                         }
@@ -135,6 +144,49 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
         }
 
+        public DataTable TablaBajaTutores()
+        {
+            try
+            {
+                MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString);
+                conexion.Open();
+                string query = "SELECT * FROM Tutor WHERE activo = FALSE";
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader leerFilas = comando.ExecuteReader();
+                DataTable tablaSQL = new DataTable();
+                tablaSQL.Load(leerFilas);
+                conexion.Close();
+                return tablaSQL;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los tutores inactivos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public void ReactivarTutor(Tutor_CD tutor)
+        {
+            try
+            {
+                using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
+                {
+                    conexion.Open();
+                    string query = "UPDATE Tutor SET activo = TRUE WHERE dniTutor = @Dni";
+                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@Dni", tutor.DniTutor_D);
+                        comando.ExecuteNonQuery();
+                    }
+                    MessageBox.Show("Tutor reactivado exitosamente", "xito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al reactivar el tutor: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public DataTable TablaTutores()
         {
             try
@@ -143,7 +195,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                 {
                     conexion.Open();
 
-                    string query = "SELECT * FROM Tutores";
+                    string query = "SELECT * FROM Tutor WHERE activo = TRUE";
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     using (MySqlDataReader reader = comando.ExecuteReader())
                     {
