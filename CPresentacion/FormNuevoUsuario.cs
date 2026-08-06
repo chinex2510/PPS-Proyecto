@@ -60,7 +60,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private void CargarRoles()
         {
             cmbRol.Items.Clear();
-            cmbRol.Items.Add("Medico/a");
+            cmbRol.Items.Add("Especialista");
             cmbRol.Items.Add("Secretaria/o");
             cmbRol.SelectedIndex = 0;
         }
@@ -301,6 +301,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 // Registrar el usuario llamando a la lógica
                 if (usuario.Registrar(usuario))
                 {
+                    MessageBox.Show("Usuario registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // Regresar al Login
                     RegresarLogin();
                 }

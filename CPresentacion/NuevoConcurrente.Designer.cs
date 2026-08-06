@@ -1,4 +1,4 @@
-﻿namespace ConsultorioPsicopedagogico.CPresentacion
+namespace ConsultorioPsicopedagogico.CPresentacion
 {
     partial class NuevoConcurrente
     {
@@ -157,7 +157,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 15);
             this.label7.TabIndex = 4;
-            this.label7.Text = "AÃ±o Escolar";
+            this.label7.Text = "A\u00F1o Escolar";
             // 
             // label8
             // 
@@ -366,7 +366,7 @@
             "Abuelo/a",
             "Progenitor afín",
             "Acompañante Terapéutico"});
-            this.cmb_Parentesco.Location = new System.Drawing.Point(162, 178);
+            this.cmb_Parentesco.Location = new System.Drawing.Point(122, 145);
             this.cmb_Parentesco.Name = "cmb_Parentesco";
             this.cmb_Parentesco.Size = new System.Drawing.Size(250, 25);
             this.cmb_Parentesco.TabIndex = 9;

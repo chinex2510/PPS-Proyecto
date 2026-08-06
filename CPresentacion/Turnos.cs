@@ -24,8 +24,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private void Turnos_Load(object sender, EventArgs e)
         {
-            // Ejecutar la migración automática de la base de datos
-            ConsultorioPsicopedagogico.CDatos.Turnos_CD.VerificarYCrearEsquema();
+            
+            
 
             CargarEspecialistas();
 
@@ -125,12 +125,12 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     }
                     if (dtg_turnos.Columns.Contains("DNI_Concurrente"))
                     {
-                        dtg_turnos.Columns["DNI_Concurrente"].HeaderText = "DNI Paciente";
+                        dtg_turnos.Columns["DNI_Concurrente"].HeaderText = "DNI Concurrente";
                         dtg_turnos.Columns["DNI_Concurrente"].Width = 100;
                     }
                     if (dtg_turnos.Columns.Contains("Nombre_Concurrente"))
                     {
-                        dtg_turnos.Columns["Nombre_Concurrente"].HeaderText = "Nombre Paciente";
+                        dtg_turnos.Columns["Nombre_Concurrente"].HeaderText = "Nombre Concurrente";
                         dtg_turnos.Columns["Nombre_Concurrente"].Width = 140;
                     }
                     if (dtg_turnos.Columns.Contains("DNI_Especialista"))
@@ -152,9 +152,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                         dtg_turnos.Columns["HoraTurno"].HeaderText = "Hora";
                         dtg_turnos.Columns["HoraTurno"].Width = 80;
                     }
-                    if (dtg_turnos.Columns.Contains("nombrePaciente"))
+                    if (dtg_turnos.Columns.Contains("nombreConcurrente"))
                     {
-                        dtg_turnos.Columns["nombrePaciente"].Visible = false;
+                        dtg_turnos.Columns["nombreConcurrente"].Visible = false;
                     }
                     if (dtg_turnos.Columns.Contains("FechaRaw"))
                     {
@@ -187,9 +187,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txt_NombrePaciente.Text))
+            if (string.IsNullOrWhiteSpace(txt_NombreConcurrente.Text))
             {
-                MessageBox.Show("Ingrese el nombre completo del paciente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingrese el nombre completo del concurrente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -221,7 +221,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     DniUsuario_C = Convert.ToInt32(cbo_Especialista.SelectedValue),
                     FechaTurno_C = dtp_FechaTurno.Value.ToString("dd/MM/yyyy"),
                     HoraTurno_C = cbo_HoraTurno.SelectedItem.ToString(),
-                    NombrePacienteTurno_C = txt_NombrePaciente.Text.Trim()
+                    NombreConcurrenteTurno_C = txt_NombreConcurrente.Text.Trim()
                 };
 
                 turnoCL.GuardarOModificarTurno(nuevoTurno, true);
@@ -266,7 +266,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     DniUsuario_C = Convert.ToInt32(cbo_Especialista.SelectedValue),
                     FechaTurno_C = dtp_FechaTurno.Value.ToString("dd/MM/yyyy"),
                     HoraTurno_C = cbo_HoraTurno.SelectedItem.ToString(),
-                    NombrePacienteTurno_C = txt_NombrePaciente.Text.Trim()
+                    NombreConcurrenteTurno_C = txt_NombreConcurrente.Text.Trim()
                 };
 
                 turnoCL.GuardarOModificarTurno(modTurno, false);
@@ -319,9 +319,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             idTurnoSeleccionado = 0;
             txt_DniConcurrente.Clear();
             txt_DniConcurrente.Enabled = true;
-            txt_NombrePaciente.Clear();
-            txt_NombrePaciente.Enabled = true;
-            lbl_NombreConcurrente.Text = "Paciente no verificado";
+            txt_NombreConcurrente.Clear();
+            txt_NombreConcurrente.Enabled = true;
+            lbl_NombreConcurrente.Text = "Concurrente no verificado";
             lbl_NombreConcurrente.ForeColor = Color.FromArgb(120, 60, 160);
             
             // Restringir la fecha mínima a mañana
@@ -357,15 +357,15 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     txt_DniConcurrente.Text = row.Cells["DNI_Concurrente"].Value.ToString();
                     txt_DniConcurrente.Enabled = false; // Bloquear DNI al editar
 
-                    if (row.Cells["nombrePaciente"].Value != null && !string.IsNullOrWhiteSpace(row.Cells["nombrePaciente"].Value.ToString()))
+                    if (row.Cells["nombreConcurrente"].Value != null && !string.IsNullOrWhiteSpace(row.Cells["nombreConcurrente"].Value.ToString()))
                     {
-                        txt_NombrePaciente.Text = row.Cells["nombrePaciente"].Value.ToString();
+                        txt_NombreConcurrente.Text = row.Cells["nombreConcurrente"].Value.ToString();
                     }
                     else
                     {
-                        txt_NombrePaciente.Text = "";
+                        txt_NombreConcurrente.Text = "";
                     }
-                    txt_NombrePaciente.Enabled = true;
+                    txt_NombreConcurrente.Enabled = true;
 
                     if (row.Cells["DNI_Especialista"].Value != null)
                     {

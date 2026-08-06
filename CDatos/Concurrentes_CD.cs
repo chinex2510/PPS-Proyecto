@@ -82,12 +82,12 @@ namespace ConsultorioPsicopedagogico.CDatos
                         }
                     }
 
-                    MessageBox.Show("Se ha registrado exitosamente el nuevo concurrente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // El éxito se notificará en la capa de presentación
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error al intentar registrar al concurrente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Hubo un error al intentar registrar al concurrente: " + ex.Message, ex);
             }
         }
 
@@ -259,7 +259,7 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error al modificar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Hubo un error al modificar el registro: " + ex.Message, ex);
             }
         }
 
@@ -276,11 +276,11 @@ namespace ConsultorioPsicopedagogico.CDatos
                 comando.ExecuteNonQuery();
                 conexion.Close();
 
-                MessageBox.Show("Concurrente eliminado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // El éxito se notificará en la capa de presentación
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error en el intento de conexión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Hubo un error al eliminar el concurrente: " + ex.Message, ex);
             }
         }
 
@@ -297,11 +297,11 @@ namespace ConsultorioPsicopedagogico.CDatos
                 comando.ExecuteNonQuery();
                 conexion.Close();
 
-                MessageBox.Show("Concurrente reactivado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // El éxito se notificará en la capa de presentación
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error en el intento de conexión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Hubo un error al reactivar el concurrente: " + ex.Message, ex);
             }
         }
 

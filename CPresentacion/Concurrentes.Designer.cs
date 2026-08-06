@@ -111,7 +111,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // DNI
             // 
             this.DNI.DataPropertyName = "DNI_C";
-            this.DNI.HeaderText = "DNI Paciente";
+            this.DNI.HeaderText = "DNI Concurrente";
             this.DNI.MinimumWidth = 6;
             this.DNI.Name = "DNI";
             this.DNI.Width = 125;

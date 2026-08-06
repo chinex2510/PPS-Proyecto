@@ -60,13 +60,12 @@ namespace ConsultorioPsicopedagogico.CDatos
                         comando.ExecuteNonQuery();
                     }
 
-                    string mensaje = esNuevo ? "Tutor registrado exitosamente" : "Datos del tutor actualizados exitosamente";
-                    MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // El éxito se notificará en la capa de presentación
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar o modificar el tutor: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Error al guardar o modificar el tutor: " + ex.Message, ex);
             }
         }
 
@@ -92,12 +91,12 @@ namespace ConsultorioPsicopedagogico.CDatos
                         comando.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Tutor eliminado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // El éxito se notificará en la capa de presentación
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar el tutor: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Error al eliminar el tutor: " + ex.Message, ex);
             }
         }
 
@@ -178,12 +177,12 @@ namespace ConsultorioPsicopedagogico.CDatos
                         comando.Parameters.AddWithValue("@Dni", tutor.DniTutor_D);
                         comando.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Tutor reactivado exitosamente", "xito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // El éxito se notificará en la capa de presentación
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al reactivar el tutor: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Error al reactivar el tutor: " + ex.Message, ex);
             }
         }
 

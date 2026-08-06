@@ -403,7 +403,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
                 var pCuerpo = doc.Content.Paragraphs.Add();
                 pCuerpo.Range.Text = "DETALLES DEL INFORME Y EVOLUCIÓN:\n" +
-                                     "[Escriba aquí los detalles del informe del paciente...]";
+                                     "[Escriba aquí los detalles del informe del concurrente...]";
                 pCuerpo.Range.Font.Size = 11;
                 pCuerpo.Range.InsertParagraphAfter();
 

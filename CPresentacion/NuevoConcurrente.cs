@@ -20,6 +20,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private bool formCargado = false;
         private int? _dniOriginal = null;
         private List<string> todasLasEscuelas = new List<string>();
+        private bool _actualizandoColegio = false;
 
         public NuevoConcurrente()
         {
@@ -143,7 +144,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                         FechaNac_C = date_naci.Value.ToString("yyyy-MM-dd"),
                         Diagnostico_C = txt_diagnostico.Text,
                         Escuela_C = txt_colegio.Text,
-                        AñoEscolar_C = int.Parse(txt_anio.Text.Substring(0, 1)),
+                        AñoEscolar_C = (txt_anio.SelectedIndex >= 0 && txt_anio.Text.Length > 0 && char.IsDigit(txt_anio.Text[0]))
+                            ? int.Parse(txt_anio.Text.Substring(0, 1))
+                            : 1,
                         NivelEscolar_C = txt_nivel.Text,
                         Domicilio_C = txt_domicilio.Text,
                         DniTutor_C = txt_DniTutor.Text,
@@ -164,7 +167,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
                         if (concurrenteExistente != null && concurrenteExistente.Dni_C != 0)
                         {
-                            MessageBox.Show("Ya existe un paciente con este DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Ya existe un concurrente con este DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
 
@@ -398,36 +401,48 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         }
         private void Txt_colegio_TextUpdate(object sender, EventArgs e)
         {
-            string busqueda = txt_colegio.Text.ToLower();
-            
-            if (string.IsNullOrWhiteSpace(busqueda))
+            // Guard against re-entrancy: modifying Text inside this handler re-fires the event
+            if (_actualizandoColegio) return;
+            _actualizandoColegio = true;
+
+            try
             {
-                txt_colegio.DroppedDown = false;
-                return;
+                string busqueda = txt_colegio.Text.ToLower();
+
+                if (string.IsNullOrWhiteSpace(busqueda))
+                {
+                    txt_colegio.DroppedDown = false;
+                    return;
+                }
+
+                var coincidentes = todasLasEscuelas
+                    .Where(x => x.ToLower().Contains(busqueda))
+                    .Take(20)
+                    .ToArray();
+
+                string currentText = txt_colegio.Text;
+                int cursorPosition = txt_colegio.SelectionStart;
+
+                txt_colegio.Items.Clear();
+                if (coincidentes.Length > 0)
+                {
+                    txt_colegio.Items.AddRange(coincidentes);
+                    txt_colegio.DroppedDown = true;
+                    Cursor.Current = Cursors.Default;
+                }
+                else
+                {
+                    txt_colegio.DroppedDown = false;
+                }
+
+                txt_colegio.Text = currentText;
+                txt_colegio.SelectionStart = cursorPosition;
             }
-
-            var coincidentes = todasLasEscuelas
-                .Where(x => x.ToLower().Contains(busqueda))
-                .Take(20)
-                .ToArray();
-
-            string currentText = txt_colegio.Text;
-            int cursorPosition = txt_colegio.SelectionStart;
-
-            txt_colegio.Items.Clear();
-            if (coincidentes.Length > 0)
+            catch { }
+            finally
             {
-                txt_colegio.Items.AddRange(coincidentes);
-                txt_colegio.DroppedDown = true;
-                Cursor.Current = Cursors.Default;
+                _actualizandoColegio = false;
             }
-            else
-            {
-                txt_colegio.DroppedDown = false;
-            }
-
-            txt_colegio.Text = currentText;
-            txt_colegio.SelectionStart = cursorPosition;
         }
 
         private void txt_nivel_SelectedIndexChanged(object sender, EventArgs e)

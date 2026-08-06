@@ -153,7 +153,7 @@ namespace ConsultorioPsicopedagogico.CLogica
             // Rol
             RuleFor(u => u.Rol)
                 .NotEmpty().WithMessage("El rol es requerido.")
-                .Must(r => r == "Medico/a" || r == "Secretaria/o").WithMessage("El rol seleccionado no es válido.");
+                .Must(r => r == "Especialista" || r == "Secretaria/o").WithMessage("El rol seleccionado no es válido.");
         }
     }
 }

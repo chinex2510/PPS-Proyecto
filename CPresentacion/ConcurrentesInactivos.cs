@@ -37,7 +37,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             
             if (rbtnConcurrentes.Checked)
             {
-                dtg_Baja.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DNI_C", HeaderText = "DNI Paciente", Name = "DNI_C" });
+                dtg_Baja.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DNI_C", HeaderText = "DNI Concurrente", Name = "DNI_C" });
                 dtg_Baja.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ApellidoNombre", HeaderText = "Apellido y Nombre", Name = "ApellidoNombre" });
                 dtg_Baja.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "FechaNac", HeaderText = "Fecha Nacimiento", Name = "FechaNac" });
                 dtg_Baja.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Tutor", HeaderText = "Tutor", Name = "NomTutor" });
