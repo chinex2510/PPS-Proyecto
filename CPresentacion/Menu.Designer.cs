@@ -40,17 +40,17 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lbl_Minimizar = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.panelMenuCard = new System.Windows.Forms.Panel();
             this.lbl_LicTitle = new System.Windows.Forms.Label();
             this.lbl_SubTitle = new System.Windows.Forms.Label();
+            this.panelMenuCard = new System.Windows.Forms.Panel();
             this.lbl_MenuTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelMenuCard.SuspendLayout();
+            this.SuspendLayout();
             // 
             // btnConcurrentes
             // 
@@ -67,7 +67,6 @@
             this.btnConcurrentes.TabIndex = 1;
             this.btnConcurrentes.Text = "CONCURRENTES / CONCURRENTES";
             this.btnConcurrentes.UseVisualStyleBackColor = false;
-            this.btnConcurrentes.FlatAppearance.BorderSize = 0;
             this.btnConcurrentes.Click += new System.EventHandler(this.btnConcurrentes_Click);
             // 
             // btn_Turnos
@@ -83,7 +82,7 @@
             this.btn_Turnos.Name = "btn_Turnos";
             this.btn_Turnos.Size = new System.Drawing.Size(280, 42);
             this.btn_Turnos.TabIndex = 3;
-            this.btn_Turnos.Text = "GESTIÃ“N DE TURNOS";
+            this.btn_Turnos.Text = "GESTIÓN DE TURNOS";
             this.btn_Turnos.UseVisualStyleBackColor = false;
             this.btn_Turnos.Click += new System.EventHandler(this.btn_Turnos_Click);
             // 
@@ -102,8 +101,24 @@
             this.btn_Planes.TabIndex = 2;
             this.btn_Planes.Text = "CREAR INFORMES";
             this.btn_Planes.UseVisualStyleBackColor = false;
-            this.btn_Planes.FlatAppearance.BorderSize = 0;
             this.btn_Planes.Click += new System.EventHandler(this.btn_Planes_Click);
+            // 
+            // btn_Salir
+            // 
+            this.btn_Salir.BackColor = System.Drawing.Color.White;
+            this.btn_Salir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Salir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Salir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Salir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.btn_Salir.Location = new System.Drawing.Point(65, 312);
+            this.btn_Salir.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Salir.Name = "btn_Salir";
+            this.btn_Salir.Size = new System.Drawing.Size(280, 40);
+            this.btn_Salir.TabIndex = 4;
+            this.btn_Salir.Text = "CERRAR SESIÓN";
+            this.btn_Salir.UseVisualStyleBackColor = false;
+            this.btn_Salir.Click += new System.EventHandler(this.btn_Salir_Click);
             // 
             // btn_Tutor
             // 
@@ -121,23 +136,6 @@
             this.btn_Tutor.Text = "CREAR TUTOR";
             this.btn_Tutor.UseVisualStyleBackColor = false;
             this.btn_Tutor.Click += new System.EventHandler(this.btn_Tutor_Click);
-            // 
-            // btn_Salir
-            // 
-            this.btn_Salir.BackColor = System.Drawing.Color.White;
-            this.btn_Salir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Salir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Salir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.btn_Salir.Location = new System.Drawing.Point(65, 312);
-            this.btn_Salir.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_Salir.Name = "btn_Salir";
-            this.btn_Salir.Size = new System.Drawing.Size(280, 40);
-            this.btn_Salir.TabIndex = 4;
-            this.btn_Salir.Text = "CERRAR SESIÃ“N";
-            this.btn_Salir.UseVisualStyleBackColor = false;
-            this.btn_Salir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.btn_Salir.Click += new System.EventHandler(this.btn_Salir_Click);
             // 
             // pictureBox1
             // 
@@ -193,7 +191,7 @@
             this.lbl_Minimizar.Name = "lbl_Minimizar";
             this.lbl_Minimizar.Size = new System.Drawing.Size(30, 30);
             this.lbl_Minimizar.TabIndex = 14;
-            this.lbl_Minimizar.Text = "â€”";
+            this.lbl_Minimizar.Text = "-";
             this.lbl_Minimizar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_Minimizar.UseCompatibleTextRendering = true;
             this.lbl_Minimizar.Click += new System.EventHandler(this.lblmin2_Click);
@@ -228,7 +226,7 @@
             this.lbl_SubTitle.Name = "lbl_SubTitle";
             this.lbl_SubTitle.Size = new System.Drawing.Size(240, 20);
             this.lbl_SubTitle.TabIndex = 2;
-            this.lbl_SubTitle.Text = "Consultorio PsicopedagÃ³gico";
+            this.lbl_SubTitle.Text = "Consultorio Psicopedagógico";
             this.lbl_SubTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelMenuCard
@@ -257,9 +255,9 @@
             this.lbl_MenuTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
             this.lbl_MenuTitle.Location = new System.Drawing.Point(20, 20);
             this.lbl_MenuTitle.Name = "lbl_MenuTitle";
-            this.lbl_MenuTitle.Size = new System.Drawing.Size(176, 25);
+            this.lbl_MenuTitle.Size = new System.Drawing.Size(171, 25);
             this.lbl_MenuTitle.TabIndex = 0;
-            this.lbl_MenuTitle.Text = "MENÃš PRINCIPAL";
+            this.lbl_MenuTitle.Text = "MENÚ PRINCIPAL";
             // 
             // Menu
             // 
