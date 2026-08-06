@@ -21,8 +21,17 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private void btnConcurrentes_Click(object sender, EventArgs e)
         {
             CPresentacion.Concurrentes concurrentes = new CPresentacion.Concurrentes();
-            concurrentes.Show();
             this.Hide();
+            concurrentes.ShowDialog();
+            this.Show();
+        }
+
+        private void btn_Tutor_Click(object sender, EventArgs e)
+        {
+            CPresentacion.NuevoTutor nuevoTutor = new CPresentacion.NuevoTutor();
+            this.Hide();
+            nuevoTutor.ShowDialog();
+            this.Show();
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)
@@ -38,15 +47,17 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private void btn_Planes_Click(object sender, EventArgs e)
         {
             CPresentacion.CrearInformes crearInformes = new CPresentacion.CrearInformes();
-            crearInformes.Show();
             this.Hide();
+            crearInformes.ShowDialog();
+            this.Show();
         }
 
         private void btn_Turnos_Click(object sender, EventArgs e)
         {
             CPresentacion.Turnos turnos = new CPresentacion.Turnos();
-            turnos.Show();
             this.Hide();
+            turnos.ShowDialog();
+            this.Show();
         }
 
 

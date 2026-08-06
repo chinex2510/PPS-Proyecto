@@ -257,9 +257,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private void RegresarLogin()
         {
-            // Ocultar este formulario, crear una nueva instancia de Login y mostrarla
-            Login loginForm = new Login();
-            loginForm.Show();
             this.Close();
         }
 

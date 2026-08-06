@@ -343,8 +343,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private void btn_volver_Click(object sender, EventArgs e)
         {
-            CPresentacion.Menu menu = new CPresentacion.Menu();
-            menu.Show();
             this.Close();
         }
 
