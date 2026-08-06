@@ -13,9 +13,56 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 {
     public partial class Menu : Form
     {
+        private string _rolUsuario = "";
+
         public Menu()
         {
             InitializeComponent();
+        }
+
+        public Menu(string rol)
+        {
+            InitializeComponent();
+            _rolUsuario = rol;
+            AplicarPermisosRol();
+            ConfigurarEfectosHover();
+        }
+
+        private void ConfigurarEfectosHover()
+        {
+            AgregarEfectosHover(btnConcurrentes, Color.FromArgb(115, 35, 150), Color.FromArgb(135, 55, 170));
+            AgregarEfectosHover(btn_Planes, Color.FromArgb(115, 35, 150), Color.FromArgb(135, 55, 170));
+            AgregarEfectosHover(btn_Turnos, Color.FromArgb(115, 35, 150), Color.FromArgb(135, 55, 170));
+            AgregarEfectosHover(btn_Tutor, Color.FromArgb(115, 35, 150), Color.FromArgb(135, 55, 170));
+            AgregarEfectosHover(btn_Salir, Color.White, Color.FromArgb(240, 240, 240));
+        }
+
+        private void AgregarEfectosHover(Button btn, Color normal, Color hover)
+        {
+            btn.MouseEnter += (s, e) => { btn.BackColor = hover; };
+            btn.MouseLeave += (s, e) => { btn.BackColor = normal; };
+        }
+
+        private void AplicarPermisosRol()
+        {
+            if (_rolUsuario == "Secretaria/o")
+            {
+                // Ocultar botones y sus iconos respectivos
+                btnConcurrentes.Visible = false;
+                pictureBox2.Visible = false;
+                
+                btn_Planes.Visible = false;
+                pictureBox3.Visible = false;
+                
+                btn_Tutor.Visible = false;
+                pictureBox4.Visible = false; // Ocultamos el icono pequeño
+
+                // Convertir el botón de turnos en un gran panel central interactivo
+                btn_Turnos.Location = new System.Drawing.Point(45, 100);
+                btn_Turnos.Size = new System.Drawing.Size(280, 140);
+                btn_Turnos.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+                btn_Turnos.Text = "GESTIÓN DE\r\nTURNOS"; // Salto de línea para que se vea mejor
+            }
         }
 
         private void btnConcurrentes_Click(object sender, EventArgs e)
