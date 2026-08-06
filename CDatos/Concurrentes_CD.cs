@@ -11,6 +11,7 @@ namespace ConsultorioPsicopedagogico.CDatos
 {
     internal class Concurrentes_CD
     {
+        private int idConcurrente_D;
         private int dni_D;
         private int originalDni_D;
         private string apellido_D;
@@ -25,6 +26,7 @@ namespace ConsultorioPsicopedagogico.CDatos
         private string contactoTutor_D;
         private string parentezco_D;
 
+        public int IdConcurrente_D { get => idConcurrente_D; set => idConcurrente_D = value; }
         public int Dni_D { get => dni_D; set => dni_D = value; }
         public int OriginalDni_D { get => originalDni_D; set => originalDni_D = value; }
         public string Apellido_D { get => apellido_D; set => apellido_D = value; }
@@ -138,6 +140,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                 {
                     string cadena = @"
                 SELECT 
+                    c.idConcurrente,
                     c.dniConcurrente AS 'DNI_C',
                     c.apellido AS 'Apellido',
                     c.nombre AS 'Nombre',
@@ -165,6 +168,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                         {
                             while (registro.Read())
                             {
+                                concurrenteSeleccionado.IdConcurrente_D = Convert.ToInt32(registro["idConcurrente"]);
                                 concurrenteSeleccionado.Dni_D = Convert.ToInt32(registro["DNI_C"]);
                                 concurrenteSeleccionado.Apellido_D = registro["Apellido"].ToString();
                                 concurrenteSeleccionado.Nombre_D = registro["Nombre"].ToString();

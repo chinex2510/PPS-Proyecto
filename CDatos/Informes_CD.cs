@@ -18,14 +18,11 @@ namespace ConsultorioPsicopedagogico.CDatos
         private string fecha_Informe_D;
         private Concurrentes_CD concurrente_D;
         private Tutor_CD tutor_D;
-        private List<InformeArea_CD> informeAreas_D;
-
         public int Id_Informe_D { get => id_Informe_D; set => id_Informe_D = value; }
         public int Dni_C_D { get => dni_C_D; set => dni_C_D = value; }
         public string Fecha_Informe_D { get => fecha_Informe_D; set => fecha_Informe_D = value; }
         public Concurrentes_CD Concurrente_D { get => concurrente_D; set => concurrente_D = value; }
         public Tutor_CD Tutor_D { get => tutor_D; set => tutor_D = value; }
-        public List<InformeArea_CD> InformeAreas_D { get => informeAreas_D; set => informeAreas_D = value; }
 
         private string connectionString = Conexion.ConnectionString;
 
@@ -86,7 +83,6 @@ namespace ConsultorioPsicopedagogico.CDatos
                         }
                     }
 
-                    informeAreas_D = ObtenerAreasDelInforme(id_Informe_D, connection);
                 }
 
                 return true;
@@ -98,42 +94,61 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
         }
 
-        private List<InformeArea_CD> ObtenerAreasDelInforme(int idInforme, MySqlConnection connection)
+        public void GuardarInforme(int idConcurrente, string titulo, string rutaWord, string fecha)
         {
-            var lista = new List<InformeArea_CD>();
-
-            string query = @"
-                SELECT ia.descripcionArea AS Texto_Area, a.idArea AS ID_Area, a.nombreArea AS Nombre_Area
-                FROM Informe_Area ia
-                JOIN Area a ON ia.idArea = a.idArea
-                WHERE ia.idInforme = @ID";
-
-            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+            try
             {
-                cmd.Parameters.AddWithValue("@ID", idInforme);
-
-                using (MySqlDataReader reader = cmd.ExecuteReader())
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    while (reader.Read())
+                    connection.Open();
+                    string query = @"
+                        INSERT INTO Informe (idConcurrente, fechaInforme, titulo, rutaWord)
+                        VALUES (@idConcurrente, @fecha, @titulo, @rutaWord)";
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
-                        var area = new Area_CD
-                        {
-                            Id_Area_D = reader.GetInt32("ID_Area"),
-                            Nombre_Area_D = reader.GetString("Nombre_Area")
-                        };
-
-                        lista.Add(new InformeArea_CD
-                        {
-                            Id_Informe_D = idInforme,
-                            Id_Area_D = area.Id_Area_D,
-                            Texto_Area_D = reader.GetString("Texto_Area"),
-                            Area_D = area
-                        });
+                        cmd.Parameters.AddWithValue("@idConcurrente", idConcurrente);
+                        cmd.Parameters.AddWithValue("@fecha", fecha);
+                        cmd.Parameters.AddWithValue("@titulo", titulo);
+                        cmd.Parameters.AddWithValue("@rutaWord", rutaWord);
+                        cmd.ExecuteNonQuery();
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar el informe en la base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-            return lista;
+        public DataTable ObtenerInformesPorDni(string dni)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = @"
+                        SELECT i.idInforme, DATE_FORMAT(i.fechaInforme, '%d/%m/%Y') AS Fecha, i.titulo AS Título, i.rutaWord AS Ruta
+                        FROM Informe i
+                        JOIN Concurrente c ON i.idConcurrente = c.idConcurrente
+                        WHERE c.dniConcurrente = @Dni
+                        ORDER BY i.fechaInforme DESC";
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Dni", dni);
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener los informes: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dt;
         }
 
     }

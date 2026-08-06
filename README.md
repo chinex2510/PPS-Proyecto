@@ -33,13 +33,6 @@ CREATE TABLE Tutor (
     activo BOOLEAN DEFAULT TRUE -- <-- CAMPO PARA BAJA LÓGICA
 );
 
--- 3. Tabla Área (Tabla principal)
-CREATE TABLE Area (
-    idArea INT AUTO_INCREMENT PRIMARY KEY,
-    nombreArea VARCHAR(100) NOT NULL,
-    activo BOOLEAN DEFAULT TRUE -- <-- CAMPO PARA BAJA LÓGICA
-);
-
 -- 4. Tabla Parentesco (Relaciona Concurrente y Tutor)
 CREATE TABLE Parentesco (
     idConcurrente INT,
@@ -84,22 +77,11 @@ CREATE TABLE Informe (
     idInforme INT AUTO_INCREMENT PRIMARY KEY,
     idConcurrente INT NOT NULL,
     fechaInforme DATE,
+    titulo VARCHAR(150),
+    rutaWord VARCHAR(255),
     FOREIGN KEY (idConcurrente) REFERENCES Concurrente(idConcurrente) 
         ON DELETE CASCADE ON UPDATE CASCADE
 );
-
--- 7. Tabla Informe Área (Relaciona Informe y Área)
-CREATE TABLE Informe_Area (
-    idInforme INT,
-    idArea INT,
-    descripcionArea TEXT,
-    PRIMARY KEY (idInforme, idArea),
-    FOREIGN KEY (idInforme) REFERENCES Informe(idInforme) 
-        ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (idArea) REFERENCES Area(idArea) 
-        ON DELETE CASCADE ON UPDATE CASCADE
-);
-
 
 -- 1. Tabla para almacenar el listado de preguntas predefinidas
 CREATE TABLE IF NOT EXISTS PreguntaSeguridad (
