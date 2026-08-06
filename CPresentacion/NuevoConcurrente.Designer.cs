@@ -1,4 +1,4 @@
-namespace ConsultorioPsicopedagogico.CPresentacion
+﻿namespace ConsultorioPsicopedagogico.CPresentacion
 {
     partial class NuevoConcurrente
     {
@@ -49,9 +49,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.txt_ape = new System.Windows.Forms.TextBox();
             this.txt_diagnostico = new System.Windows.Forms.TextBox();
             this.txt_domicilio = new System.Windows.Forms.TextBox();
-            this.txt_colegio = new System.Windows.Forms.TextBox();
-            this.txt_anio = new System.Windows.Forms.TextBox();
-            this.txt_nivel = new System.Windows.Forms.TextBox();
+            this.txt_colegio = new System.Windows.Forms.ComboBox();
+            this.txt_anio = new System.Windows.Forms.ComboBox();
+            this.txt_nivel = new System.Windows.Forms.ComboBox();
             this.txt_tutor = new System.Windows.Forms.TextBox();
             this.txt_contTutor = new System.Windows.Forms.TextBox();
             this.cmb_Parentesco = new System.Windows.Forms.ComboBox();
@@ -157,7 +157,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 15);
             this.label7.TabIndex = 4;
-            this.label7.Text = "Año Escolar";
+            this.label7.Text = "AÃ±o Escolar";
             // 
             // label8
             // 
@@ -364,10 +364,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             "Hermano",
             "Tio/a",
             "Abuelo/a",
-            "Progenitor af�n",
-            "Acompa�ante Terap�utico"});
-            this.cmb_Parentesco.Location = new System.Drawing.Point(122, 145);
-            this.cmb_Parentesco.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            "Progenitor afín",
+            "Acompañante Terapéutico"});
+            this.cmb_Parentesco.Location = new System.Drawing.Point(162, 178);
             this.cmb_Parentesco.Name = "cmb_Parentesco";
             this.cmb_Parentesco.Size = new System.Drawing.Size(250, 25);
             this.cmb_Parentesco.TabIndex = 9;
@@ -663,9 +662,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.TextBox txt_ape;
         private System.Windows.Forms.TextBox txt_diagnostico;
         private System.Windows.Forms.TextBox txt_domicilio;
-        private System.Windows.Forms.TextBox txt_colegio;
-        private System.Windows.Forms.TextBox txt_anio;
-        private System.Windows.Forms.TextBox txt_nivel;
+        private System.Windows.Forms.ComboBox txt_colegio;
+        private System.Windows.Forms.ComboBox txt_anio;
+        private System.Windows.Forms.ComboBox txt_nivel;
         private System.Windows.Forms.TextBox txt_tutor;
         private System.Windows.Forms.TextBox txt_contTutor;
         public System.Windows.Forms.ComboBox cmb_Parentesco;
@@ -688,3 +687,5 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.Label lbl_helpIcon;
     }
 }
+
+
