@@ -324,8 +324,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             lbl_NombreConcurrente.Text = "Concurrente no verificado";
             lbl_NombreConcurrente.ForeColor = Color.FromArgb(120, 60, 160);
             
-            // Restringir la fecha mínima a mañana
+            // Restringir fechas: mínimo mañana, máximo 6 meses a futuro
             dtp_FechaTurno.MinDate = DateTime.Today.AddDays(1);
+            dtp_FechaTurno.MaxDate = DateTime.Today.AddMonths(6);
             dtp_FechaTurno.Value = DateTime.Today.AddDays(1);
 
             if (cbo_Especialista.Items.Count > 0)
@@ -379,6 +380,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                         {
                             // Permitir la fecha del turno seleccionado aunque sea en el pasado/hoy
                             dtp_FechaTurno.MinDate = f < DateTime.Today.AddDays(1) ? f : DateTime.Today.AddDays(1);
+                            // MaxDate siempre 6 meses desde hoy, o la fecha del turno si está más allá
+                            dtp_FechaTurno.MaxDate = f > DateTime.Today.AddMonths(6) ? f : DateTime.Today.AddMonths(6);
                             dtp_FechaTurno.Value = f;
                         }
                     }
