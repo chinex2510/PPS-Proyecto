@@ -98,10 +98,13 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             RegresarLogin();
         }
 
+        private void btn_volver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void RegresarLogin()
         {
-            Login loginForm = new Login();
-            loginForm.Show();
             this.Close();
         }
 

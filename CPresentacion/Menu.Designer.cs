@@ -1,4 +1,4 @@
-namespace ConsultorioPsicopedagogico.CPresentacion
+﻿namespace ConsultorioPsicopedagogico.CPresentacion
 {
     partial class Menu
     {
@@ -33,6 +33,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Turnos = new System.Windows.Forms.Button();
             this.btn_Planes = new System.Windows.Forms.Button();
             this.btn_Salir = new System.Windows.Forms.Button();
+            this.btn_Tutor = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -82,7 +83,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Turnos.Name = "btn_Turnos";
             this.btn_Turnos.Size = new System.Drawing.Size(280, 42);
             this.btn_Turnos.TabIndex = 3;
-            this.btn_Turnos.Text = "GESTIÓN DE TURNOS";
+            this.btn_Turnos.Text = "GESTIÃ“N DE TURNOS";
             this.btn_Turnos.UseVisualStyleBackColor = false;
             this.btn_Turnos.Click += new System.EventHandler(this.btn_Turnos_Click);
             // 
@@ -104,6 +105,23 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Planes.FlatAppearance.BorderSize = 0;
             this.btn_Planes.Click += new System.EventHandler(this.btn_Planes_Click);
             // 
+            // btn_Tutor
+            // 
+            this.btn_Tutor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
+            this.btn_Tutor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Tutor.FlatAppearance.BorderSize = 0;
+            this.btn_Tutor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Tutor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Tutor.ForeColor = System.Drawing.Color.White;
+            this.btn_Tutor.Location = new System.Drawing.Point(65, 252);
+            this.btn_Tutor.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Tutor.Name = "btn_Tutor";
+            this.btn_Tutor.Size = new System.Drawing.Size(280, 42);
+            this.btn_Tutor.TabIndex = 5;
+            this.btn_Tutor.Text = "CREAR TUTOR";
+            this.btn_Tutor.UseVisualStyleBackColor = false;
+            this.btn_Tutor.Click += new System.EventHandler(this.btn_Tutor_Click);
+            // 
             // btn_Salir
             // 
             this.btn_Salir.BackColor = System.Drawing.Color.White;
@@ -111,12 +129,12 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Salir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Salir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.btn_Salir.Location = new System.Drawing.Point(65, 255);
+            this.btn_Salir.Location = new System.Drawing.Point(65, 312);
             this.btn_Salir.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Salir.Name = "btn_Salir";
             this.btn_Salir.Size = new System.Drawing.Size(280, 40);
             this.btn_Salir.TabIndex = 4;
-            this.btn_Salir.Text = "CERRAR SESIÓN";
+            this.btn_Salir.Text = "CERRAR SESIÃ“N";
             this.btn_Salir.UseVisualStyleBackColor = false;
             this.btn_Salir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.btn_Salir.Click += new System.EventHandler(this.btn_Salir_Click);
@@ -175,7 +193,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_Minimizar.Name = "lbl_Minimizar";
             this.lbl_Minimizar.Size = new System.Drawing.Size(30, 30);
             this.lbl_Minimizar.TabIndex = 14;
-            this.lbl_Minimizar.Text = "—";
+            this.lbl_Minimizar.Text = "â€”";
             this.lbl_Minimizar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_Minimizar.UseCompatibleTextRendering = true;
             this.lbl_Minimizar.Click += new System.EventHandler(this.lblmin2_Click);
@@ -188,7 +206,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelLeft.Controls.Add(this.pictureBox1);
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(260, 360);
+            this.panelLeft.Size = new System.Drawing.Size(260, 420);
             this.panelLeft.TabIndex = 15;
             // 
             // lbl_LicTitle
@@ -210,7 +228,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_SubTitle.Name = "lbl_SubTitle";
             this.lbl_SubTitle.Size = new System.Drawing.Size(240, 20);
             this.lbl_SubTitle.TabIndex = 2;
-            this.lbl_SubTitle.Text = "Consultorio Psicopedagógico";
+            this.lbl_SubTitle.Text = "Consultorio PsicopedagÃ³gico";
             this.lbl_SubTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelMenuCard
@@ -224,10 +242,11 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelMenuCard.Controls.Add(this.btn_Planes);
             this.panelMenuCard.Controls.Add(this.pictureBox4);
             this.panelMenuCard.Controls.Add(this.btn_Turnos);
+            this.panelMenuCard.Controls.Add(this.btn_Tutor);
             this.panelMenuCard.Controls.Add(this.btn_Salir);
             this.panelMenuCard.Location = new System.Drawing.Point(280, 20);
             this.panelMenuCard.Name = "panelMenuCard";
-            this.panelMenuCard.Size = new System.Drawing.Size(370, 320);
+            this.panelMenuCard.Size = new System.Drawing.Size(370, 380);
             this.panelMenuCard.TabIndex = 16;
             this.panelMenuCard.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCard_Paint);
             // 
@@ -240,14 +259,14 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_MenuTitle.Name = "lbl_MenuTitle";
             this.lbl_MenuTitle.Size = new System.Drawing.Size(176, 25);
             this.lbl_MenuTitle.TabIndex = 0;
-            this.lbl_MenuTitle.Text = "MENÚ PRINCIPAL";
+            this.lbl_MenuTitle.Text = "MENÃš PRINCIPAL";
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(240)))), ((int)(((byte)(248)))));
-            this.ClientSize = new System.Drawing.Size(670, 360);
+            this.ClientSize = new System.Drawing.Size(670, 420);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelMenuCard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -271,6 +290,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.Button btn_Turnos;
         private System.Windows.Forms.Button btn_Planes;
         private System.Windows.Forms.Button btn_Salir;
+        private System.Windows.Forms.Button btn_Tutor;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;

@@ -157,15 +157,17 @@ namespace ConsultorioPsicopedagogico
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FormRecuperarContrasena recuperarForm = new FormRecuperarContrasena();
-            recuperarForm.Show();
             this.Hide();
+            recuperarForm.ShowDialog();
+            this.Show();
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             FormNuevoUsuario nuevoForm = new FormNuevoUsuario();
-            nuevoForm.Show();
             this.Hide();
+            nuevoForm.ShowDialog();
+            this.Show();
         }
     }
 } 

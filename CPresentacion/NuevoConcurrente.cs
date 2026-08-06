@@ -19,10 +19,34 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.ToolTip toolTipHelp;
         private bool formCargado = false;
         private int? _dniOriginal = null;
+        private List<string> todasLasEscuelas = new List<string>();
 
         public NuevoConcurrente()
         {
             InitializeComponent();
+            
+            try
+            {
+                string path = System.IO.Path.Combine(Application.StartupPath, @"..\..\resources\escuelas_capital_tafiviejo.txt");
+                if (System.IO.File.Exists(path))
+                {
+                    todasLasEscuelas = System.IO.File.ReadAllLines(path).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+                }
+            }
+            catch { }
+
+            txt_colegio.TextUpdate += Txt_colegio_TextUpdate;
+            
+            txt_anio.DropDownStyle = ComboBoxStyle.DropDownList;
+            txt_anio.Items.AddRange(new string[] { "1er año", "2do año", "3er año", "4to año", "5to año", "6to año", "7to año" });
+            
+            txt_nivel.DropDownStyle = ComboBoxStyle.DropDownList;
+            txt_nivel.Items.AddRange(new string[] { "Jardín", "Primario", "Secundario" });
+            txt_nivel.SelectedIndexChanged += txt_nivel_SelectedIndexChanged;
+
+            date_naci.MaxDate = DateTime.Today;
+            date_naci.MinDate = DateTime.Today.AddYears(-40);
+
             SetFieldsEnabled(false);
             InitializeHelpSystem();
             this.Shown += (s, e) => {
@@ -51,7 +75,14 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 }
                 txt_diagnostico.Text = concurrente.Diagnostico_C;
                 txt_colegio.Text = concurrente.Escuela_C;
-                txt_anio.Text = concurrente.AñoEscolar_C.ToString();
+                if (concurrente.AñoEscolar_C >= 1 && concurrente.AñoEscolar_C <= 7)
+                {
+                    txt_anio.SelectedIndex = concurrente.AñoEscolar_C - 1;
+                }
+                else
+                {
+                    txt_anio.SelectedIndex = -1;
+                }
                 txt_nivel.Text = concurrente.NivelEscolar_C;
                 txt_domicilio.Text = concurrente.Domicilio_C;
                 txt_DniTutor.Text = concurrente.DniTutor_C;
@@ -112,7 +143,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                         FechaNac_C = date_naci.Value.ToString("yyyy-MM-dd"),
                         Diagnostico_C = txt_diagnostico.Text,
                         Escuela_C = txt_colegio.Text,
-                        AñoEscolar_C = int.Parse(txt_anio.Text),
+                        AñoEscolar_C = int.Parse(txt_anio.Text.Substring(0, 1)),
                         NivelEscolar_C = txt_nivel.Text,
                         Domicilio_C = txt_domicilio.Text,
                         DniTutor_C = txt_DniTutor.Text,
@@ -142,7 +173,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     }
                     
                     this.Hide();
-                    txt_anio.Text = "";
+                    txt_anio.SelectedIndex = -1;
                     txt_nom.Text = "";
                     txt_ape.Text = "";
                     txt_domicilio.Text = "";
@@ -185,8 +216,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 RuleFor(x => x.txt_colegio.Text)
                     .NotEmpty().WithMessage("El colegio es obligatorio.");
                 RuleFor(x => x.txt_anio.Text)
-                    .NotEmpty().WithMessage("El año es obligatorio.")
-                    .Matches(@"^[1-6]$").WithMessage("El año debe ser un número entre 1 y 6.");
+                    .NotEmpty().WithMessage("El año es obligatorio.");
                 RuleFor(x => x.txt_nivel.Text)
                     .NotEmpty().WithMessage("El nivel es obligatorio.");               
                 RuleFor(x => x.txt_tutor.Text)
@@ -257,13 +287,13 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             txt_domicilio.ReadOnly = !enabled;
             txt_domicilio.BackColor = backColor;
 
-            txt_colegio.ReadOnly = !enabled;
+            txt_colegio.Enabled = enabled;
             txt_colegio.BackColor = backColor;
 
-            txt_anio.ReadOnly = !enabled;
+            txt_anio.Enabled = enabled && txt_nivel.Text != "Jardín";
             txt_anio.BackColor = backColor;
 
-            txt_nivel.ReadOnly = !enabled;
+            txt_nivel.Enabled = enabled;
             txt_nivel.BackColor = backColor;
 
             cmb_Parentesco.Enabled = enabled;
@@ -364,6 +394,52 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+        private void Txt_colegio_TextUpdate(object sender, EventArgs e)
+        {
+            string busqueda = txt_colegio.Text.ToLower();
+            
+            if (string.IsNullOrWhiteSpace(busqueda))
+            {
+                txt_colegio.DroppedDown = false;
+                return;
+            }
+
+            var coincidentes = todasLasEscuelas
+                .Where(x => x.ToLower().Contains(busqueda))
+                .Take(20)
+                .ToArray();
+
+            string currentText = txt_colegio.Text;
+            int cursorPosition = txt_colegio.SelectionStart;
+
+            txt_colegio.Items.Clear();
+            if (coincidentes.Length > 0)
+            {
+                txt_colegio.Items.AddRange(coincidentes);
+                txt_colegio.DroppedDown = true;
+                Cursor.Current = Cursors.Default;
+            }
+            else
+            {
+                txt_colegio.DroppedDown = false;
+            }
+
+            txt_colegio.Text = currentText;
+            txt_colegio.SelectionStart = cursorPosition;
+        }
+
+        private void txt_nivel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (txt_nivel.Text == "Jardín")
+            {
+                txt_anio.SelectedIndex = 0; // "1er año"
+                txt_anio.Enabled = false;
+            }
+            else
+            {
+                txt_anio.Enabled = tutorVerificado;
             }
         }
     }
