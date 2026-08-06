@@ -18,6 +18,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         public NuevoTutor()
         {
             InitializeComponent();
+            
+            txt_ObraSocial.DropDownStyle = ComboBoxStyle.DropDownList;
+            txt_ObraSocial.Items.AddRange(new string[] { "OSECAC", "IPSST", "RED", "ASUNT", "Boreal Salud", "OSDE", "Prensa" });
         }
 
         private void label14_Click(object sender, EventArgs e)
