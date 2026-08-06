@@ -132,12 +132,13 @@ namespace ConsultorioPsicopedagogico
             string usuario = txt_Usuario.Text.Trim();
             string contrasena = txt_Contraseña.Text.Trim();
 
-            if (loginLogica.Autenticar(usuario, contrasena))
+            string rol = loginLogica.Autenticar(usuario, contrasena);
+            if (!string.IsNullOrEmpty(rol))
             {
                 MessageBox.Show("¡Login exitoso!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
                 // Redirigir al formulario principal (Menu)
-                ConsultorioPsicopedagogico.CPresentacion.Menu principalMenu = new ConsultorioPsicopedagogico.CPresentacion.Menu();
+                ConsultorioPsicopedagogico.CPresentacion.Menu principalMenu = new ConsultorioPsicopedagogico.CPresentacion.Menu(rol);
                 principalMenu.Show();
                 this.Hide();
             }
