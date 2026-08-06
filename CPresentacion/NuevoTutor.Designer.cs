@@ -42,7 +42,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.txt_Telefono = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_Email = new System.Windows.Forms.TextBox();
-            this.txt_ObraSocial = new System.Windows.Forms.TextBox();
+            this.txt_ObraSocial = new System.Windows.Forms.ComboBox();
             this.lbl_ObraSocial = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_Guardar = new System.Windows.Forms.Button();
@@ -367,7 +367,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.TextBox txt_Telefono;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_Email;
-        public System.Windows.Forms.TextBox txt_ObraSocial;
+        public System.Windows.Forms.ComboBox txt_ObraSocial;
         private System.Windows.Forms.Label lbl_ObraSocial;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btn_Guardar;
@@ -378,3 +378,4 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.Panel panelTutorCard;
     }
 }
+
