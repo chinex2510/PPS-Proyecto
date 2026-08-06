@@ -32,23 +32,26 @@ namespace ConsultorioPsicopedagogico.CDatos
         /// <summary>
         /// Verifica si existe un usuario con el nombre de usuario y contraseña provistas en la base de datos.
         /// </summary>
-        public bool VerificarUsuario(string usuario, string contrasena)
+        public string VerificarUsuario(string usuario, string contrasena)
         {
-            bool esValido = false;
+            string rolUsuario = null;
             try
             {
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     conexion.Open();
-                    string query = "SELECT COUNT(*) FROM Usuario WHERE BINARY Usuario = @Usuario AND BINARY Contrasena = @Contrasena";
+                    string query = "SELECT Rol FROM Usuario WHERE BINARY Usuario = @Usuario AND BINARY Contrasena = @Contrasena";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
                         comando.Parameters.AddWithValue("@Usuario", usuario);
                         comando.Parameters.AddWithValue("@Contrasena", contrasena);
 
-                        int count = Convert.ToInt32(comando.ExecuteScalar());
-                        esValido = count > 0;
+                        object result = comando.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            rolUsuario = result.ToString();
+                        }
                     }
                 }
             }
@@ -57,7 +60,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                 MessageBox.Show("Hubo un error al conectar con la base de datos para validar credenciales: " + ex.Message, 
                                 "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return esValido;
+            return rolUsuario;
         }
 
         /// <summary>
