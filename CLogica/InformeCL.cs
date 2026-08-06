@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,13 +14,10 @@ namespace ConsultorioPsicopedagogico.CLogica
         private string fecha_Informe_D;
         private Concurrentes_CD concurrente_D;
         private Tutor_CD tutor_D;
-        private List<InformeArea_CD> informeAreas_D;
-
         public int Id_Informe_D { get => id_Informe_D; set => id_Informe_D = value; }
         public string Fecha_Informe_D { get => fecha_Informe_D; set => fecha_Informe_D = value; }
         public Concurrentes_CD Concurrente_D { get => concurrente_D; set => concurrente_D = value; }
         public Tutor_CD Tutor_D { get => tutor_D; set => tutor_D = value; }
-        public List<InformeArea_CD> InformeAreas_D { get => informeAreas_D; set => informeAreas_D = value; }
 
         // Método público que usa la clase de datos para obtener y cargar los datos
         public bool CargarInformePorId(int idInforme)
@@ -35,10 +32,21 @@ namespace ConsultorioPsicopedagogico.CLogica
                 Fecha_Informe_D = datos.Fecha_Informe_D;
                 Concurrente_D = datos.Concurrente_D;
                 Tutor_D = datos.Tutor_D;
-                InformeAreas_D = datos.InformeAreas_D;
             }
 
             return cargado;
+        }
+
+        public void GuardarInforme(int idConcurrente, string titulo, string rutaWord, string fecha)
+        {
+            Informes_CD datos = new Informes_CD();
+            datos.GuardarInforme(idConcurrente, titulo, rutaWord, fecha);
+        }
+
+        public DataTable ObtenerInformesPorDni(string dni)
+        {
+            Informes_CD datos = new Informes_CD();
+            return datos.ObtenerInformesPorDni(dni);
         }
     }
 }

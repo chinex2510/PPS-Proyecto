@@ -13,6 +13,7 @@ namespace ConsultorioPsicopedagogico.CLogica
     internal class ConcurrentesCL
     {
 
+        private int idConcurrente_C;
         private int dni_C;
         private int originalDni_C;
         private string apellido_C;
@@ -26,6 +27,7 @@ namespace ConsultorioPsicopedagogico.CLogica
         private string parentezco_C;
         private string dniTutor_C;
 
+        public int IdConcurrente_C { get => idConcurrente_C; set => idConcurrente_C = value; }
         public int Dni_C { get => dni_C; set => dni_C = value; }
         public int OriginalDni_C { get => originalDni_C; set => originalDni_C = value; }
         public string Apellido_C { get => apellido_C; set => apellido_C = value; }
@@ -43,6 +45,7 @@ namespace ConsultorioPsicopedagogico.CLogica
         {
             return new Concurrentes_CD
             {
+                IdConcurrente_D = c.IdConcurrente_C,
                 Dni_D = c.Dni_C,
                 OriginalDni_D = c.OriginalDni_C,
                 Apellido_D = c.Apellido_C,
@@ -62,6 +65,7 @@ namespace ConsultorioPsicopedagogico.CLogica
         {
             return new ConcurrentesCL
             {
+                IdConcurrente_C = c.IdConcurrente_D,
                 Dni_C = c.Dni_D,
                 Apellido_C = c.Apellido_D,
                 Nombre_C = c.Nombre_D,
