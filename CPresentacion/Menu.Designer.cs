@@ -65,7 +65,7 @@
             this.btnConcurrentes.Name = "btnConcurrentes";
             this.btnConcurrentes.Size = new System.Drawing.Size(373, 52);
             this.btnConcurrentes.TabIndex = 1;
-            this.btnConcurrentes.Text = "PACIENTES / CONCURRENTES";
+            this.btnConcurrentes.Text = "CONCURRENTES / CONCURRENTES";
             this.btnConcurrentes.UseVisualStyleBackColor = false;
             this.btnConcurrentes.Click += new System.EventHandler(this.btnConcurrentes_Click);
             // 

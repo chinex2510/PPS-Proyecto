@@ -223,6 +223,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.txtDni.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDni.Location = new System.Drawing.Point(45, 78);
+            this.txtDni.MaxLength = 8;
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(450, 25);
             this.txtDni.TabIndex = 3;

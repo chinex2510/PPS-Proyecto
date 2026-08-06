@@ -52,12 +52,12 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_DescargarPDF = new System.Windows.Forms.Button();
             this.btn_Limpiar = new System.Windows.Forms.Button();
             this.panelLeftCard = new System.Windows.Forms.Panel();
-            this.lbl_FechaInforme = new System.Windows.Forms.Label();
-            this.date_naci = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.lbl_FechaInforme = new System.Windows.Forms.Label();
+            this.date_naci = new System.Windows.Forms.DateTimePicker();
             this.panelRightCard = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -84,7 +84,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.pictureBox1.Image = global::ConsultorioPsicopedagogico.Properties.Resources.MAria_ELena_Quintana;
             this.pictureBox1.Location = new System.Drawing.Point(15, 8);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -99,7 +99,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(940, 80);
             this.panel1.TabIndex = 8;
@@ -134,7 +134,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.txt_DNI.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_DNI.Location = new System.Drawing.Point(150, 52);
-            this.txt_DNI.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_DNI.Margin = new System.Windows.Forms.Padding(2);
             this.txt_DNI.MaxLength = 8;
             this.txt_DNI.Name = "txt_DNI";
             this.txt_DNI.Size = new System.Drawing.Size(160, 25);
@@ -208,8 +208,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.volver_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.volver_btn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.volver_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.volver_btn.Location = new System.Drawing.Point(20, 474);
-            this.volver_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.volver_btn.Location = new System.Drawing.Point(750, 474);
+            this.volver_btn.Margin = new System.Windows.Forms.Padding(2);
             this.volver_btn.Name = "volver_btn";
             this.volver_btn.Size = new System.Drawing.Size(170, 45);
             this.volver_btn.TabIndex = 30;
@@ -220,7 +220,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(590, 119);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(192, 20);
             this.dateTimePicker1.TabIndex = 31;
@@ -375,31 +375,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelLeftCard.TabIndex = 41;
             this.panelLeftCard.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCard_Paint);
             // 
-            // lbl_FechaInforme
-            // 
-            this.lbl_FechaInforme.AutoSize = true;
-            this.lbl_FechaInforme.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FechaInforme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
-            this.lbl_FechaInforme.Location = new System.Drawing.Point(240, 18);
-            this.lbl_FechaInforme.Name = "lbl_FechaInforme";
-            this.lbl_FechaInforme.Size = new System.Drawing.Size(77, 15);
-            this.lbl_FechaInforme.TabIndex = 42;
-            this.lbl_FechaInforme.Text = "Filtrar fecha:";
-            // 
-            // date_naci
-            // 
-            this.date_naci.Checked = false;
-            this.date_naci.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.date_naci.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date_naci.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_naci.Location = new System.Drawing.Point(322, 15);
-            this.date_naci.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.date_naci.Name = "date_naci";
-            this.date_naci.ShowCheckBox = true;
-            this.date_naci.Size = new System.Drawing.Size(114, 23);
-            this.date_naci.TabIndex = 41;
-            this.date_naci.ValueChanged += new System.EventHandler(this.date_naci_ValueChanged);
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -441,6 +416,31 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.label10.Size = new System.Drawing.Size(85, 15);
             this.label10.TabIndex = 3;
             this.label10.Text = "Título informe:";
+            // 
+            // lbl_FechaInforme
+            // 
+            this.lbl_FechaInforme.AutoSize = true;
+            this.lbl_FechaInforme.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_FechaInforme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
+            this.lbl_FechaInforme.Location = new System.Drawing.Point(240, 18);
+            this.lbl_FechaInforme.Name = "lbl_FechaInforme";
+            this.lbl_FechaInforme.Size = new System.Drawing.Size(77, 15);
+            this.lbl_FechaInforme.TabIndex = 42;
+            this.lbl_FechaInforme.Text = "Filtrar fecha:";
+            // 
+            // date_naci
+            // 
+            this.date_naci.Checked = false;
+            this.date_naci.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.date_naci.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date_naci.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date_naci.Location = new System.Drawing.Point(322, 15);
+            this.date_naci.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.date_naci.Name = "date_naci";
+            this.date_naci.ShowCheckBox = true;
+            this.date_naci.Size = new System.Drawing.Size(114, 23);
+            this.date_naci.TabIndex = 41;
+            this.date_naci.ValueChanged += new System.EventHandler(this.date_naci_ValueChanged);
             // 
             // panelRightCard
             // 

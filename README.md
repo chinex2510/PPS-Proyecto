@@ -48,8 +48,8 @@ CREATE TABLE Parentesco (
 -- 5. Tabla Turnos (Depende de Concurrente y Usuario)
 CREATE TABLE Turnos (
     idTurno INT AUTO_INCREMENT PRIMARY KEY,
-    idConcurrente INT NOT NULL,  -- Relación con el nuevo ID del paciente
-    nombrePaciente VARCHAR(150) NOT NULL, 
+    idConcurrente INT NOT NULL,  -- Relación con el nuevo ID del concurrente
+    nombreConcurrente VARCHAR(150) NOT NULL, 
     dniUsuario INT NOT NULL,     -- Relación con el Especialista (Usuario)
     fecha DATE NOT NULL,
     hora TIME NOT NULL,
@@ -68,8 +68,8 @@ CREATE TABLE Turnos (
 
     -- Evita que un especialista tenga dos turnos a la misma hora en la misma fecha
     CONSTRAINT UQ_Turno_EspecialistaFechaHora UNIQUE (dniUsuario, fecha, hora),
-    -- Evita que un paciente tenga dos turnos a la misma hora en la misma fecha (Actualizado al nuevo ID)
-    CONSTRAINT UQ_Turno_PacienteFechaHora UNIQUE (idConcurrente, fecha, hora)
+    -- Evita que un concurrente tenga dos turnos a la misma hora en la misma fecha (Actualizado al nuevo ID)
+    CONSTRAINT UQ_Turno_ConcurrenteFechaHora UNIQUE (idConcurrente, fecha, hora)
 );
 
 -- 6. Tabla Informe (Depende de Concurrente)

@@ -92,12 +92,12 @@ namespace ConsultorioPsicopedagogico.CDatos
                         comando.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Se ha registrado exitosamente el nuevo usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // El éxito se notificará en la capa de presentación
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error al intentar registrar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Hubo un error al intentar registrar el usuario: " + ex.Message, ex);
             }
         }
 
@@ -197,7 +197,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                     string query = @"SELECT ps.PreguntaTexto 
                                     FROM Usuario u 
                                     INNER JOIN PreguntaSeguridad ps ON u.PreguntaID = ps.PreguntaID 
-                                    WHERE BINARY u.Usuario = @Usuario";
+                                    WHERE BINARY u.Usuario = @Usuario OR CAST(u.DNI AS CHAR) = @Usuario";
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
                         comando.Parameters.AddWithValue("@Usuario", usuario);
@@ -228,7 +228,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     conexion.Open();
-                    string query = "SELECT COUNT(*) FROM Usuario WHERE BINARY Usuario = @Usuario AND LOWER(Respuesta) = LOWER(@Respuesta)";
+                    string query = "SELECT COUNT(*) FROM Usuario WHERE (BINARY Usuario = @Usuario OR CAST(DNI AS CHAR) = @Usuario) AND LOWER(Respuesta) = LOWER(@Respuesta)";
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
                         comando.Parameters.AddWithValue("@Usuario", usuario);
@@ -256,7 +256,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     conexion.Open();
-                    string query = "UPDATE Usuario SET Contrasena = @Contrasena WHERE BINARY Usuario = @Usuario";
+                    string query = "UPDATE Usuario SET Contrasena = @Contrasena WHERE BINARY Usuario = @Usuario OR CAST(DNI AS CHAR) = @Usuario";
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
                         comando.Parameters.AddWithValue("@Contrasena", nuevaContrasena);
@@ -285,7 +285,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     conexion.Open();
-                    string query = "SELECT DNI, NombreApellido, Rol FROM Usuario WHERE Rol = 'Medico/a' ORDER BY NombreApellido ASC";
+                    string query = "SELECT DNI, NombreApellido, Rol FROM Usuario WHERE Rol = 'Especialista' ORDER BY NombreApellido ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion))
                     {
                         adapter.Fill(dt);

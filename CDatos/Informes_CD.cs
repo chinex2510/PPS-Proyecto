@@ -89,8 +89,7 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar el informe: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw new Exception("Error al cargar el informe: " + ex.Message, ex);
             }
         }
 
@@ -116,7 +115,7 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar el informe en la base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Error al guardar el informe en la base de datos: " + ex.Message, ex);
             }
         }
 
@@ -146,7 +145,7 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los informes: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception("Error al obtener los informes: " + ex.Message, ex);
             }
             return dt;
         }

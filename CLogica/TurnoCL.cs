@@ -17,14 +17,14 @@ namespace ConsultorioPsicopedagogico.CLogica
         private string fechaTurno_C;
         private string horaTurno_C;
 
-        private string nombrePacienteTurno_C;
+        private string nombreConcurrenteTurno_C;
 
         public int IdTurno_C { get => idTurno_C; set => idTurno_C = value; }
         public int DniConcurrenteTurno_C { get => dniConcurrenteTurno_C; set => dniConcurrenteTurno_C = value; }
         public int DniUsuario_C { get => dniUsuario_C; set => dniUsuario_C = value; }
         public string FechaTurno_C { get => fechaTurno_C; set => fechaTurno_C = value; }
         public string HoraTurno_C { get => horaTurno_C; set => horaTurno_C = value; }
-        public string NombrePacienteTurno_C { get => nombrePacienteTurno_C; set => nombrePacienteTurno_C = value; }
+        public string NombreConcurrenteTurno_C { get => nombreConcurrenteTurno_C; set => nombreConcurrenteTurno_C = value; }
 
         private Turnos_CD PasarDatos(TurnoCL t)
         {
@@ -35,7 +35,7 @@ namespace ConsultorioPsicopedagogico.CLogica
                 DniUsuario_D = t.DniUsuario_C,
                 FechaTurno_D = t.FechaTurno_C,
                 HoraTurno_D = t.HoraTurno_C,
-                NombrePacienteTurno_D = t.NombrePacienteTurno_C
+                NombreConcurrenteTurno_D = t.NombreConcurrenteTurno_C
             };
         }
 
@@ -48,7 +48,7 @@ namespace ConsultorioPsicopedagogico.CLogica
                 DniUsuario_C = t.DniUsuario_D,
                 FechaTurno_C = t.FechaTurno_D,
                 HoraTurno_C = t.HoraTurno_D,
-                NombrePacienteTurno_C = t.NombrePacienteTurno_D
+                NombreConcurrenteTurno_C = t.NombreConcurrenteTurno_D
             };
         }
 

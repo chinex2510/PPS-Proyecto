@@ -92,6 +92,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.txt_DniBusqueda.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_DniBusqueda.Location = new System.Drawing.Point(293, 78);
             this.txt_DniBusqueda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_DniBusqueda.MaxLength = 8;
             this.txt_DniBusqueda.Name = "txt_DniBusqueda";
             this.txt_DniBusqueda.Size = new System.Drawing.Size(239, 29);
             this.txt_DniBusqueda.TabIndex = 7;

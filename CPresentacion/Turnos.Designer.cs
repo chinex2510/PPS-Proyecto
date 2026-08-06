@@ -39,8 +39,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_DniConcurrente = new System.Windows.Forms.Label();
             this.txt_DniConcurrente = new System.Windows.Forms.TextBox();
             this.lbl_NombreConcurrente = new System.Windows.Forms.Label();
-            this.lbl_NombrePaciente = new System.Windows.Forms.Label();
-            this.txt_NombrePaciente = new System.Windows.Forms.TextBox();
+            this.lbl_TextoNombreConcurrente = new System.Windows.Forms.Label();
+            this.txt_NombreConcurrente = new System.Windows.Forms.TextBox();
             this.lbl_Especialista = new System.Windows.Forms.Label();
             this.cbo_Especialista = new System.Windows.Forms.ComboBox();
             this.lbl_Fecha = new System.Windows.Forms.Label();
@@ -104,8 +104,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelInputCard.Controls.Add(this.txt_DniConcurrente);
             this.panelInputCard.Controls.Add(this.btn_verificarConcurrente);
             this.panelInputCard.Controls.Add(this.lbl_NombreConcurrente);
-            this.panelInputCard.Controls.Add(this.lbl_NombrePaciente);
-            this.panelInputCard.Controls.Add(this.txt_NombrePaciente);
+            this.panelInputCard.Controls.Add(this.lbl_TextoNombreConcurrente);
+            this.panelInputCard.Controls.Add(this.txt_NombreConcurrente);
             this.panelInputCard.Controls.Add(this.lbl_Especialista);
             this.panelInputCard.Controls.Add(this.cbo_Especialista);
             this.panelInputCard.Controls.Add(this.lbl_Fecha);
@@ -177,26 +177,26 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_NombreConcurrente.Name = "lbl_NombreConcurrente";
             this.lbl_NombreConcurrente.Size = new System.Drawing.Size(122, 15);
             this.lbl_NombreConcurrente.TabIndex = 4;
-            this.lbl_NombreConcurrente.Text = "Paciente no verificado";
+            this.lbl_NombreConcurrente.Text = "Concurrente no verificado";
             // 
-            // lbl_NombrePaciente
+            // lbl_TextoNombreConcurrente
             // 
-            this.lbl_NombrePaciente.AutoSize = true;
-            this.lbl_NombrePaciente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_NombrePaciente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lbl_NombrePaciente.Location = new System.Drawing.Point(20, 120);
-            this.lbl_NombrePaciente.Name = "lbl_NombrePaciente";
-            this.lbl_NombrePaciente.Size = new System.Drawing.Size(107, 15);
-            this.lbl_NombrePaciente.TabIndex = 15;
-            this.lbl_NombrePaciente.Text = "Nombre Paciente:";
+            this.lbl_TextoNombreConcurrente.AutoSize = true;
+            this.lbl_TextoNombreConcurrente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TextoNombreConcurrente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.lbl_TextoNombreConcurrente.Location = new System.Drawing.Point(20, 120);
+            this.lbl_TextoNombreConcurrente.Name = "lbl_TextoNombreConcurrente";
+            this.lbl_TextoNombreConcurrente.Size = new System.Drawing.Size(107, 15);
+            this.lbl_TextoNombreConcurrente.TabIndex = 15;
+            this.lbl_TextoNombreConcurrente.Text = "Nombre Concurrente:";
             // 
-            // txt_NombrePaciente
+            // txt_NombreConcurrente
             // 
-            this.txt_NombrePaciente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NombrePaciente.Location = new System.Drawing.Point(20, 140);
-            this.txt_NombrePaciente.Name = "txt_NombrePaciente";
-            this.txt_NombrePaciente.Size = new System.Drawing.Size(360, 25);
-            this.txt_NombrePaciente.TabIndex = 16;
+            this.txt_NombreConcurrente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_NombreConcurrente.Location = new System.Drawing.Point(20, 140);
+            this.txt_NombreConcurrente.Name = "txt_NombreConcurrente";
+            this.txt_NombreConcurrente.Size = new System.Drawing.Size(360, 25);
+            this.txt_NombreConcurrente.TabIndex = 16;
             // 
             // lbl_Especialista
             // 
@@ -467,8 +467,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.Button btn_volver;
         private System.Windows.Forms.Label lbl_Especialista;
         private System.Windows.Forms.ComboBox cbo_Especialista;
-        private System.Windows.Forms.Label lbl_NombrePaciente;
-        private System.Windows.Forms.TextBox txt_NombrePaciente;
+        private System.Windows.Forms.Label lbl_TextoNombreConcurrente;
+        private System.Windows.Forms.TextBox txt_NombreConcurrente;
         private System.Windows.Forms.Label lbl_FiltroFecha;
         private System.Windows.Forms.ComboBox cbo_FiltroFecha;
     }

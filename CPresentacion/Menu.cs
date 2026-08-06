@@ -83,7 +83,22 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private void btn_Salir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Form loginForm = Application.OpenForms["Login"];
+            if (loginForm != null)
+            {
+                if (loginForm is Login login)
+                {
+                    login.LimpiarCampos();
+                }
+                loginForm.Show();
+            }
+            else
+            {
+                Login newLogin = new Login();
+                newLogin.LimpiarCampos();
+                newLogin.Show();
+            }
+            this.Close();
         }
 
         private void lblmin2_Click(object sender, EventArgs e)

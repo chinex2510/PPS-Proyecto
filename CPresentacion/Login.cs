@@ -30,6 +30,18 @@ namespace ConsultorioPsicopedagogico
             linkLabel2.LinkClicked += linkLabel2_LinkClicked;
         }
 
+        public void LimpiarCampos()
+        {
+            txt_Usuario.Text = "Ingrese su usuario";
+            txt_Usuario.ForeColor = Color.Gray;
+
+            txt_Contraseña.Text = "Ingrese su contraseña";
+            txt_Contraseña.ForeColor = Color.Gray;
+            txt_Contraseña.UseSystemPasswordChar = false;
+
+            this.ActiveControl = panelControles;
+        }
+
         private void txt_Usuario_Enter(object sender, EventArgs e)
         {
             if (txt_Usuario.Text == "Ingrese su usuario")
@@ -135,8 +147,6 @@ namespace ConsultorioPsicopedagogico
             string rol = loginLogica.Autenticar(usuario, contrasena);
             if (!string.IsNullOrEmpty(rol))
             {
-                MessageBox.Show("¡Login exitoso!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
                 // Redirigir al formulario principal (Menu)
                 ConsultorioPsicopedagogico.CPresentacion.Menu principalMenu = new ConsultorioPsicopedagogico.CPresentacion.Menu(rol);
                 principalMenu.Show();
