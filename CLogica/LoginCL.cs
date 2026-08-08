@@ -16,7 +16,7 @@ namespace ConsultorioPsicopedagogico.CLogica
         /// <param name="usuario">Nombre de usuario</param>
         /// <param name="contrasena">Contraseña del usuario</param>
         /// <returns>True si la autenticación es exitosa, False en caso contrario</returns>
-        public bool Autenticar(string usuario, string contrasena)
+        public string Autenticar(string usuario, string contrasena)
         {
             Usuario_CD usuarioDatos = new Usuario_CD();
             return usuarioDatos.VerificarUsuario(usuario, contrasena);
