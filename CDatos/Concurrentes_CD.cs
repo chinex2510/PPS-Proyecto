@@ -135,7 +135,7 @@ namespace ConsultorioPsicopedagogico.CDatos
         {
             try
             {
-                Concurrentes_CD concurrenteSeleccionado = new Concurrentes_CD();
+                Concurrentes_CD concurrenteSeleccionado = null;
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     string cadena = @"
@@ -166,8 +166,9 @@ namespace ConsultorioPsicopedagogico.CDatos
                         comando.Parameters.AddWithValue("@dni", dni);
                         using (MySqlDataReader registro = comando.ExecuteReader())
                         {
-                            while (registro.Read())
+                            if (registro.Read())
                             {
+                                concurrenteSeleccionado = new Concurrentes_CD();
                                 concurrenteSeleccionado.IdConcurrente_D = Convert.ToInt32(registro["idConcurrente"]);
                                 concurrenteSeleccionado.Dni_D = Convert.ToInt32(registro["DNI_C"]);
                                 concurrenteSeleccionado.Apellido_D = registro["Apellido"].ToString();

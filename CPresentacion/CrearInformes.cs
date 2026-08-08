@@ -80,6 +80,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 {
                     concurrenteSeleccionado = concurrente;
                     lbl_NombreConcurrente.Text = concurrente.Nombre_C + " " + concurrente.Apellido_C;
+                    lbl_NombreConcurrente.ForeColor = Color.FromArgb(60, 60, 60);
                     int edad = CalcularEdad(concurrente.FechaNac_C);
                     lbl_Edad.Text = $"{edad} años";
                     CargarHistorial();
@@ -88,9 +89,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 {
                     concurrenteSeleccionado = null;
                     lbl_NombreConcurrente.Text = "";
+                    lbl_NombreConcurrente.ForeColor = Color.FromArgb(60, 60, 60);
                     lbl_Edad.Text = "";
                     CargarHistorial();
-                    MessageBox.Show("Concurrente no encontrado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Concurrente no encontrado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)

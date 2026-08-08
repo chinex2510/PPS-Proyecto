@@ -148,6 +148,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.txt_DniConcurrente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_DniConcurrente.Location = new System.Drawing.Point(20, 70);
+            this.txt_DniConcurrente.MaxLength = 8;
             this.txt_DniConcurrente.Name = "txt_DniConcurrente";
             this.txt_DniConcurrente.Size = new System.Drawing.Size(220, 25);
             this.txt_DniConcurrente.TabIndex = 2;
