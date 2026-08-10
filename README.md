@@ -60,12 +60,10 @@ CREATE TABLE Turnos (
     hora TIME NOT NULL,
     estado VARCHAR(20) DEFAULT 'Confirmado',
     activo BOOLEAN DEFAULT TRUE,             -- Para borrado lógico
-    
     CONSTRAINT FK_Turnos_Usuario 
         FOREIGN KEY (dniUsuario) 
         REFERENCES Usuario(DNI) 
         ON DELETE CASCADE ON UPDATE CASCADE,
-
     -- Evita que un especialista tenga dos turnos a la misma hora en la misma fecha
     CONSTRAINT UQ_Turno_EspecialistaFechaHora UNIQUE (dniUsuario, fecha, hora),
     -- Evita que un paciente tenga dos turnos a la misma hora en la misma fecha
