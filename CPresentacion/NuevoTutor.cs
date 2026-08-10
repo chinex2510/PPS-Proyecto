@@ -21,6 +21,18 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             
             txt_ObraSocial.DropDownStyle = ComboBoxStyle.DropDownList;
             txt_ObraSocial.Items.AddRange(new string[] { "OSECAC", "IPSST", "RED", "ASUNT", "Boreal Salud", "OSDE", "Prensa" });
+
+            txt_Telefono.MaxLength = 10;
+            txt_Telefono.KeyPress += txt_Telefono_KeyPress;
+        }
+
+        private void txt_Telefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Solo permitir números y teclas de control (como Backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -176,7 +188,16 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     txt_NombreTutor.Text = tutor.NombreTutor_C;
                     txt_Telefono.Text = tutor.TelefonoTutor_C;
                     txt_Email.Text = tutor.EmailTutor_C;
-                    txt_ObraSocial.Text = tutor.Obrasocial_C;
+                    
+                    if (txt_ObraSocial.Items.Contains(tutor.Obrasocial_C))
+                    {
+                        txt_ObraSocial.SelectedItem = tutor.Obrasocial_C;
+                    }
+                    else
+                    {
+                        txt_ObraSocial.SelectedIndex = -1;
+                    }
+
                     MessageBox.Show("Tutor encontrado y datos cargados.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -186,7 +207,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     txt_NombreTutor.Text = "";
                     txt_Telefono.Text = "";
                     txt_Email.Text = "";
-                    txt_ObraSocial.Text = "";
+                    txt_ObraSocial.SelectedIndex = -1;
                 }
             }
             catch (Exception ex)
@@ -202,7 +223,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             txt_NombreTutor.Text = "";
             txt_Telefono.Text = "";
             txt_Email.Text = "";
-            txt_ObraSocial.Text = "";
+            txt_ObraSocial.SelectedIndex = -1;
         }
 
         public class TutorValidation : AbstractValidator<NuevoTutor>
@@ -224,7 +245,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
                 RuleFor(x => x.txt_Telefono.Text)
                     .NotEmpty().WithMessage("El teléfono es obligatorio.")
-                    .Matches(@"^\d{8,15}$").WithMessage("El teléfono debe tener entre 8 y 15 dígitos.");
+                    .Matches(@"^\d{10}$").WithMessage("El teléfono debe tener exactamente 10 dígitos.");
 
                 RuleFor(x => x.txt_Email.Text)
                     .NotEmpty().WithMessage("El email es obligatorio.")
