@@ -41,6 +41,30 @@ namespace ConsultorioPsicopedagogico.CDatos
         public string ContactoTutor_D { get => contactoTutor_D; set => contactoTutor_D = value; }
         public string Parentezco_D { get => parentezco_D; set => parentezco_D = value; }
 
+        public bool ExisteConcurrentePorDni(int dni)
+        {
+            bool existe = false;
+            try
+            {
+                using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
+                {
+                    conexion.Open();
+                    string query = "SELECT COUNT(*) FROM Concurrente WHERE dniConcurrente = @Dni";
+                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@Dni", dni);
+                        int count = Convert.ToInt32(comando.ExecuteScalar());
+                        existe = count > 0;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Manejo de error si es necesario
+            }
+            return existe;
+        }
+
         public void CargarEnSql(Concurrentes_CD concurrenteN)
         {
             try

@@ -125,6 +125,12 @@ namespace ConsultorioPsicopedagogico.CLogica
             datos.ReactivarNuevoConcurrente(PasarDatos(concurrente));
         }
 
+        public bool ExisteConcurrentePorDni(int dni)
+        {
+            Concurrentes_CD datos = new Concurrentes_CD();
+            return datos.ExisteConcurrentePorDni(dni);
+        }
+
         public DataTable BusquedaBaja(int dni)
         {
             Concurrentes_CD datos = new Concurrentes_CD();

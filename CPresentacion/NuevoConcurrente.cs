@@ -22,9 +22,12 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private List<string> todasLasEscuelas = new List<string>();
         private bool _actualizandoColegio = false;
 
-        public NuevoConcurrente()
+        private bool _esEdicion = false;
+        
+        public NuevoConcurrente(bool esEdicion)
         {
             InitializeComponent();
+            _esEdicion = esEdicion;
             
             try
             {
@@ -56,7 +59,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             };
         }
 
-        public NuevoConcurrente(int dni) : this()
+        public NuevoConcurrente(int dni, bool esEdicion) : this(esEdicion)
         {
             _dniOriginal = dni;
             CargarDatos(dni);
@@ -153,9 +156,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                         Parentezco_C = cmb_Parentesco.Text
                     };
 
-                    bool isEdit = _dniOriginal.HasValue;
-
-                    if (isEdit)
+                    if (_esEdicion)
                     {
                         concurrente.ModificarDatos(concurrente);
                         MessageBox.Show("Datos modificados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -163,9 +164,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     else
                     {
                         var verificador = new ConcurrentesCL();
-                        var concurrenteExistente = verificador.SeleccionarPorDni(concurrente.Dni_C);
-
-                        if (concurrenteExistente != null && concurrenteExistente.Dni_C != 0)
+                        
+                        if (verificador.ExisteConcurrentePorDni(concurrente.Dni_C))
                         {
                             MessageBox.Show("Ya existe un concurrente con este DNI.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;

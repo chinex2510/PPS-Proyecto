@@ -1,4 +1,4 @@
-﻿using ConsultorioPsicopedagogico.CLogica;
+using ConsultorioPsicopedagogico.CLogica;
 using FluentValidation;
 using FluentValidation.Results;
 using MySqlX.XDevAPI.Common;
@@ -133,7 +133,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                         if (tutor == null)
                         {
                             MessageBox.Show("El tutor de este concurrente se encuentra inactivo. Para reactivar al concurrente, primero debe asignarle un tutor activo en la ventana de edición que se abrirá a continuación.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            NuevoConcurrente frm = new NuevoConcurrente(dni);
+                            NuevoConcurrente frm = new NuevoConcurrente(dni, true);
                             frm.ShowDialog();
                             CargarInactivos();
                             return;

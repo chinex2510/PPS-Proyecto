@@ -41,7 +41,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-            CPresentacion.NuevoConcurrente nuevoConcurrente = new CPresentacion.NuevoConcurrente();
+            CPresentacion.NuevoConcurrente nuevoConcurrente = new CPresentacion.NuevoConcurrente(false);
             this.Hide();
             nuevoConcurrente.ShowDialog();
             this.Show();
@@ -134,7 +134,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             if (dtg_concurrentes.SelectedRows.Count > 0)
             {
                 int dni = Convert.ToInt32(dtg_concurrentes.SelectedRows[0].Cells[0].Value);
-                CPresentacion.NuevoConcurrente editForm = new CPresentacion.NuevoConcurrente(dni);
+                CPresentacion.NuevoConcurrente editForm = new CPresentacion.NuevoConcurrente(dni, true);
                 this.Hide();
                 editForm.ShowDialog();
                 this.Show();
