@@ -56,7 +56,7 @@ namespace ConsultorioPsicopedagogico
             this.panelLogo.Controls.Add(this.pictureBox1);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(4);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(400, 431);
             this.panelLogo.TabIndex = 0;
@@ -66,7 +66,7 @@ namespace ConsultorioPsicopedagogico
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::ConsultorioPsicopedagogico.Properties.Resources.MAria_ELena_Quintana;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(400, 431);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -88,7 +88,7 @@ namespace ConsultorioPsicopedagogico
             this.panelControles.Controls.Add(this.panel1);
             this.panelControles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControles.Location = new System.Drawing.Point(400, 0);
-            this.panelControles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelControles.Margin = new System.Windows.Forms.Padding(4);
             this.panelControles.Name = "panelControles";
             this.panelControles.Size = new System.Drawing.Size(667, 431);
             this.panelControles.TabIndex = 1;
@@ -136,7 +136,7 @@ namespace ConsultorioPsicopedagogico
             this.btn_Cancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
             this.btn_Cancelar.Location = new System.Drawing.Point(431, 289);
-            this.btn_Cancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Cancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(203, 42);
             this.btn_Cancelar.TabIndex = 7;
@@ -152,7 +152,7 @@ namespace ConsultorioPsicopedagogico
             this.btn_Ingresar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Ingresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
             this.btn_Ingresar.Location = new System.Drawing.Point(180, 289);
-            this.btn_Ingresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Ingresar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Ingresar.Name = "btn_Ingresar";
             this.btn_Ingresar.Size = new System.Drawing.Size(203, 41);
             this.btn_Ingresar.TabIndex = 6;
@@ -210,7 +210,7 @@ namespace ConsultorioPsicopedagogico
             this.label1.Location = new System.Drawing.Point(27, 85);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 32);
+            this.label1.Size = new System.Drawing.Size(94, 32);
             this.label1.TabIndex = 2;
             this.label1.Text = "Usuario";
             // 
@@ -219,7 +219,7 @@ namespace ConsultorioPsicopedagogico
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
             this.panel2.Controls.Add(this.txt_Contraseña);
             this.panel2.Location = new System.Drawing.Point(179, 171);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(1);
             this.panel2.Size = new System.Drawing.Size(457, 37);
@@ -233,7 +233,7 @@ namespace ConsultorioPsicopedagogico
             this.txt_Contraseña.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Contraseña.ForeColor = System.Drawing.Color.Gray;
             this.txt_Contraseña.Location = new System.Drawing.Point(1, 1);
-            this.txt_Contraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_Contraseña.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Contraseña.Name = "txt_Contraseña";
             this.txt_Contraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_Contraseña.Size = new System.Drawing.Size(455, 32);
@@ -247,7 +247,7 @@ namespace ConsultorioPsicopedagogico
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
             this.panel1.Controls.Add(this.txt_Usuario);
             this.panel1.Location = new System.Drawing.Point(177, 80);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(1);
             this.panel1.Size = new System.Drawing.Size(457, 37);
@@ -261,7 +261,7 @@ namespace ConsultorioPsicopedagogico
             this.txt_Usuario.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Usuario.ForeColor = System.Drawing.Color.Gray;
             this.txt_Usuario.Location = new System.Drawing.Point(1, 1);
-            this.txt_Usuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_Usuario.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Usuario.Name = "txt_Usuario";
             this.txt_Usuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_Usuario.Size = new System.Drawing.Size(455, 32);
