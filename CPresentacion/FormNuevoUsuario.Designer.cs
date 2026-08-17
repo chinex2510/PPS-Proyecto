@@ -42,6 +42,11 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.cmbPreguntaSecreta = new System.Windows.Forms.ComboBox();
             this.lblRespuesta = new System.Windows.Forms.Label();
             this.txtRespuesta = new System.Windows.Forms.TextBox();
+            this.lblDisponibilidad = new System.Windows.Forms.Label();
+            this.lblHoraInicio = new System.Windows.Forms.Label();
+            this.cmbHoraInicio = new System.Windows.Forms.ComboBox();
+            this.lblHoraFin = new System.Windows.Forms.Label();
+            this.cmbHoraFin = new System.Windows.Forms.ComboBox();
             this.btnCrearUsuario = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panelDecorativo = new System.Windows.Forms.Panel();
@@ -68,7 +73,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelIzquierdo.Name = "panelIzquierdo";
-            this.panelIzquierdo.Size = new System.Drawing.Size(350, 600);
+            this.panelIzquierdo.Size = new System.Drawing.Size(350, 650);
             this.panelIzquierdo.TabIndex = 1;
             // 
             // pictureBox2
@@ -115,7 +120,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelDerecho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDerecho.Location = new System.Drawing.Point(350, 0);
             this.panelDerecho.Name = "panelDerecho";
-            this.panelDerecho.Size = new System.Drawing.Size(642, 600);
+            this.panelDerecho.Size = new System.Drawing.Size(642, 650);
             this.panelDerecho.TabIndex = 0;
             // 
             // lbl_Minimizar
@@ -183,11 +188,16 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelContenedorCampos.Controls.Add(this.cmbPreguntaSecreta);
             this.panelContenedorCampos.Controls.Add(this.lblRespuesta);
             this.panelContenedorCampos.Controls.Add(this.txtRespuesta);
+            this.panelContenedorCampos.Controls.Add(this.lblDisponibilidad);
+            this.panelContenedorCampos.Controls.Add(this.lblHoraInicio);
+            this.panelContenedorCampos.Controls.Add(this.cmbHoraInicio);
+            this.panelContenedorCampos.Controls.Add(this.lblHoraFin);
+            this.panelContenedorCampos.Controls.Add(this.cmbHoraFin);
             this.panelContenedorCampos.Controls.Add(this.btnCrearUsuario);
             this.panelContenedorCampos.Controls.Add(this.btnCancelar);
             this.panelContenedorCampos.Location = new System.Drawing.Point(50, 70);
             this.panelContenedorCampos.Name = "panelContenedorCampos";
-            this.panelContenedorCampos.Size = new System.Drawing.Size(550, 490);
+            this.panelContenedorCampos.Size = new System.Drawing.Size(550, 540);
             this.panelContenedorCampos.TabIndex = 1;
             // 
             // lblUsuario
@@ -362,13 +372,68 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.txtRespuesta.TabIndex = 17;
             this.txtRespuesta.Text = "Ingrese la respuesta";
             // 
+            // lblDisponibilidad
+            // 
+            this.lblDisponibilidad.AutoSize = true;
+            this.lblDisponibilidad.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDisponibilidad.Location = new System.Drawing.Point(42, 405);
+            this.lblDisponibilidad.Name = "lblDisponibilidad";
+            this.lblDisponibilidad.Size = new System.Drawing.Size(150, 17);
+            this.lblDisponibilidad.TabIndex = 25;
+            this.lblDisponibilidad.Text = "Disponibilidad Horaria";
+            this.lblDisponibilidad.Visible = false;
+            // 
+            // lblHoraInicio
+            // 
+            this.lblHoraInicio.AutoSize = true;
+            this.lblHoraInicio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoraInicio.Location = new System.Drawing.Point(42, 428);
+            this.lblHoraInicio.Name = "lblHoraInicio";
+            this.lblHoraInicio.Size = new System.Drawing.Size(41, 17);
+            this.lblHoraInicio.TabIndex = 26;
+            this.lblHoraInicio.Text = "Inicio";
+            this.lblHoraInicio.Visible = false;
+            // 
+            // cmbHoraInicio
+            // 
+            this.cmbHoraInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHoraInicio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbHoraInicio.Location = new System.Drawing.Point(89, 425);
+            this.cmbHoraInicio.Name = "cmbHoraInicio";
+            this.cmbHoraInicio.Size = new System.Drawing.Size(100, 25);
+            this.cmbHoraInicio.TabIndex = 27;
+            this.cmbHoraInicio.Visible = false;
+            // 
+            // lblHoraFin
+            // 
+            this.lblHoraFin.AutoSize = true;
+            this.lblHoraFin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoraFin.Location = new System.Drawing.Point(210, 428);
+            this.lblHoraFin.Name = "lblHoraFin";
+            this.lblHoraFin.Size = new System.Drawing.Size(26, 17);
+            this.lblHoraFin.TabIndex = 28;
+            this.lblHoraFin.Text = "Fin";
+            this.lblHoraFin.Visible = false;
+            // 
+            // cmbHoraFin
+            // 
+            this.cmbHoraFin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHoraFin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbHoraFin.Location = new System.Drawing.Point(242, 425);
+            this.cmbHoraFin.Name = "cmbHoraFin";
+            this.cmbHoraFin.Size = new System.Drawing.Size(100, 25);
+            this.cmbHoraFin.TabIndex = 29;
+            this.cmbHoraFin.Visible = false;
+            // 
             // btnCrearUsuario
             // 
-            this.btnCrearUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(140)))), ((int)(((byte)(70)))));
+            this.btnCrearUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
+            this.btnCrearUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCrearUsuario.FlatAppearance.BorderSize = 0;
             this.btnCrearUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCrearUsuario.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCrearUsuario.ForeColor = System.Drawing.Color.White;
-            this.btnCrearUsuario.Location = new System.Drawing.Point(110, 440);
+            this.btnCrearUsuario.Location = new System.Drawing.Point(110, 490);
             this.btnCrearUsuario.Name = "btnCrearUsuario";
             this.btnCrearUsuario.Size = new System.Drawing.Size(150, 35);
             this.btnCrearUsuario.TabIndex = 18;
@@ -380,7 +445,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
-            this.btnCancelar.Location = new System.Drawing.Point(280, 440);
+            this.btnCancelar.Location = new System.Drawing.Point(290, 490);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(150, 35);
             this.btnCancelar.TabIndex = 19;
@@ -459,7 +524,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 600);
+            this.ClientSize = new System.Drawing.Size(992, 650);
             this.Controls.Add(this.panelDerecho);
             this.Controls.Add(this.panelIzquierdo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -515,5 +580,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lbl_Cerrar;
         private System.Windows.Forms.Label lbl_Minimizar;
+        private System.Windows.Forms.Label lblDisponibilidad;
+        private System.Windows.Forms.Label lblHoraInicio;
+        public System.Windows.Forms.ComboBox cmbHoraInicio;
+        private System.Windows.Forms.Label lblHoraFin;
+        public System.Windows.Forms.ComboBox cmbHoraFin;
     }
 }

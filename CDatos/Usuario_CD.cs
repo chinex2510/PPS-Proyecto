@@ -19,6 +19,7 @@ namespace ConsultorioPsicopedagogico.CDatos
         private int preguntaId;
         private string respuesta;
         private string rol;
+        private string disponibilidadHoraria;
 
         public int Dni { get => dni; set => dni = value; }
         public string Usuario { get => usuario; set => usuario = value; }
@@ -28,6 +29,7 @@ namespace ConsultorioPsicopedagogico.CDatos
         public int PreguntaId { get => preguntaId; set => preguntaId = value; }
         public string Respuesta { get => respuesta; set => respuesta = value; }
         public string Rol { get => rol; set => rol = value; }
+        public string DisponibilidadHoraria { get => disponibilidadHoraria; set => disponibilidadHoraria = value; }
 
         /// <summary>
         /// Verifica si existe un usuario con el nombre de usuario y contraseña provistas en la base de datos.
@@ -81,9 +83,9 @@ namespace ConsultorioPsicopedagogico.CDatos
                 {
                     conexion.Open();
                     string query = @"INSERT INTO Usuario 
-                            (DNI, Usuario, NombreApellido, Email, Contrasena, PreguntaID, Respuesta, Rol)
+                            (DNI, Usuario, NombreApellido, Email, Contrasena, PreguntaID, Respuesta, Rol, disponibilidadHoraria)
                             VALUES 
-                            (@Dni, @Usuario, @NombreApellido, @Email, @Contrasena, @PreguntaId, @Respuesta, @Rol)";
+                            (@Dni, @Usuario, @NombreApellido, @Email, @Contrasena, @PreguntaId, @Respuesta, @Rol, @DisponibilidadHoraria)";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
@@ -95,6 +97,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                         comando.Parameters.AddWithValue("@PreguntaId", usuarioNuevo.PreguntaId);
                         comando.Parameters.AddWithValue("@Respuesta", usuarioNuevo.Respuesta);
                         comando.Parameters.AddWithValue("@Rol", usuarioNuevo.Rol);
+                        comando.Parameters.AddWithValue("@DisponibilidadHoraria", string.IsNullOrEmpty(usuarioNuevo.DisponibilidadHoraria) ? (object)DBNull.Value : usuarioNuevo.DisponibilidadHoraria);
 
                         comando.ExecuteNonQuery();
                     }

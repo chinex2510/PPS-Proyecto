@@ -100,6 +100,7 @@ CREATE TABLE IF NOT EXISTS Usuario (
     PreguntaID INT NOT NULL,
     Respuesta VARCHAR(255) NOT NULL,
     Rol VARCHAR(50) NOT NULL,
+    disponibilidadHoraria VARCHAR(50),
     FOREIGN KEY (PreguntaID) REFERENCES PreguntaSeguridad(PreguntaID)
 );
 
