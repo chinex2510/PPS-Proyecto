@@ -40,17 +40,24 @@ namespace ConsultorioPsicopedagogico.CDatos
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     conexion.Open();
-                    string query = "SELECT Rol FROM Usuario WHERE BINARY Usuario = @Usuario AND BINARY Contrasena = @Contrasena";
+                    string query = "SELECT DNI, Rol, NombreApellido FROM Usuario WHERE BINARY Usuario = @Usuario AND BINARY Contrasena = @Contrasena";
 
                     using (MySqlCommand comando = new MySqlCommand(query, conexion))
                     {
                         comando.Parameters.AddWithValue("@Usuario", usuario);
                         comando.Parameters.AddWithValue("@Contrasena", contrasena);
 
-                        object result = comando.ExecuteScalar();
-                        if (result != null && result != DBNull.Value)
+                        using (MySqlDataReader reader = comando.ExecuteReader())
                         {
-                            rolUsuario = result.ToString();
+                            if (reader.Read())
+                            {
+                                rolUsuario = reader["Rol"].ToString();
+                                
+                                // Set global session context
+                                ConsultorioPsicopedagogico.CLogica.SessionContext.RolActual = rolUsuario;
+                                ConsultorioPsicopedagogico.CLogica.SessionContext.DniUsuarioActual = Convert.ToInt32(reader["DNI"]);
+                                ConsultorioPsicopedagogico.CLogica.SessionContext.NombreApellidoActual = reader["NombreApellido"].ToString();
+                            }
                         }
                     }
                 }

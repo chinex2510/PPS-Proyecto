@@ -117,6 +117,13 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 DataTable dt = turnoCL.MostrarTurnos();
                 if (dt != null)
                 {
+                    // Filter if user is Especialista
+                    if (ConsultorioPsicopedagogico.CLogica.SessionContext.RolActual != null && ConsultorioPsicopedagogico.CLogica.SessionContext.RolActual.Trim().Equals("Especialista", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dt.DefaultView.RowFilter = $"DNI_Especialista = {ConsultorioPsicopedagogico.CLogica.SessionContext.DniUsuarioActual}";
+                        dt = dt.DefaultView.ToTable();
+                    }
+
                     dtg_turnos.DataSource = dt;
                     
                     if (dtg_turnos.Columns.Contains("idTurno"))
