@@ -27,7 +27,9 @@ namespace ConsultorioPsicopedagogico
 
             // Vincular eventos de LinkLabel para navegación
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
-            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
+            
+            // Ocultar la opción de crear cuenta desde el login (ahora es exclusivo de Admin)
+            linkLabel2.Visible = false;
         }
 
         public void LimpiarCampos()
@@ -175,10 +177,7 @@ namespace ConsultorioPsicopedagogico
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            FormNuevoUsuario nuevoForm = new FormNuevoUsuario();
-            this.Hide();
-            nuevoForm.ShowDialog();
-            this.Show();
+            // Ya no se utiliza desde el login
         }
     }
 } 

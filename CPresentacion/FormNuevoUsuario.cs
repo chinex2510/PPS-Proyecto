@@ -62,6 +62,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             cmbRol.Items.Clear();
             cmbRol.Items.Add("Especialista");
             cmbRol.Items.Add("Secretaria/o");
+            cmbRol.Items.Add("Admin");
             cmbRol.SelectedIndex = 0;
         }
 

@@ -1,4 +1,4 @@
-﻿namespace ConsultorioPsicopedagogico.CPresentacion
+namespace ConsultorioPsicopedagogico.CPresentacion
 {
     partial class Menu
     {
@@ -42,6 +42,7 @@
             this.panelLeft = new System.Windows.Forms.Panel();
             this.lbl_LicTitle = new System.Windows.Forms.Label();
             this.lbl_SubTitle = new System.Windows.Forms.Label();
+            this.lbl_CrearCuenta = new System.Windows.Forms.LinkLabel();
             this.panelMenuCard = new System.Windows.Forms.Panel();
             this.lbl_MenuTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -202,9 +203,10 @@
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
             this.panelLeft.Controls.Add(this.lbl_LicTitle);
             this.panelLeft.Controls.Add(this.lbl_SubTitle);
+            this.panelLeft.Controls.Add(this.lbl_CrearCuenta);
             this.panelLeft.Controls.Add(this.pictureBox1);
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelLeft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelLeft.Margin = new System.Windows.Forms.Padding(4);
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(347, 517);
             this.panelLeft.TabIndex = 15;
@@ -233,6 +235,23 @@
             this.lbl_SubTitle.Text = "Consultorio Psicopedagógico";
             this.lbl_SubTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lbl_CrearCuenta
+            // 
+            this.lbl_CrearCuenta.AutoSize = false;
+            this.lbl_CrearCuenta.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CrearCuenta.LinkColor = System.Drawing.Color.White;
+            this.lbl_CrearCuenta.ActiveLinkColor = System.Drawing.Color.LightGray;
+            this.lbl_CrearCuenta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_CrearCuenta.Location = new System.Drawing.Point(13, 400);
+            this.lbl_CrearCuenta.Name = "lbl_CrearCuenta";
+            this.lbl_CrearCuenta.Size = new System.Drawing.Size(320, 25);
+            this.lbl_CrearCuenta.TabIndex = 3;
+            this.lbl_CrearCuenta.TabStop = true;
+            this.lbl_CrearCuenta.Text = "Crear nuevo usuario";
+            this.lbl_CrearCuenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_CrearCuenta.Visible = false;
+            this.lbl_CrearCuenta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbl_CrearCuenta_LinkClicked);
+            // 
             // panelMenuCard
             // 
             this.panelMenuCard.BackColor = System.Drawing.Color.White;
@@ -247,7 +266,7 @@
             this.panelMenuCard.Controls.Add(this.btn_Tutor);
             this.panelMenuCard.Controls.Add(this.btn_Salir);
             this.panelMenuCard.Location = new System.Drawing.Point(373, 25);
-            this.panelMenuCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMenuCard.Margin = new System.Windows.Forms.Padding(4);
             this.panelMenuCard.Name = "panelMenuCard";
             this.panelMenuCard.Size = new System.Drawing.Size(493, 468);
             this.panelMenuCard.TabIndex = 16;
@@ -304,6 +323,7 @@
         private System.Windows.Forms.Panel panelMenuCard;
         private System.Windows.Forms.Label lbl_LicTitle;
         private System.Windows.Forms.Label lbl_SubTitle;
+        private System.Windows.Forms.LinkLabel lbl_CrearCuenta;
         private System.Windows.Forms.Label lbl_MenuTitle;
     }
 }

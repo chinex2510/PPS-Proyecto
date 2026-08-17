@@ -63,6 +63,19 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 btn_Turnos.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
                 btn_Turnos.Text = "GESTIÓN DE\r\nTURNOS"; // Salto de línea para que se vea mejor
             }
+            else if (_rolUsuario != null && (_rolUsuario.Trim().Equals("Admin", StringComparison.OrdinalIgnoreCase) || _rolUsuario.Trim().Equals("Administrador", StringComparison.OrdinalIgnoreCase)))
+            {
+                lbl_CrearCuenta.Visible = true;
+                lbl_CrearCuenta.BringToFront();
+            }
+        }
+
+        private void lbl_CrearCuenta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormNuevoUsuario nuevoForm = new FormNuevoUsuario();
+            this.Hide();
+            nuevoForm.ShowDialog();
+            this.Show();
         }
 
         private void btnConcurrentes_Click(object sender, EventArgs e)
