@@ -51,6 +51,12 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // Cargar roles por defecto
             CargarRoles();
 
+            // Cargar horarios
+            CargarHorarios();
+
+            // Evento para cambiar visibilidad de disponibilidad
+            cmbRol.SelectedIndexChanged += cmbRol_SelectedIndexChanged;
+
             EstablecerColoresPlaceholders();
 
             // Restringir ingreso de letras en campos numéricos (DNI)
@@ -64,6 +70,31 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             cmbRol.Items.Add("Secretaria/o");
             cmbRol.Items.Add("Admin");
             cmbRol.SelectedIndex = 0;
+        }
+
+        private void CargarHorarios()
+        {
+            cmbHoraInicio.Items.Clear();
+            cmbHoraFin.Items.Clear();
+            
+            for (int i = 9; i <= 18; i++)
+            {
+                string hora = i.ToString("D2") + ":00";
+                cmbHoraInicio.Items.Add(hora);
+                cmbHoraFin.Items.Add(hora);
+            }
+        }
+
+        private void cmbRol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string rol = cmbRol.SelectedItem?.ToString();
+            bool mostrarHorarios = (rol == "Especialista" || rol == "Secretaria/o");
+            
+            lblDisponibilidad.Visible = mostrarHorarios;
+            lblHoraInicio.Visible = mostrarHorarios;
+            cmbHoraInicio.Visible = mostrarHorarios;
+            lblHoraFin.Visible = mostrarHorarios;
+            cmbHoraFin.Visible = mostrarHorarios;
         }
 
         private void EstablecerColoresPlaceholders()
@@ -275,6 +306,36 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 PreguntaId = cmbPreguntaSecreta.SelectedValue != null ? Convert.ToInt32(cmbPreguntaSecreta.SelectedValue) : 0,
                 Respuesta = txtRespuesta.Text.Trim()
             };
+
+            // Validar disponibilidad horaria si es Especialista o Secretaria/o
+            if (usuario.Rol == "Especialista" || usuario.Rol == "Secretaria/o")
+            {
+                if (cmbHoraInicio.SelectedItem == null || cmbHoraFin.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar un horario de inicio y un horario de fin.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string horaInicio = cmbHoraInicio.SelectedItem.ToString();
+                string horaFin = cmbHoraFin.SelectedItem.ToString();
+
+                int horaI = int.Parse(horaInicio.Split(':')[0]);
+                int horaF = int.Parse(horaFin.Split(':')[0]);
+
+                int diferencia = horaF - horaI;
+
+                if (diferencia < 6 || diferencia > 8)
+                {
+                    MessageBox.Show("La jornada laboral debe ser de corrido y tener un mínimo de 6 horas y un máximo de 8 horas.", "Error de horario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                usuario.DisponibilidadHoraria = $"{horaInicio}-{horaFin}";
+            }
+            else
+            {
+                usuario.DisponibilidadHoraria = null;
+            }
 
             // Intentar parsear el DNI
             int dniVal = 0;

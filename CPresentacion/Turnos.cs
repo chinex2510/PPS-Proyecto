@@ -24,8 +24,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private void Turnos_Load(object sender, EventArgs e)
         {
-            
-            
+            panelInputCard.MouseClick += panelInputCard_MouseClick;
 
             CargarEspecialistas();
 
@@ -38,7 +37,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             cbo_FiltroFecha.SelectedIndex = 0;
 
             // Suscribir eventos antes de inicializar para que cargue las horas automáticamente
-            cbo_Especialista.SelectedIndexChanged += (s, ev) => ActualizarHorasDisponibles();
+            cbo_Especialista.SelectedIndexChanged += (s, ev) => { ActualizarHorasDisponibles(); FiltrarTurnos(); };
             dtp_FechaTurno.ValueChanged += (s, ev) => ActualizarHorasDisponibles();
             cbo_FiltroFecha.SelectedIndexChanged += (s, ev) => FiltrarTurnos();
 
@@ -53,6 +52,22 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             {
                 UsuarioCL usuarioLogica = new UsuarioCL();
                 DataTable dt = usuarioLogica.ObtenerEspecialistas();
+
+                if (ConsultorioPsicopedagogico.CLogica.SessionContext.RolActual != null && ConsultorioPsicopedagogico.CLogica.SessionContext.RolActual.Trim().Equals("Especialista", StringComparison.OrdinalIgnoreCase))
+                {
+                    dt.DefaultView.RowFilter = $"DNI = {ConsultorioPsicopedagogico.CLogica.SessionContext.DniUsuarioActual}";
+                    dt = dt.DefaultView.ToTable();
+                    cbo_Especialista.Enabled = false;
+                }
+                else
+                {
+                    DataRow row = dt.NewRow();
+                    row["DNI"] = 0;
+                    row["NombreApellido"] = "Todos los especialistas";
+                    dt.Rows.InsertAt(row, 0);
+
+                    cbo_Especialista.Enabled = true;
+                }
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
@@ -69,16 +84,22 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
         private void ActualizarHorasDisponibles()
         {
-            if (cbo_Especialista.SelectedValue == null || !int.TryParse(cbo_Especialista.SelectedValue.ToString(), out int dniEspecialista))
+            if (cbo_Especialista.SelectedValue == null || !int.TryParse(cbo_Especialista.SelectedValue.ToString(), out int dniEspecialista) || dniEspecialista <= 0)
             {
                 cbo_HoraTurno.DataSource = null;
                 return;
             }
 
+            string disponibilidadHoraria = null;
+            if (cbo_Especialista.SelectedItem is DataRowView drv && drv.Row.Table.Columns.Contains("disponibilidadHoraria"))
+            {
+                disponibilidadHoraria = drv["disponibilidadHoraria"].ToString();
+            }
+
             try
             {
                 string fecha = dtp_FechaTurno.Value.ToString("dd/MM/yyyy");
-                List<string> horasLibres = turnoCL.ObtenerHorasDisponibles(dniEspecialista, fecha);
+                List<string> horasLibres = turnoCL.ObtenerHorasDisponibles(dniEspecialista, fecha, disponibilidadHoraria);
 
                 // Si estamos editando un turno existente, el horario actualmente seleccionado
                 // para ese turno debe mostrarse disponible aunque esté ocupado en la BD.
@@ -167,6 +188,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     {
                         dtg_turnos.Columns["FechaRaw"].Visible = false;
                     }
+
+                    // Auto-size columns to fill the DataGridView
+                    dtg_turnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
             }
             catch (Exception ex)
@@ -245,7 +269,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         {
             if (idTurnoSeleccionado <= 0)
             {
-                MessageBox.Show("Seleccione un turno de la lista para modificar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -290,7 +313,6 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         {
             if (idTurnoSeleccionado <= 0)
             {
-                MessageBox.Show("Seleccione un turno de la lista para eliminar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -319,6 +341,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         private void btn_Limpiar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+            CargarTurnos();
         }
 
         private void LimpiarCampos()
@@ -359,15 +382,56 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dtg_turnos.Rows[e.RowIndex];
-                if (row.Cells["idTurno"].Value != null)
+                
+                // Extraer todos los valores PRIMERO para evitar que eventos sincrónicos (como SelectedValue)
+                // hagan que el DataGridView se recargue y deje a esta fila "huérfana" (row.DataGridView == null).
+                int? idTurnoVal = row.Cells["idTurno"].Value != DBNull.Value ? (int?)Convert.ToInt32(row.Cells["idTurno"].Value) : null;
+                string dniConcurrenteVal = row.Cells["DNI_Concurrente"].Value?.ToString();
+                string nombreConcurrenteVal = row.Cells["nombreConcurrente"].Value?.ToString();
+                int? dniEspecialistaVal = row.Cells["DNI_Especialista"].Value != DBNull.Value ? (int?)Convert.ToInt32(row.Cells["DNI_Especialista"].Value) : null;
+                
+                DateTime? f = null;
+                if (dtg_turnos.Columns.Contains("FechaRaw"))
                 {
-                    idTurnoSeleccionado = Convert.ToInt32(row.Cells["idTurno"].Value);
-                    txt_DniConcurrente.Text = row.Cells["DNI_Concurrente"].Value.ToString();
+                    int idx = dtg_turnos.Columns["FechaRaw"].Index;
+                    if (row.Cells[idx].Value != null && row.Cells[idx].Value != DBNull.Value)
+                    {
+                        f = Convert.ToDateTime(row.Cells[idx].Value);
+                    }
+                }
+                else if (dtg_turnos.Columns.Contains("FechaTurno"))
+                {
+                    int idx = dtg_turnos.Columns["FechaTurno"].Index;
+                    if (row.Cells[idx].Value != null && row.Cells[idx].Value != DBNull.Value)
+                    {
+                        string fechaStr = row.Cells[idx].Value.ToString();
+                        if (DateTime.TryParse(fechaStr, out DateTime parsed))
+                        {
+                            f = parsed;
+                        }
+                    }
+                }
+
+                string horaVal = null;
+                if (dtg_turnos.Columns.Contains("HoraTurno"))
+                {
+                    int idxHora = dtg_turnos.Columns["HoraTurno"].Index;
+                    if (row.Cells[idxHora].Value != null && row.Cells[idxHora].Value != DBNull.Value)
+                    {
+                        horaVal = row.Cells[idxHora].Value.ToString();
+                    }
+                }
+
+                // Ahora aplicar los valores a la UI de forma segura
+                if (idTurnoVal.HasValue)
+                {
+                    idTurnoSeleccionado = idTurnoVal.Value;
+                    txt_DniConcurrente.Text = dniConcurrenteVal;
                     txt_DniConcurrente.Enabled = false; // Bloquear DNI al editar
 
-                    if (row.Cells["nombreConcurrente"].Value != null && !string.IsNullOrWhiteSpace(row.Cells["nombreConcurrente"].Value.ToString()))
+                    if (!string.IsNullOrWhiteSpace(nombreConcurrenteVal))
                     {
-                        txt_NombreConcurrente.Text = row.Cells["nombreConcurrente"].Value.ToString();
+                        txt_NombreConcurrente.Text = nombreConcurrenteVal;
                     }
                     else
                     {
@@ -375,30 +439,27 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                     }
                     txt_NombreConcurrente.Enabled = true;
 
-                    if (row.Cells["DNI_Especialista"].Value != null)
+                    if (f.HasValue)
                     {
-                        cbo_Especialista.SelectedValue = Convert.ToInt32(row.Cells["DNI_Especialista"].Value);
+                        // Permitir la fecha del turno seleccionado aunque sea en el pasado/hoy
+                        dtp_FechaTurno.MinDate = f.Value < DateTime.Today.AddDays(1) ? f.Value : DateTime.Today.AddDays(1);
+                        // MaxDate siempre 6 meses desde hoy, o la fecha del turno si está más allá
+                        dtp_FechaTurno.MaxDate = f.Value > DateTime.Today.AddMonths(6) ? f.Value : DateTime.Today.AddMonths(6);
+                        dtp_FechaTurno.Value = f.Value;
                     }
 
-                    if (row.Cells["FechaTurno"].Value != null)
+                    // Cambiar el Especialista (Esto dispara SelectedIndexChanged -> FiltrarTurnos)
+                    if (dniEspecialistaVal.HasValue)
                     {
-                        string fechaStr = row.Cells["FechaTurno"].Value.ToString();
-                        if (DateTime.TryParse(fechaStr, out DateTime f))
-                        {
-                            // Permitir la fecha del turno seleccionado aunque sea en el pasado/hoy
-                            dtp_FechaTurno.MinDate = f < DateTime.Today.AddDays(1) ? f : DateTime.Today.AddDays(1);
-                            // MaxDate siempre 6 meses desde hoy, o la fecha del turno si está más allá
-                            dtp_FechaTurno.MaxDate = f > DateTime.Today.AddMonths(6) ? f : DateTime.Today.AddMonths(6);
-                            dtp_FechaTurno.Value = f;
-                        }
+                        cbo_Especialista.SelectedValue = dniEspecialistaVal.Value;
                     }
 
                     // Forzar recarga de horas ocupadas/libres
                     ActualizarHorasDisponibles();
 
-                    if (row.Cells["HoraTurno"].Value != null)
+                    if (!string.IsNullOrEmpty(horaVal))
                     {
-                        cbo_HoraTurno.Text = row.Cells["HoraTurno"].Value.ToString();
+                        cbo_HoraTurno.Text = horaVal;
                     }
 
                     btn_Guardar.Enabled = false;
@@ -452,6 +513,12 @@ namespace ConsultorioPsicopedagogico.CPresentacion
                 }
             }
 
+            // 3. Filtro por Especialista (para Admin y Secretaria)
+            if (cbo_Especialista.Enabled && cbo_Especialista.SelectedValue != null && int.TryParse(cbo_Especialista.SelectedValue.ToString(), out int dniEspFiltro) && dniEspFiltro > 0)
+            {
+                filters.Add($"DNI_Especialista = {dniEspFiltro}");
+            }
+
             // Combinar y aplicar los filtros
             if (filters.Count > 0)
             {
@@ -459,7 +526,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             }
             else
             {
-                dt.DefaultView.RowFilter = "";
+                dt.DefaultView.RowFilter = string.Empty;
             }
         }
 
@@ -469,6 +536,27 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             {
                 e.Handled = true;
             }
+        }
+
+        private void panelInputCard_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!btn_Modificar.Enabled && btn_Modificar.Bounds.Contains(e.Location))
+            {
+                MostrarTooltipAyuda("Seleccione un turno de la lista para modificar.", btn_Modificar, e.Location);
+            }
+            else if (!btn_Eliminar.Enabled && btn_Eliminar.Bounds.Contains(e.Location))
+            {
+                MostrarTooltipAyuda("Seleccione un turno de la lista para eliminar.", btn_Eliminar, e.Location);
+            }
+        }
+
+        private void MostrarTooltipAyuda(string mensaje, Control controlPadre, Point localizacion)
+        {
+            ToolTip tooltip = new ToolTip();
+            tooltip.IsBalloon = true;
+            tooltip.ToolTipIcon = ToolTipIcon.Warning;
+            tooltip.ToolTipTitle = "Acción Requerida";
+            tooltip.Show(mensaje, panelInputCard, localizacion, 2500);
         }
 
         private void PanelCard_Paint(object sender, PaintEventArgs e)

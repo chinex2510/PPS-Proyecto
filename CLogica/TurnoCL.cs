@@ -73,9 +73,9 @@ namespace ConsultorioPsicopedagogico.CLogica
         }
 
         /// <summary>
-        /// Obtiene la lista de horas disponibles (de 9:00 a 18:00 cada 30 min) para un especialista y fecha dados.
+        /// Obtiene la lista de horas disponibles para un especialista y fecha dados, filtrados opcionalmente por su jornada laboral.
         /// </summary>
-        public List<string> ObtenerHorasDisponibles(int dniEspecialista, string fecha)
+        public List<string> ObtenerHorasDisponibles(int dniEspecialista, string fecha, string disponibilidadHoraria = null)
         {
             // Definir lista completa de horarios (de 09:00 a 18:00 cada media hora)
             List<string> todasLasHoras = new List<string>
@@ -85,6 +85,30 @@ namespace ConsultorioPsicopedagogico.CLogica
                 "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
                 "18:00"
             };
+
+            // Filtrar la lista base según la disponibilidad horaria
+            if (!string.IsNullOrEmpty(disponibilidadHoraria))
+            {
+                try
+                {
+                    string[] partes = disponibilidadHoraria.Split('-');
+                    if (partes.Length == 2)
+                    {
+                        TimeSpan inicioJornada = TimeSpan.Parse(partes[0]);
+                        TimeSpan finJornada = TimeSpan.Parse(partes[1]);
+
+                        todasLasHoras = todasLasHoras.Where(h => 
+                        {
+                            TimeSpan horaActual = TimeSpan.Parse(h);
+                            return horaActual >= inicioJornada && horaActual <= finJornada;
+                        }).ToList();
+                    }
+                }
+                catch
+                {
+                    // Si ocurre un error al procesar el string (formato incorrecto), no aplicamos filtro
+                }
+            }
 
             Turnos_CD datos = new Turnos_CD();
             List<string> horasOcupadas = datos.ObtenerHorasOcupadas(dniEspecialista, fecha);

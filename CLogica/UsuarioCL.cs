@@ -20,6 +20,7 @@ namespace ConsultorioPsicopedagogico.CLogica
         public int PreguntaId { get; set; }
         public string Respuesta { get; set; }
         public string Rol { get; set; }
+        public string DisponibilidadHoraria { get; set; }
 
         /// <summary>
         /// Obtiene todas las preguntas de seguridad desde la capa de datos.
@@ -56,7 +57,8 @@ namespace ConsultorioPsicopedagogico.CLogica
                 Contrasena = usuario.Contrasena,
                 PreguntaId = usuario.PreguntaId,
                 Respuesta = usuario.Respuesta,
-                Rol = usuario.Rol
+                Rol = usuario.Rol,
+                DisponibilidadHoraria = usuario.DisponibilidadHoraria
             };
 
             datos.RegistrarUsuario(nuevo);
