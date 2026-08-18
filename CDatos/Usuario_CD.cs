@@ -295,7 +295,7 @@ namespace ConsultorioPsicopedagogico.CDatos
                 using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
                 {
                     conexion.Open();
-                    string query = "SELECT DNI, NombreApellido, Rol FROM Usuario WHERE Rol = 'Especialista' ORDER BY NombreApellido ASC";
+                    string query = "SELECT DNI, NombreApellido, Rol, disponibilidadHoraria FROM Usuario WHERE Rol = 'Especialista' ORDER BY NombreApellido ASC";
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion))
                     {
                         adapter.Fill(dt);
