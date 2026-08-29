@@ -18,6 +18,9 @@ namespace ConsultorioPsicopedagogico
     public partial class Login : Form
     {
         private LoginCL loginLogica;
+        private bool mostrarContrasena = false;
+        private bool isEyeHovered = false;
+        private ToolTip toolTipOjo = new ToolTip();
 
         public Login()
         {
@@ -30,6 +33,13 @@ namespace ConsultorioPsicopedagogico
             
             // Ocultar la opción de crear cuenta desde el login (ahora es exclusivo de Admin)
             linkLabel2.Visible = false;
+
+            ActualizarToolTipOjo();
+        }
+
+        private void ActualizarToolTipOjo()
+        {
+            toolTipOjo.SetToolTip(pic_MostrarOcultar, mostrarContrasena ? "Ocultar contraseña" : "Mostrar contraseña");
         }
 
         public void LimpiarCampos()
@@ -40,6 +50,9 @@ namespace ConsultorioPsicopedagogico
             txt_Contraseña.Text = "Ingrese su contraseña";
             txt_Contraseña.ForeColor = Color.Gray;
             txt_Contraseña.UseSystemPasswordChar = false;
+            mostrarContrasena = false;
+            ActualizarToolTipOjo();
+            if (pic_MostrarOcultar != null) pic_MostrarOcultar.Invalidate();
 
             this.ActiveControl = panelControles;
         }
@@ -78,7 +91,72 @@ namespace ConsultorioPsicopedagogico
             {
                 txt_Contraseña.Text = "";
                 txt_Contraseña.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
-                txt_Contraseña.UseSystemPasswordChar = true;
+                txt_Contraseña.UseSystemPasswordChar = !mostrarContrasena;
+            }
+        }
+
+        private void pic_MostrarOcultar_Click(object sender, EventArgs e)
+        {
+            mostrarContrasena = !mostrarContrasena;
+
+            if (txt_Contraseña.Text != "Ingrese su contraseña")
+            {
+                txt_Contraseña.UseSystemPasswordChar = !mostrarContrasena;
+            }
+
+            ActualizarToolTipOjo();
+            pic_MostrarOcultar.Invalidate();
+        }
+
+        private void pic_MostrarOcultar_MouseEnter(object sender, EventArgs e)
+        {
+            isEyeHovered = true;
+            pic_MostrarOcultar.Invalidate();
+        }
+
+        private void pic_MostrarOcultar_MouseLeave(object sender, EventArgs e)
+        {
+            isEyeHovered = false;
+            pic_MostrarOcultar.Invalidate();
+        }
+
+        private void pic_MostrarOcultar_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            int w = pic_MostrarOcultar.Width;
+            int h = pic_MostrarOcultar.Height;
+
+            Color iconColor = isEyeHovered ? ColorTranslator.FromHtml("#732396") : ColorTranslator.FromHtml("#3A0F3A");
+
+            using (Pen pen = new Pen(iconColor, 2f))
+            using (SolidBrush brush = new SolidBrush(iconColor))
+            {
+                int eyeWidth = 20;
+                int eyeHeight = 12;
+                int x = (w - eyeWidth) / 2;
+                int y = (h - eyeHeight) / 2;
+
+                Rectangle rect = new Rectangle(x, y, eyeWidth, eyeHeight);
+
+                // Dibujar arcos superior e inferior del ojo
+                e.Graphics.DrawArc(pen, rect.X, rect.Y - 2, rect.Width, rect.Height + 4, 200, 140);
+                e.Graphics.DrawArc(pen, rect.X, rect.Y - 4, rect.Width, rect.Height + 4, 20, 140);
+
+                // Pupila central
+                int pupilSize = 6;
+                int px = (w - pupilSize) / 2;
+                int py = (h - pupilSize) / 2;
+                e.Graphics.FillEllipse(brush, px, py, pupilSize, pupilSize);
+
+                // Si la contraseña está OCULTA (!mostrarContrasena), dibujar la barra diagonal que tacha el ojo
+                if (!mostrarContrasena)
+                {
+                    using (Pen slashPen = new Pen(iconColor, 2f))
+                    {
+                        e.Graphics.DrawLine(slashPen, x - 1, y + eyeHeight + 1, x + eyeWidth + 1, y - 1);
+                    }
+                }
             }
         }
 

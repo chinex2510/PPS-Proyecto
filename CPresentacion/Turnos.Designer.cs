@@ -71,18 +71,18 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelHeader.Controls.Add(this.pictureBox1);
             this.panelHeader.Controls.Add(this.label1);
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1333, 86);
+            this.panelHeader.Size = new System.Drawing.Size(1040, 75);
             this.panelHeader.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ConsultorioPsicopedagogico.Properties.Resources.Screenshot_9;
-            this.pictureBox1.Location = new System.Drawing.Point(27, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(20, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 59);
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -92,10 +92,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(107, 22);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(80, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(325, 41);
+            this.label1.Size = new System.Drawing.Size(262, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "GESTIÓN DE TURNOS";
             // 
@@ -119,10 +119,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelInputCard.Controls.Add(this.btn_Modificar);
             this.panelInputCard.Controls.Add(this.btn_Eliminar);
             this.panelInputCard.Controls.Add(this.btn_Limpiar);
-            this.panelInputCard.Location = new System.Drawing.Point(27, 111);
-            this.panelInputCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelInputCard.Location = new System.Drawing.Point(20, 88);
+            this.panelInputCard.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.panelInputCard.Name = "panelInputCard";
-            this.panelInputCard.Size = new System.Drawing.Size(533, 535);
+            this.panelInputCard.Size = new System.Drawing.Size(430, 485);
             this.panelInputCard.TabIndex = 1;
             this.panelInputCard.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCard_Paint);
             // 
@@ -131,10 +131,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_CardInputTitle.AutoSize = true;
             this.lbl_CardInputTitle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_CardInputTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(25)))), ((int)(((byte)(120)))));
-            this.lbl_CardInputTitle.Location = new System.Drawing.Point(27, 18);
-            this.lbl_CardInputTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_CardInputTitle.Location = new System.Drawing.Point(20, 14);
+            this.lbl_CardInputTitle.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.lbl_CardInputTitle.Name = "lbl_CardInputTitle";
-            this.lbl_CardInputTitle.Size = new System.Drawing.Size(183, 25);
+            this.lbl_CardInputTitle.Size = new System.Drawing.Size(147, 20);
             this.lbl_CardInputTitle.TabIndex = 0;
             this.lbl_CardInputTitle.Text = "DATOS DEL TURNO";
             // 
@@ -143,21 +143,21 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_DniConcurrente.AutoSize = true;
             this.lbl_DniConcurrente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_DniConcurrente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lbl_DniConcurrente.Location = new System.Drawing.Point(27, 62);
-            this.lbl_DniConcurrente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_DniConcurrente.Location = new System.Drawing.Point(20, 46);
+            this.lbl_DniConcurrente.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.lbl_DniConcurrente.Name = "lbl_DniConcurrente";
-            this.lbl_DniConcurrente.Size = new System.Drawing.Size(131, 20);
+            this.lbl_DniConcurrente.Size = new System.Drawing.Size(104, 15);
             this.lbl_DniConcurrente.TabIndex = 1;
             this.lbl_DniConcurrente.Text = "DNI Concurrente:";
             // 
             // txt_DniConcurrente
             // 
             this.txt_DniConcurrente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_DniConcurrente.Location = new System.Drawing.Point(27, 86);
-            this.txt_DniConcurrente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_DniConcurrente.Location = new System.Drawing.Point(20, 66);
+            this.txt_DniConcurrente.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.txt_DniConcurrente.MaxLength = 8;
             this.txt_DniConcurrente.Name = "txt_DniConcurrente";
-            this.txt_DniConcurrente.Size = new System.Drawing.Size(292, 29);
+            this.txt_DniConcurrente.Size = new System.Drawing.Size(230, 25);
             this.txt_DniConcurrente.TabIndex = 2;
             this.txt_DniConcurrente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OnlyNumbers_KeyPress);
             // 
@@ -168,10 +168,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_verificarConcurrente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_verificarConcurrente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_verificarConcurrente.ForeColor = System.Drawing.Color.White;
-            this.btn_verificarConcurrente.Location = new System.Drawing.Point(333, 84);
-            this.btn_verificarConcurrente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_verificarConcurrente.Location = new System.Drawing.Point(260, 64);
+            this.btn_verificarConcurrente.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.btn_verificarConcurrente.Name = "btn_verificarConcurrente";
-            this.btn_verificarConcurrente.Size = new System.Drawing.Size(173, 34);
+            this.btn_verificarConcurrente.Size = new System.Drawing.Size(150, 28);
             this.btn_verificarConcurrente.TabIndex = 3;
             this.btn_verificarConcurrente.Text = "Buscar Turno";
             this.btn_verificarConcurrente.UseVisualStyleBackColor = false;
@@ -182,10 +182,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_NombreConcurrente.AutoSize = true;
             this.lbl_NombreConcurrente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_NombreConcurrente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(60)))), ((int)(((byte)(160)))));
-            this.lbl_NombreConcurrente.Location = new System.Drawing.Point(27, 121);
-            this.lbl_NombreConcurrente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_NombreConcurrente.Location = new System.Drawing.Point(20, 96);
+            this.lbl_NombreConcurrente.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.lbl_NombreConcurrente.Name = "lbl_NombreConcurrente";
-            this.lbl_NombreConcurrente.Size = new System.Drawing.Size(173, 20);
+            this.lbl_NombreConcurrente.Size = new System.Drawing.Size(139, 15);
             this.lbl_NombreConcurrente.TabIndex = 4;
             this.lbl_NombreConcurrente.Text = "Concurrente no verificado";
             // 
@@ -194,20 +194,20 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_TextoNombreConcurrente.AutoSize = true;
             this.lbl_TextoNombreConcurrente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_TextoNombreConcurrente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lbl_TextoNombreConcurrente.Location = new System.Drawing.Point(27, 148);
-            this.lbl_TextoNombreConcurrente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TextoNombreConcurrente.Location = new System.Drawing.Point(20, 118);
+            this.lbl_TextoNombreConcurrente.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.lbl_TextoNombreConcurrente.Name = "lbl_TextoNombreConcurrente";
-            this.lbl_TextoNombreConcurrente.Size = new System.Drawing.Size(161, 20);
+            this.lbl_TextoNombreConcurrente.Size = new System.Drawing.Size(126, 15);
             this.lbl_TextoNombreConcurrente.TabIndex = 15;
             this.lbl_TextoNombreConcurrente.Text = "Nombre Concurrente:";
             // 
             // txt_NombreConcurrente
             // 
             this.txt_NombreConcurrente.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NombreConcurrente.Location = new System.Drawing.Point(27, 172);
-            this.txt_NombreConcurrente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_NombreConcurrente.Location = new System.Drawing.Point(20, 137);
+            this.txt_NombreConcurrente.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.txt_NombreConcurrente.Name = "txt_NombreConcurrente";
-            this.txt_NombreConcurrente.Size = new System.Drawing.Size(479, 29);
+            this.txt_NombreConcurrente.Size = new System.Drawing.Size(390, 25);
             this.txt_NombreConcurrente.TabIndex = 16;
             // 
             // lbl_Especialista
@@ -215,10 +215,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_Especialista.AutoSize = true;
             this.lbl_Especialista.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Especialista.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lbl_Especialista.Location = new System.Drawing.Point(27, 215);
-            this.lbl_Especialista.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Especialista.Location = new System.Drawing.Point(20, 170);
+            this.lbl_Especialista.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.lbl_Especialista.Name = "lbl_Especialista";
-            this.lbl_Especialista.Size = new System.Drawing.Size(93, 20);
+            this.lbl_Especialista.Size = new System.Drawing.Size(73, 15);
             this.lbl_Especialista.TabIndex = 13;
             this.lbl_Especialista.Text = "Especialista:";
             // 
@@ -227,10 +227,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.cbo_Especialista.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_Especialista.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_Especialista.FormattingEnabled = true;
-            this.cbo_Especialista.Location = new System.Drawing.Point(27, 240);
-            this.cbo_Especialista.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbo_Especialista.Location = new System.Drawing.Point(20, 190);
+            this.cbo_Especialista.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.cbo_Especialista.Name = "cbo_Especialista";
-            this.cbo_Especialista.Size = new System.Drawing.Size(479, 29);
+            this.cbo_Especialista.Size = new System.Drawing.Size(390, 25);
             this.cbo_Especialista.TabIndex = 14;
             // 
             // lbl_Fecha
@@ -238,10 +238,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_Fecha.AutoSize = true;
             this.lbl_Fecha.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Fecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lbl_Fecha.Location = new System.Drawing.Point(27, 283);
-            this.lbl_Fecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Fecha.Location = new System.Drawing.Point(20, 223);
+            this.lbl_Fecha.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.lbl_Fecha.Name = "lbl_Fecha";
-            this.lbl_Fecha.Size = new System.Drawing.Size(53, 20);
+            this.lbl_Fecha.Size = new System.Drawing.Size(42, 15);
             this.lbl_Fecha.TabIndex = 5;
             this.lbl_Fecha.Text = "Fecha:";
             // 
@@ -249,10 +249,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.dtp_FechaTurno.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_FechaTurno.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_FechaTurno.Location = new System.Drawing.Point(27, 308);
-            this.dtp_FechaTurno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtp_FechaTurno.Location = new System.Drawing.Point(20, 243);
+            this.dtp_FechaTurno.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.dtp_FechaTurno.Name = "dtp_FechaTurno";
-            this.dtp_FechaTurno.Size = new System.Drawing.Size(479, 29);
+            this.dtp_FechaTurno.Size = new System.Drawing.Size(390, 25);
             this.dtp_FechaTurno.TabIndex = 6;
             // 
             // lbl_Hora
@@ -260,10 +260,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_Hora.AutoSize = true;
             this.lbl_Hora.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Hora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lbl_Hora.Location = new System.Drawing.Point(27, 351);
-            this.lbl_Hora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Hora.Location = new System.Drawing.Point(20, 276);
+            this.lbl_Hora.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.lbl_Hora.Name = "lbl_Hora";
-            this.lbl_Hora.Size = new System.Drawing.Size(47, 20);
+            this.lbl_Hora.Size = new System.Drawing.Size(37, 15);
             this.lbl_Hora.TabIndex = 7;
             this.lbl_Hora.Text = "Hora:";
             // 
@@ -272,10 +272,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.cbo_HoraTurno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_HoraTurno.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_HoraTurno.FormattingEnabled = true;
-            this.cbo_HoraTurno.Location = new System.Drawing.Point(27, 375);
-            this.cbo_HoraTurno.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbo_HoraTurno.Location = new System.Drawing.Point(20, 296);
+            this.cbo_HoraTurno.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.cbo_HoraTurno.Name = "cbo_HoraTurno";
-            this.cbo_HoraTurno.Size = new System.Drawing.Size(479, 29);
+            this.cbo_HoraTurno.Size = new System.Drawing.Size(390, 25);
             this.cbo_HoraTurno.TabIndex = 8;
             // 
             // btn_Guardar
@@ -285,10 +285,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Guardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Guardar.ForeColor = System.Drawing.Color.White;
-            this.btn_Guardar.Location = new System.Drawing.Point(27, 425);
-            this.btn_Guardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Guardar.Location = new System.Drawing.Point(20, 345);
+            this.btn_Guardar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.btn_Guardar.Name = "btn_Guardar";
-            this.btn_Guardar.Size = new System.Drawing.Size(227, 43);
+            this.btn_Guardar.Size = new System.Drawing.Size(185, 38);
             this.btn_Guardar.TabIndex = 9;
             this.btn_Guardar.Text = "Registrar Turno";
             this.btn_Guardar.UseVisualStyleBackColor = false;
@@ -301,10 +301,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Modificar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Modificar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
-            this.btn_Modificar.Location = new System.Drawing.Point(280, 425);
-            this.btn_Modificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Modificar.Location = new System.Drawing.Point(225, 345);
+            this.btn_Modificar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.btn_Modificar.Name = "btn_Modificar";
-            this.btn_Modificar.Size = new System.Drawing.Size(227, 43);
+            this.btn_Modificar.Size = new System.Drawing.Size(185, 38);
             this.btn_Modificar.TabIndex = 10;
             this.btn_Modificar.Text = "Modificar";
             this.btn_Modificar.UseVisualStyleBackColor = false;
@@ -317,10 +317,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Eliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Eliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn_Eliminar.Location = new System.Drawing.Point(27, 474);
-            this.btn_Eliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Eliminar.Location = new System.Drawing.Point(20, 395);
+            this.btn_Eliminar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.btn_Eliminar.Name = "btn_Eliminar";
-            this.btn_Eliminar.Size = new System.Drawing.Size(227, 43);
+            this.btn_Eliminar.Size = new System.Drawing.Size(185, 38);
             this.btn_Eliminar.TabIndex = 11;
             this.btn_Eliminar.Text = "Eliminar";
             this.btn_Eliminar.UseVisualStyleBackColor = false;
@@ -333,10 +333,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_Limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Limpiar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Limpiar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.btn_Limpiar.Location = new System.Drawing.Point(280, 474);
-            this.btn_Limpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Limpiar.Location = new System.Drawing.Point(225, 395);
+            this.btn_Limpiar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.btn_Limpiar.Name = "btn_Limpiar";
-            this.btn_Limpiar.Size = new System.Drawing.Size(227, 43);
+            this.btn_Limpiar.Size = new System.Drawing.Size(185, 38);
             this.btn_Limpiar.TabIndex = 12;
             this.btn_Limpiar.Text = "Limpiar Campos";
             this.btn_Limpiar.UseVisualStyleBackColor = false;
@@ -349,10 +349,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelGridCard.Controls.Add(this.dtg_turnos);
             this.panelGridCard.Controls.Add(this.lbl_FiltroFecha);
             this.panelGridCard.Controls.Add(this.cbo_FiltroFecha);
-            this.panelGridCard.Location = new System.Drawing.Point(587, 111);
-            this.panelGridCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelGridCard.Location = new System.Drawing.Point(465, 88);
+            this.panelGridCard.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.panelGridCard.Name = "panelGridCard";
-            this.panelGridCard.Size = new System.Drawing.Size(720, 535);
+            this.panelGridCard.Size = new System.Drawing.Size(555, 485);
             this.panelGridCard.TabIndex = 2;
             this.panelGridCard.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCard_Paint);
             // 
@@ -361,10 +361,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_CardGridTitle.AutoSize = true;
             this.lbl_CardGridTitle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_CardGridTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(25)))), ((int)(((byte)(120)))));
-            this.lbl_CardGridTitle.Location = new System.Drawing.Point(20, 18);
-            this.lbl_CardGridTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_CardGridTitle.Location = new System.Drawing.Point(15, 14);
+            this.lbl_CardGridTitle.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.lbl_CardGridTitle.Name = "lbl_CardGridTitle";
-            this.lbl_CardGridTitle.Size = new System.Drawing.Size(201, 25);
+            this.lbl_CardGridTitle.Size = new System.Drawing.Size(157, 20);
             this.lbl_CardGridTitle.TabIndex = 0;
             this.lbl_CardGridTitle.Text = "LISTADO DE TURNOS";
             // 
@@ -386,8 +386,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.dtg_turnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_turnos.EnableHeadersVisualStyles = false;
             this.dtg_turnos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(224)))), ((int)(((byte)(238)))));
-            this.dtg_turnos.Location = new System.Drawing.Point(20, 62);
-            this.dtg_turnos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtg_turnos.Location = new System.Drawing.Point(15, 48);
+            this.dtg_turnos.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.dtg_turnos.Name = "dtg_turnos";
             this.dtg_turnos.ReadOnly = true;
             this.dtg_turnos.RowHeadersWidth = 51;
@@ -399,7 +399,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.dtg_turnos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dtg_turnos.RowTemplate.Height = 24;
             this.dtg_turnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtg_turnos.Size = new System.Drawing.Size(680, 449);
+            this.dtg_turnos.Size = new System.Drawing.Size(525, 420);
             this.dtg_turnos.TabIndex = 1;
             this.dtg_turnos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_turnos_CellClick);
             // 
@@ -408,10 +408,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_FiltroFecha.AutoSize = true;
             this.lbl_FiltroFecha.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_FiltroFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lbl_FiltroFecha.Location = new System.Drawing.Point(313, 22);
-            this.lbl_FiltroFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_FiltroFecha.Location = new System.Drawing.Point(265, 17);
+            this.lbl_FiltroFecha.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.lbl_FiltroFecha.Name = "lbl_FiltroFecha";
-            this.lbl_FiltroFecha.Size = new System.Drawing.Size(99, 20);
+            this.lbl_FiltroFecha.Size = new System.Drawing.Size(78, 15);
             this.lbl_FiltroFecha.TabIndex = 2;
             this.lbl_FiltroFecha.Text = "Filtrar Fecha:";
             // 
@@ -420,10 +420,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.cbo_FiltroFecha.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_FiltroFecha.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_FiltroFecha.FormattingEnabled = true;
-            this.cbo_FiltroFecha.Location = new System.Drawing.Point(433, 18);
-            this.cbo_FiltroFecha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbo_FiltroFecha.Location = new System.Drawing.Point(350, 14);
+            this.cbo_FiltroFecha.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.cbo_FiltroFecha.Name = "cbo_FiltroFecha";
-            this.cbo_FiltroFecha.Size = new System.Drawing.Size(265, 28);
+            this.cbo_FiltroFecha.Size = new System.Drawing.Size(190, 23);
             this.cbo_FiltroFecha.TabIndex = 3;
             // 
             // btn_volver
@@ -433,10 +433,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_volver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_volver.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_volver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.btn_volver.Location = new System.Drawing.Point(1133, 654);
-            this.btn_volver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_volver.Location = new System.Drawing.Point(870, 585);
+            this.btn_volver.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.btn_volver.Name = "btn_volver";
-            this.btn_volver.Size = new System.Drawing.Size(173, 43);
+            this.btn_volver.Size = new System.Drawing.Size(150, 40);
             this.btn_volver.TabIndex = 3;
             this.btn_volver.Text = "Volver";
             this.btn_volver.UseVisualStyleBackColor = false;
@@ -444,16 +444,17 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             // Turnos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(240)))), ((int)(((byte)(248)))));
-            this.ClientSize = new System.Drawing.Size(1333, 710);
+            this.ClientSize = new System.Drawing.Size(1040, 640);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelInputCard);
             this.Controls.Add(this.panelGridCard);
             this.Controls.Add(this.btn_volver);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.MaximizeBox = false;
             this.Name = "Turnos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

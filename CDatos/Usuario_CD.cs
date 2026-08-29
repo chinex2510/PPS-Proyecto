@@ -309,5 +309,151 @@ namespace ConsultorioPsicopedagogico.CDatos
             }
             return dt;
         }
+
+        /// <summary>
+        /// Busca un usuario por DNI o por nombre de usuario en la base de datos.
+        /// </summary>
+        public Usuario_CD BuscarUsuarioPorDniOUsuario(string busqueda)
+        {
+            Usuario_CD u = null;
+            try
+            {
+                using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
+                {
+                    conexion.Open();
+                    string query = @"SELECT DNI, Usuario, NombreApellido, Email, Contrasena, PreguntaID, Respuesta, Rol, disponibilidadHoraria 
+                                    FROM Usuario 
+                                    WHERE BINARY Usuario = @Busqueda OR CAST(DNI AS CHAR) = @Busqueda";
+                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@Busqueda", busqueda.Trim());
+                        using (MySqlDataReader reader = comando.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                u = new Usuario_CD
+                                {
+                                    Dni = Convert.ToInt32(reader["DNI"]),
+                                    Usuario = reader["Usuario"].ToString(),
+                                    NombreApellido = reader["NombreApellido"].ToString(),
+                                    Email = reader["Email"].ToString(),
+                                    Contrasena = reader["Contrasena"].ToString(),
+                                    PreguntaId = Convert.ToInt32(reader["PreguntaID"]),
+                                    Respuesta = reader["Respuesta"].ToString(),
+                                    Rol = reader["Rol"].ToString(),
+                                    DisponibilidadHoraria = reader["disponibilidadHoraria"] != DBNull.Value ? reader["disponibilidadHoraria"].ToString() : null
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar el usuario: " + ex.Message, "Error de base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return u;
+        }
+
+        /// <summary>
+        /// Modifica los datos de un usuario existente en la base de datos.
+        /// </summary>
+        public bool ModificarUsuario(Usuario_CD usuarioModificado, int dniOriginal)
+        {
+            try
+            {
+                using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
+                {
+                    conexion.Open();
+                    string query = @"UPDATE Usuario 
+                                    SET DNI = @Dni,
+                                        Usuario = @Usuario, 
+                                        NombreApellido = @NombreApellido, 
+                                        Email = @Email, 
+                                        Contrasena = @Contrasena, 
+                                        PreguntaID = @PreguntaId, 
+                                        Respuesta = @Respuesta, 
+                                        Rol = @Rol, 
+                                        disponibilidadHoraria = @DisponibilidadHoraria 
+                                    WHERE DNI = @DniOriginal";
+                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@Dni", usuarioModificado.Dni);
+                        comando.Parameters.AddWithValue("@Usuario", usuarioModificado.Usuario);
+                        comando.Parameters.AddWithValue("@NombreApellido", usuarioModificado.NombreApellido);
+                        comando.Parameters.AddWithValue("@Email", usuarioModificado.Email);
+                        comando.Parameters.AddWithValue("@Contrasena", usuarioModificado.Contrasena);
+                        comando.Parameters.AddWithValue("@PreguntaId", usuarioModificado.PreguntaId);
+                        comando.Parameters.AddWithValue("@Respuesta", usuarioModificado.Respuesta);
+                        comando.Parameters.AddWithValue("@Rol", usuarioModificado.Rol);
+                        comando.Parameters.AddWithValue("@DisponibilidadHoraria", string.IsNullOrEmpty(usuarioModificado.DisponibilidadHoraria) ? (object)DBNull.Value : usuarioModificado.DisponibilidadHoraria);
+                        comando.Parameters.AddWithValue("@DniOriginal", dniOriginal);
+
+                        int affected = comando.ExecuteNonQuery();
+                        return affected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al modificar el usuario: " + ex.Message, ex);
+            }
+        }
+
+        /// <summary>
+        /// Verifica si existe un usuario con ese nombre excluyendo el DNI original.
+        /// </summary>
+        public bool ExisteUsuarioExcluyendoDni(string usuario, int dniOriginal)
+        {
+            bool existe = false;
+            try
+            {
+                using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
+                {
+                    conexion.Open();
+                    string query = "SELECT COUNT(*) FROM Usuario WHERE Usuario = @Usuario AND DNI <> @DniOriginal";
+                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@Usuario", usuario);
+                        comando.Parameters.AddWithValue("@DniOriginal", dniOriginal);
+                        int count = Convert.ToInt32(comando.ExecuteScalar());
+                        existe = count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar usuario: " + ex.Message, "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return existe;
+        }
+
+        /// <summary>
+        /// Verifica si existe un DNI excluyendo el DNI original.
+        /// </summary>
+        public bool ExisteDniExcluyendoDni(int nuevoDni, int dniOriginal)
+        {
+            bool existe = false;
+            try
+            {
+                using (MySqlConnection conexion = new MySqlConnection(Conexion.ConnectionString))
+                {
+                    conexion.Open();
+                    string query = "SELECT COUNT(*) FROM Usuario WHERE DNI = @NuevoDni AND DNI <> @DniOriginal";
+                    using (MySqlCommand comando = new MySqlCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@NuevoDni", nuevoDni);
+                        comando.Parameters.AddWithValue("@DniOriginal", dniOriginal);
+                        int count = Convert.ToInt32(comando.ExecuteScalar());
+                        existe = count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar DNI: " + ex.Message, "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return existe;
+        }
     }
 }

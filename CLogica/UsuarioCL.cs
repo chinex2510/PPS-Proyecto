@@ -100,6 +100,63 @@ namespace ConsultorioPsicopedagogico.CLogica
             Usuario_CD datos = new Usuario_CD();
             return datos.ObtenerEspecialistas();
         }
+
+        /// <summary>
+        /// Busca un usuario por DNI o por nombre de usuario.
+        /// </summary>
+        public UsuarioCL BuscarUsuario(string busqueda)
+        {
+            Usuario_CD datos = new Usuario_CD();
+            Usuario_CD resultado = datos.BuscarUsuarioPorDniOUsuario(busqueda);
+            if (resultado == null) return null;
+
+            return new UsuarioCL
+            {
+                Dni = resultado.Dni,
+                Usuario = resultado.Usuario,
+                NombreApellido = resultado.NombreApellido,
+                Email = resultado.Email,
+                Contrasena = resultado.Contrasena,
+                ConfirmarContrasena = resultado.Contrasena,
+                PreguntaId = resultado.PreguntaId,
+                Respuesta = resultado.Respuesta,
+                Rol = resultado.Rol,
+                DisponibilidadHoraria = resultado.DisponibilidadHoraria
+            };
+        }
+
+        /// <summary>
+        /// Modifica los datos de un usuario existente.
+        /// </summary>
+        public bool Modificar(UsuarioCL usuario, int dniOriginal)
+        {
+            Usuario_CD datos = new Usuario_CD();
+
+            if (datos.ExisteDniExcluyendoDni(usuario.Dni, dniOriginal))
+            {
+                throw new InvalidOperationException("El DNI ingresado ya pertenece a otro usuario.");
+            }
+
+            if (datos.ExisteUsuarioExcluyendoDni(usuario.Usuario, dniOriginal))
+            {
+                throw new InvalidOperationException("El nombre de usuario ingresado ya pertenece a otro usuario.");
+            }
+
+            Usuario_CD modificado = new Usuario_CD
+            {
+                Dni = usuario.Dni,
+                Usuario = usuario.Usuario,
+                NombreApellido = usuario.NombreApellido,
+                Email = usuario.Email,
+                Contrasena = usuario.Contrasena,
+                PreguntaId = usuario.PreguntaId,
+                Respuesta = usuario.Respuesta,
+                Rol = usuario.Rol,
+                DisponibilidadHoraria = usuario.DisponibilidadHoraria
+            };
+
+            return datos.ModificarUsuario(modificado, dniOriginal);
+        }
     }
 
     public class UsuarioValidation : AbstractValidator<UsuarioCL>
@@ -155,7 +212,7 @@ namespace ConsultorioPsicopedagogico.CLogica
             // Rol
             RuleFor(u => u.Rol)
                 .NotEmpty().WithMessage("El rol es requerido.")
-                .Must(r => r == "Especialista" || r == "Secretaria/o").WithMessage("El rol seleccionado no es válido.");
+                .Must(r => r == "Especialista" || r == "Secretaria/o" || r == "Admin").WithMessage("El rol seleccionado no es válido.");
         }
     }
 }

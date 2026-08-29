@@ -48,6 +48,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lblHoraFin = new System.Windows.Forms.Label();
             this.cmbHoraFin = new System.Windows.Forms.ComboBox();
             this.btnCrearUsuario = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panelDecorativo = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -172,6 +174,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelContenedorCampos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(205)))), ((int)(((byte)(130)))));
             this.panelContenedorCampos.Controls.Add(this.lblUsuario);
             this.panelContenedorCampos.Controls.Add(this.txtUsuario);
+            this.panelContenedorCampos.Controls.Add(this.btnBuscar);
             this.panelContenedorCampos.Controls.Add(this.lblDni);
             this.panelContenedorCampos.Controls.Add(this.txtDni);
             this.panelContenedorCampos.Controls.Add(this.lblNombre);
@@ -194,6 +197,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelContenedorCampos.Controls.Add(this.lblHoraFin);
             this.panelContenedorCampos.Controls.Add(this.cmbHoraFin);
             this.panelContenedorCampos.Controls.Add(this.btnCrearUsuario);
+            this.panelContenedorCampos.Controls.Add(this.btnModificar);
             this.panelContenedorCampos.Controls.Add(this.btnCancelar);
             this.panelContenedorCampos.Location = new System.Drawing.Point(50, 70);
             this.panelContenedorCampos.Name = "panelContenedorCampos";
@@ -215,9 +219,24 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(45, 35);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(450, 25);
+            this.txtUsuario.Size = new System.Drawing.Size(355, 25);
             this.txtUsuario.TabIndex = 1;
             this.txtUsuario.Text = "Ingrese su usuario";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnBuscar.ForeColor = System.Drawing.Color.White;
+            this.btnBuscar.Location = new System.Drawing.Point(410, 33);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(85, 28);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
             // 
             // lblDni
             // 
@@ -226,7 +245,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lblDni.Location = new System.Drawing.Point(42, 58);
             this.lblDni.Name = "lblDni";
             this.lblDni.Size = new System.Drawing.Size(32, 17);
-            this.lblDni.TabIndex = 2;
+            this.lblDni.TabIndex = 3;
             this.lblDni.Text = "DNI";
             // 
             // txtDni
@@ -236,7 +255,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.txtDni.MaxLength = 8;
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(450, 25);
-            this.txtDni.TabIndex = 3;
+            this.txtDni.TabIndex = 4;
             this.txtDni.Text = "Ingrese su DNI";
             // 
             // lblNombre
@@ -433,22 +452,37 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btnCrearUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCrearUsuario.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCrearUsuario.ForeColor = System.Drawing.Color.White;
-            this.btnCrearUsuario.Location = new System.Drawing.Point(110, 490);
+            this.btnCrearUsuario.Location = new System.Drawing.Point(45, 490);
             this.btnCrearUsuario.Name = "btnCrearUsuario";
-            this.btnCrearUsuario.Size = new System.Drawing.Size(150, 35);
+            this.btnCrearUsuario.Size = new System.Drawing.Size(140, 35);
             this.btnCrearUsuario.TabIndex = 18;
             this.btnCrearUsuario.Text = "Crear Usuario";
             this.btnCrearUsuario.UseVisualStyleBackColor = false;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
+            this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModificar.FlatAppearance.BorderSize = 0;
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnModificar.ForeColor = System.Drawing.Color.White;
+            this.btnModificar.Location = new System.Drawing.Point(200, 490);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(140, 35);
+            this.btnModificar.TabIndex = 19;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = false;
             // 
             // btnCancelar
             // 
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
-            this.btnCancelar.Location = new System.Drawing.Point(290, 490);
+            this.btnCancelar.Location = new System.Drawing.Point(355, 490);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(150, 35);
-            this.btnCancelar.TabIndex = 19;
+            this.btnCancelar.Size = new System.Drawing.Size(140, 35);
+            this.btnCancelar.TabIndex = 20;
             this.btnCancelar.Text = "Cancelar";
             // 
             // panelDecorativo
@@ -559,6 +593,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         public System.Windows.Forms.ComboBox cmbPreguntaSecreta;
         public System.Windows.Forms.TextBox txtRespuesta;
         public System.Windows.Forms.Button btnCrearUsuario;
+        public System.Windows.Forms.Button btnBuscar;
+        public System.Windows.Forms.Button btnModificar;
         public System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblDni;

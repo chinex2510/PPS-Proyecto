@@ -41,12 +41,14 @@ namespace ConsultorioPsicopedagogico
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txt_Contraseña = new System.Windows.Forms.TextBox();
+            this.pic_MostrarOcultar = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txt_Usuario = new System.Windows.Forms.TextBox();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelControles.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_MostrarOcultar)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -218,12 +220,28 @@ namespace ConsultorioPsicopedagogico
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(15)))), ((int)(((byte)(58)))));
             this.panel2.Controls.Add(this.txt_Contraseña);
+            this.panel2.Controls.Add(this.pic_MostrarOcultar);
             this.panel2.Location = new System.Drawing.Point(179, 171);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(1);
             this.panel2.Size = new System.Drawing.Size(457, 37);
             this.panel2.TabIndex = 1;
+            // 
+            // pic_MostrarOcultar
+            // 
+            this.pic_MostrarOcultar.BackColor = System.Drawing.Color.White;
+            this.pic_MostrarOcultar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pic_MostrarOcultar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pic_MostrarOcultar.Location = new System.Drawing.Point(421, 1);
+            this.pic_MostrarOcultar.Name = "pic_MostrarOcultar";
+            this.pic_MostrarOcultar.Size = new System.Drawing.Size(35, 35);
+            this.pic_MostrarOcultar.TabIndex = 1;
+            this.pic_MostrarOcultar.TabStop = false;
+            this.pic_MostrarOcultar.Click += new System.EventHandler(this.pic_MostrarOcultar_Click);
+            this.pic_MostrarOcultar.Paint += new System.Windows.Forms.PaintEventHandler(this.pic_MostrarOcultar_Paint);
+            this.pic_MostrarOcultar.MouseEnter += new System.EventHandler(this.pic_MostrarOcultar_MouseEnter);
+            this.pic_MostrarOcultar.MouseLeave += new System.EventHandler(this.pic_MostrarOcultar_MouseLeave);
             // 
             // txt_Contraseña
             // 
@@ -292,6 +310,7 @@ namespace ConsultorioPsicopedagogico
             this.panelControles.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_MostrarOcultar)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -313,6 +332,7 @@ namespace ConsultorioPsicopedagogico
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txt_Contraseña;
+        private System.Windows.Forms.PictureBox pic_MostrarOcultar;
         private System.Windows.Forms.Label lbl_Cerrar;
         private System.Windows.Forms.Label lbl_Minimizar;
     }

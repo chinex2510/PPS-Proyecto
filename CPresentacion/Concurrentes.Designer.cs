@@ -28,9 +28,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtg_concurrentes = new System.Windows.Forms.DataGridView();
             this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,18 +66,18 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // dtg_concurrentes
             // 
             this.dtg_concurrentes.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(230)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtg_concurrentes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(230)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtg_concurrentes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtg_concurrentes.BackgroundColor = System.Drawing.Color.White;
             this.dtg_concurrentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            this.dtg_concurrentes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            this.dtg_concurrentes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtg_concurrentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_concurrentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DNI,
@@ -94,18 +94,18 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.ObraSoc});
             this.dtg_concurrentes.EnableHeadersVisualStyles = false;
             this.dtg_concurrentes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(224)))), ((int)(((byte)(238)))));
-            this.dtg_concurrentes.Location = new System.Drawing.Point(15, 55);
+            this.dtg_concurrentes.Location = new System.Drawing.Point(15, 60);
             this.dtg_concurrentes.Margin = new System.Windows.Forms.Padding(2);
             this.dtg_concurrentes.Name = "dtg_concurrentes";
             this.dtg_concurrentes.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(230)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtg_concurrentes.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(230)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtg_concurrentes.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dtg_concurrentes.RowTemplate.Height = 24;
-            this.dtg_concurrentes.Size = new System.Drawing.Size(1280, 310);
+            this.dtg_concurrentes.Size = new System.Drawing.Size(970, 395);
             this.dtg_concurrentes.TabIndex = 0;
             // 
             // DNI
@@ -207,10 +207,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // txt_DniBusqueda
             // 
             this.txt_DniBusqueda.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_DniBusqueda.Location = new System.Drawing.Point(960, 17);
+            this.txt_DniBusqueda.Location = new System.Drawing.Point(670, 20);
             this.txt_DniBusqueda.Margin = new System.Windows.Forms.Padding(2);
             this.txt_DniBusqueda.Name = "txt_DniBusqueda";
-            this.txt_DniBusqueda.Size = new System.Drawing.Size(200, 29);
+            this.txt_DniBusqueda.Size = new System.Drawing.Size(180, 25);
             this.txt_DniBusqueda.TabIndex = 1;
             this.txt_DniBusqueda.TextChanged += new System.EventHandler(this.txt_DniBusqueda_TextChanged);
             // 
@@ -222,10 +222,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_buscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_buscar.ForeColor = System.Drawing.Color.White;
-            this.btn_buscar.Location = new System.Drawing.Point(1175, 14);
+            this.btn_buscar.Location = new System.Drawing.Point(865, 16);
             this.btn_buscar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_buscar.Name = "btn_buscar";
-            this.btn_buscar.Size = new System.Drawing.Size(100, 30);
+            this.btn_buscar.Size = new System.Drawing.Size(115, 32);
             this.btn_buscar.TabIndex = 2;
             this.btn_buscar.Text = "Buscar";
             this.btn_buscar.UseVisualStyleBackColor = false;
@@ -239,10 +239,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_agregar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_agregar.ForeColor = System.Drawing.Color.White;
-            this.btn_agregar.Location = new System.Drawing.Point(20, 505);
+            this.btn_agregar.Location = new System.Drawing.Point(20, 585);
             this.btn_agregar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.Size = new System.Drawing.Size(130, 40);
+            this.btn_agregar.Size = new System.Drawing.Size(130, 44);
             this.btn_agregar.TabIndex = 3;
             this.btn_agregar.Text = "Agregar";
             this.btn_agregar.UseVisualStyleBackColor = false;
@@ -253,20 +253,20 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(80, 20);
+            this.label1.Location = new System.Drawing.Point(90, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(286, 46);
+            this.label1.Size = new System.Drawing.Size(232, 37);
             this.label1.TabIndex = 5;
             this.label1.Text = "CONCURRENTES";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ConsultorioPsicopedagogico.Properties.Resources.Screenshot_9;
-            this.pictureBox1.Location = new System.Drawing.Point(20, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(22, 19);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
+            this.pictureBox1.Size = new System.Drawing.Size(54, 60);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -278,10 +278,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_editar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_editar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(35)))), ((int)(((byte)(150)))));
-            this.btn_editar.Location = new System.Drawing.Point(160, 505);
+            this.btn_editar.Location = new System.Drawing.Point(160, 585);
             this.btn_editar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_editar.Name = "btn_editar";
-            this.btn_editar.Size = new System.Drawing.Size(130, 40);
+            this.btn_editar.Size = new System.Drawing.Size(130, 44);
             this.btn_editar.TabIndex = 7;
             this.btn_editar.Text = "Editar";
             this.btn_editar.UseVisualStyleBackColor = false;
@@ -294,10 +294,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_eliminar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_eliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btn_eliminar.Location = new System.Drawing.Point(300, 505);
+            this.btn_eliminar.Location = new System.Drawing.Point(300, 585);
             this.btn_eliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.Size = new System.Drawing.Size(130, 40);
+            this.btn_eliminar.Size = new System.Drawing.Size(130, 44);
             this.btn_eliminar.TabIndex = 8;
             this.btn_eliminar.Text = "Eliminar";
             this.btn_eliminar.UseVisualStyleBackColor = false;
@@ -310,10 +310,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_inactivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_inactivos.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_inactivos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
-            this.btn_inactivos.Location = new System.Drawing.Point(961, 509);
+            this.btn_inactivos.Location = new System.Drawing.Point(620, 585);
             this.btn_inactivos.Margin = new System.Windows.Forms.Padding(2);
             this.btn_inactivos.Name = "btn_inactivos";
-            this.btn_inactivos.Size = new System.Drawing.Size(219, 40);
+            this.btn_inactivos.Size = new System.Drawing.Size(215, 44);
             this.btn_inactivos.TabIndex = 9;
             this.btn_inactivos.Text = "Concurrentes Inactivos";
             this.btn_inactivos.UseVisualStyleBackColor = false;
@@ -326,10 +326,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.btn_volver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_volver.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_volver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.btn_volver.Location = new System.Drawing.Point(1200, 505);
+            this.btn_volver.Location = new System.Drawing.Point(850, 585);
             this.btn_volver.Margin = new System.Windows.Forms.Padding(2);
             this.btn_volver.Name = "btn_volver";
-            this.btn_volver.Size = new System.Drawing.Size(130, 40);
+            this.btn_volver.Size = new System.Drawing.Size(170, 44);
             this.btn_volver.TabIndex = 9;
             this.btn_volver.Text = "Volver";
             this.btn_volver.UseVisualStyleBackColor = false;
@@ -341,8 +341,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelHeader.Controls.Add(this.label1);
             this.panelHeader.Controls.Add(this.pictureBox1);
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1350, 80);
+            this.panelHeader.Size = new System.Drawing.Size(1040, 90);
             this.panelHeader.TabIndex = 10;
             // 
             // panelGridCard
@@ -353,9 +354,10 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.panelGridCard.Controls.Add(this.txt_DniBusqueda);
             this.panelGridCard.Controls.Add(this.btn_buscar);
             this.panelGridCard.Controls.Add(this.dtg_concurrentes);
-            this.panelGridCard.Location = new System.Drawing.Point(20, 100);
+            this.panelGridCard.Location = new System.Drawing.Point(20, 105);
+            this.panelGridCard.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelGridCard.Name = "panelGridCard";
-            this.panelGridCard.Size = new System.Drawing.Size(1310, 390);
+            this.panelGridCard.Size = new System.Drawing.Size(1000, 465);
             this.panelGridCard.TabIndex = 11;
             this.panelGridCard.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelCard_Paint);
             // 
@@ -364,9 +366,9 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.lbl_GridTitle.AutoSize = true;
             this.lbl_GridTitle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_GridTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(25)))), ((int)(((byte)(120)))));
-            this.lbl_GridTitle.Location = new System.Drawing.Point(15, 18);
+            this.lbl_GridTitle.Location = new System.Drawing.Point(15, 20);
             this.lbl_GridTitle.Name = "lbl_GridTitle";
-            this.lbl_GridTitle.Size = new System.Drawing.Size(272, 25);
+            this.lbl_GridTitle.Size = new System.Drawing.Size(217, 20);
             this.lbl_GridTitle.TabIndex = 3;
             this.lbl_GridTitle.Text = "LISTADO DE CONCURRENTES";
             // 
@@ -374,18 +376,19 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             // 
             this.lbl_BuscarDni.AutoSize = true;
             this.lbl_BuscarDni.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_BuscarDni.Location = new System.Drawing.Point(814, 20);
+            this.lbl_BuscarDni.Location = new System.Drawing.Point(555, 23);
             this.lbl_BuscarDni.Name = "lbl_BuscarDni";
-            this.lbl_BuscarDni.Size = new System.Drawing.Size(130, 23);
+            this.lbl_BuscarDni.Size = new System.Drawing.Size(97, 17);
             this.lbl_BuscarDni.TabIndex = 4;
             this.lbl_BuscarDni.Text = "Buscar por DNI:";
             // 
             // Concurrentes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(240)))), ((int)(((byte)(248)))));
-            this.ClientSize = new System.Drawing.Size(1350, 560);
+            this.ClientSize = new System.Drawing.Size(1040, 645);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelGridCard);
             this.Controls.Add(this.btn_agregar);
@@ -394,6 +397,7 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             this.Controls.Add(this.btn_inactivos);
             this.Controls.Add(this.btn_volver);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "Concurrentes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

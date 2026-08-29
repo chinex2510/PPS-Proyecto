@@ -14,6 +14,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 {
     public partial class FormNuevoUsuario : Form
     {
+        private int dniUsuarioEncontrado = 0;
+
         public FormNuevoUsuario()
         {
             InitializeComponent();
@@ -21,6 +23,8 @@ namespace ConsultorioPsicopedagogico.CPresentacion
 
             // Vincular eventos de botones
             btnCrearUsuario.Click += btnCrearUsuario_Click;
+            btnBuscar.Click += btnBuscar_Click;
+            btnModificar.Click += btnModificar_Click;
             btnCancelar.Click += btnCancelar_Click;
 
             // Vincular eventos de placeholders para TextBox
@@ -419,6 +423,182 @@ namespace ConsultorioPsicopedagogico.CPresentacion
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string busqueda = "";
+            if (txtUsuario.Text != "Ingrese su usuario" && !string.IsNullOrWhiteSpace(txtUsuario.Text))
+            {
+                busqueda = txtUsuario.Text.Trim();
+            }
+            else if (txtDni.Text != "Ingrese su DNI" && !string.IsNullOrWhiteSpace(txtDni.Text))
+            {
+                busqueda = txtDni.Text.Trim();
+            }
+
+            if (string.IsNullOrWhiteSpace(busqueda))
+            {
+                MessageBox.Show("Por favor, ingrese un usuario o DNI para buscar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsuario.Focus();
+                return;
+            }
+
+            try
+            {
+                UsuarioCL logica = new UsuarioCL();
+                UsuarioCL u = logica.BuscarUsuario(busqueda);
+
+                if (u != null)
+                {
+                    dniUsuarioEncontrado = u.Dni;
+
+                    // Cargar datos en los TextBoxes y ajustar colores activos
+                    txtUsuario.Text = u.Usuario;
+                    txtUsuario.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
+
+                    txtDni.Text = u.Dni.ToString();
+                    txtDni.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
+
+                    txtNombreApellido.Text = u.NombreApellido;
+                    txtNombreApellido.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
+
+                    txtMail.Text = u.Email;
+                    txtMail.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
+
+                    txtContrasena.Text = u.Contrasena;
+                    txtContrasena.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
+                    txtContrasena.UseSystemPasswordChar = true;
+
+                    txtConfirmarContrasena.Text = u.Contrasena;
+                    txtConfirmarContrasena.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
+                    txtConfirmarContrasena.UseSystemPasswordChar = true;
+
+                    txtRespuesta.Text = u.Respuesta;
+                    txtRespuesta.ForeColor = ColorTranslator.FromHtml("#3A0F3A");
+
+                    // Seleccionar Rol
+                    if (!string.IsNullOrEmpty(u.Rol) && cmbRol.Items.Contains(u.Rol))
+                    {
+                        cmbRol.SelectedItem = u.Rol;
+                    }
+
+                    // Seleccionar Pregunta
+                    if (u.PreguntaId > 0)
+                    {
+                        cmbPreguntaSecreta.SelectedValue = u.PreguntaId;
+                    }
+
+                    // Horarios
+                    if (!string.IsNullOrEmpty(u.DisponibilidadHoraria) && u.DisponibilidadHoraria.Contains("-"))
+                    {
+                        string[] partes = u.DisponibilidadHoraria.Split('-');
+                        if (partes.Length == 2)
+                        {
+                            if (cmbHoraInicio.Items.Contains(partes[0])) cmbHoraInicio.SelectedItem = partes[0];
+                            if (cmbHoraFin.Items.Contains(partes[1])) cmbHoraFin.SelectedItem = partes[1];
+                        }
+                    }
+
+                    MessageBox.Show("Usuario encontrado y datos cargados exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    dniUsuarioEncontrado = 0;
+                    MessageBox.Show("No se encontró ningún usuario con el criterio ingresado.", "Usuario no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (dniUsuarioEncontrado <= 0)
+            {
+                MessageBox.Show("Primero debe buscar y seleccionar un usuario existente para modificar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            UsuarioCL usuario = new UsuarioCL
+            {
+                Usuario = txtUsuario.Text.Trim(),
+                NombreApellido = txtNombreApellido.Text.Trim(),
+                Email = txtMail.Text.Trim(),
+                Rol = cmbRol.SelectedItem != null ? cmbRol.SelectedItem.ToString() : "",
+                Contrasena = txtContrasena.Text.Trim(),
+                ConfirmarContrasena = txtConfirmarContrasena.Text.Trim(),
+                PreguntaId = cmbPreguntaSecreta.SelectedValue != null ? Convert.ToInt32(cmbPreguntaSecreta.SelectedValue) : 0,
+                Respuesta = txtRespuesta.Text.Trim()
+            };
+
+            // Validar disponibilidad horaria si es Especialista o Secretaria/o
+            if (usuario.Rol == "Especialista" || usuario.Rol == "Secretaria/o")
+            {
+                if (cmbHoraInicio.SelectedItem == null || cmbHoraFin.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar un horario de inicio y un horario de fin.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string horaInicio = cmbHoraInicio.SelectedItem.ToString();
+                string horaFin = cmbHoraFin.SelectedItem.ToString();
+
+                int horaI = int.Parse(horaInicio.Split(':')[0]);
+                int horaF = int.Parse(horaFin.Split(':')[0]);
+
+                int diferencia = horaF - horaI;
+
+                if (diferencia < 6 || diferencia > 8)
+                {
+                    MessageBox.Show("La jornada laboral debe ser de corrido y tener un mínimo de 6 horas y un máximo de 8 horas.", "Error de horario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                usuario.DisponibilidadHoraria = $"{horaInicio}-{horaFin}";
+            }
+            else
+            {
+                usuario.DisponibilidadHoraria = null;
+            }
+
+            int dniVal = 0;
+            int.TryParse(txtDni.Text.Trim(), out dniVal);
+            usuario.Dni = dniVal;
+
+            UsuarioValidation validador = new UsuarioValidation();
+            ValidationResult resultado = validador.Validate(usuario);
+
+            if (!resultado.IsValid)
+            {
+                string mensajesError = "";
+                foreach (var error in resultado.Errors)
+                {
+                    mensajesError += "- " + error.ErrorMessage + "\n";
+                }
+
+                MessageBox.Show(mensajesError, "Campos inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                if (usuario.Modificar(usuario, dniUsuarioEncontrado))
+                {
+                    MessageBox.Show("Usuario modificado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RegresarLogin();
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al modificar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
